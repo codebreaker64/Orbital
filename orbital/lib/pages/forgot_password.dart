@@ -15,12 +15,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return Form(
       key: _formKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          Padding(
+          padding: EdgeInsets.only(top: 90), 
+            child: Align(
+            alignment: Alignment.center,
+            child: Image.asset("images/forgot_password_logo.png"),
+          ),
+        ),
           Text(
              "Forgot Password?",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0)),
-          Text("Type your email to reset your password."),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40.0)),
+          Text(
+            "Type your email to reset your password.",
+            style: TextStyle(fontSize: 15)),
           Center(
             child: Container(
               width: 300,
