@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: Scaffold(
-        body: const ForgotPassword(),
+        body: const PasswordUpdated(),
       ),
     );
   }
