@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/forgot_password.dart";
 import "pages/password_updated.dart";
 import "pages/update_password.dart";
+import "pages/signup.dart";
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey = String.fromEnvironment('SUPABASE_KEY');
@@ -96,10 +97,10 @@ class MyHomePage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       // Handle button press
-                      //Navigator.push(
-                      //context,
-                      //MaterialPageRoute(builder: (context) => Dashboard()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Signup()),
+                      );
                     },
                     child: Text('Login'),
                     style: ElevatedButton.styleFrom(
