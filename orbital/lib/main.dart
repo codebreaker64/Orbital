@@ -1,6 +1,9 @@
 //import "dart:nativewrappers/_internal/vm/lib/ffi_patch.dart";
 
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'widget_tree.dart';
+
 import "pages/dashboard.dart";
 import "pages/forgot_password.dart";
 import "pages/password_updated.dart";
@@ -11,7 +14,7 @@ import "pages/signup.dart";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
