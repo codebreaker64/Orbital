@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orbital/main.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-// Initialize the Supabase client
-final supabase = Supabase.instance.client;
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -142,28 +138,9 @@ class _SignupState extends State<Signup> {
                     }
 
                     try {
-                      // Attempt to sign up using Supabase
-                      final AuthResponse res = await supabase.auth.signUp(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
-                      final User? user = res.user;
+                     
 
-                      if (user != null) {
-                        // Navigate to another page after successful signup
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MyHomePage(),
-                          ),
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Signup failed.'),
-                          ),
-                        );
-                      }
+                     
                     } catch (error) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
