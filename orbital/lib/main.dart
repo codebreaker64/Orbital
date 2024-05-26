@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "pages/dashboard.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/forgot_password.dart";
 import "pages/password_updated.dart";
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: Scaffold(
-        body: const PasswordUpdated(),
+        body: const Dashboard(),
       ),
     );
   }
