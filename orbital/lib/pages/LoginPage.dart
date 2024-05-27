@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orbital/pages/dashboard.dart';
-import 'package:orbital/pages/home_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'signup.dart'; // Ensure you have the signup page
 // Ensure you have a home page
@@ -34,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  DashboardApp()), // Navigate to HomePage after login
+                  Dashboard()), // Navigate to HomePage after login
         );
       } else {
         // Sign-in failed

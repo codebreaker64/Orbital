@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:orbital/pages/forgot_password.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/LoginPage.dart";
 import "pages/signup.dart";
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: Scaffold(
-        body: const Dashboard(),
+        body: ForgotPassword(),
       ),
     );
   }
