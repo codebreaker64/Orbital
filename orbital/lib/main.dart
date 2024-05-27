@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/LoginPage.dart";
-import "pages/signup.dart"; // Ensure you have the signup page
+import "pages/signup.dart";
+import "pages/dashboard.dart"; // Ensure you have the signup page
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
@@ -24,9 +25,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        scaffoldBackgroundColor: Color(0xFFABEDE2),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF20795E),
+            foregroundColor: Colors.white
+          )
+        )
       ),
-      home: LoginPage(),
+      home: Scaffold(
+        body: const Dashboard(),
+      ),
     );
   }
 }
