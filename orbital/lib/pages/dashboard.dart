@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(DashboardApp());
-}
-
 class DashboardApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
