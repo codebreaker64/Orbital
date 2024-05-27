@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
+import 'package:firebase_core/firebase_core.dart';
 import "pages/forgot_password.dart";
 import "pages/password_updated.dart";
 import "pages/update_password.dart";
@@ -14,11 +15,7 @@ const supabaseKey = String.fromEnvironment(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Supabase.initialize(
-      url: "https://nwoibzvklxvfxhwlxloa.supabase.co",
-      anonKey:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53b2lienZrbHh2Znhod2x4bG9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyODU2NzEsImV4cCI6MjAzMTg2MTY3MX0.54GwJDi18MkMhvitOQY7sgvPfl-_QR6hSCqnK9EtkNU");
-  runApp(MyApp());
+  await Firebase.initializeApp();
 }
 
 class MyApp extends StatelessWidget {
