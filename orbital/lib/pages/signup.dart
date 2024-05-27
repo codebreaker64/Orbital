@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orbital/main.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-final supabase = Supabase.instance.client;
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -110,17 +107,47 @@ class _SignupState extends State<Signup> {
                 padding: const EdgeInsets.only(top: 20),
                 child: ElevatedButton(
                   onPressed: () async {
-                    final sm = ScaffoldMessenger.of(context);
-                    final authResponse = await supabase.auth.signUp(
+                    // Password match validation
+                    if (passwordController.text !=
+                        confirmPasswordController.text) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Passwords do not match!'),
+                        ),
+                      );
+                      return;
+                    }
+
+                    try {
+                      // Attempt to sign up using Supabase
+                      final AuthResponse res = await supabase.auth.signUp(
+                        email: emailController.text,
                         password: passwordController.text,
-                        email: emailController.text);
+                      );
+                      final User? user = res.user;
 
-                    sm.showSnackBar(SnackBar(
-                        content:
-                            Text("Logged in: ${authResponse.user!.email!}")));
-
-                    // Handle login logic
-                    // Example: Navigate to a different page after login
+                      if (user != null) {
+                        // Navigate to another page after successful signup
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyHomePage(),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Signup failed.'),
+                          ),
+                        );
+                      }
+                    } catch (error) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error: $error'),
+                        ),
+                      );
+                    }
                   },
                   child: Text('Sign up'),
                   style: ElevatedButton.styleFrom(

@@ -1,21 +1,24 @@
 //import "dart:nativewrappers/_internal/vm/lib/ffi_patch.dart";
 
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'widget_tree.dart';
+
+import "pages/dashboard.dart";
 import "pages/forgot_password.dart";
 import "pages/password_updated.dart";
 import "pages/update_password.dart";
 import "pages/signup.dart";
 
-const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
-const supabaseKey = String.fromEnvironment(
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53b2lienZrbHh2Znhod2x4bG9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyODU2NzEsImV4cCI6MjAzMTg2MTY3MX0.54GwJDi18MkMhvitOQY7sgvPfl-_QR6hSCqnK9EtkNU');
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Supabase.initialize(
+      url: "https://nwoibzvklxvfxhwlxloa.supabase.co",
+      anonKey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53b2lienZrbHh2Znhod2x4bG9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyODU2NzEsImV4cCI6MjAzMTg2MTY3MX0.54GwJDi18MkMhvitOQY7sgvPfl-_QR6hSCqnK9EtkNU");
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,9 +29,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        scaffoldBackgroundColor: Color(0xFFABEDE2),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF20795E),
+            foregroundColor: Colors.white
+          )
+        )
       ),
-      home: MyHomePage(),
+      home: Scaffold(
+        body: const Dashboard(),
+      ),
     );
   }
 }
