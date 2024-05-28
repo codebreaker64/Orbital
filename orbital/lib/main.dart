@@ -26,15 +26,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        useMaterial3: true,
-        scaffoldBackgroundColor: Color(0xFFABEDE2),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF20795E),
-            foregroundColor: Colors.white
-          )
-        )
-      ),
+          useMaterial3: true,
+          scaffoldBackgroundColor: Color(0xFFABEDE2),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF20795E),
+                  foregroundColor: Colors.white))),
       home: Scaffold(
         body: Dashboard(),
       ),
