@@ -122,7 +122,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 100, // Adjust the width of the image
                     height: 70.0, // Adjust the height of the image
                     child: Image.asset(
-                      'images/uplift.jpg',
+                      'images/gym.jpg',
                       fit: BoxFit
                           .cover, // Adjust how the image should fit within the space
                     ),
@@ -148,7 +148,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 100, // Adjust the width of the image
                     height: 70.0, // Adjust the height of the image
                     child: Image.asset(
-                      'images/uplift.jpg',
+                      'images/health.png',
                       fit: BoxFit
                           .cover, // Adjust how the image should fit within the space
                     ),
@@ -174,7 +174,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 100, // Adjust the width of the image
                     height: 70.0, // Adjust the height of the image
                     child: Image.asset(
-                      'images/uplift.jpg',
+                      'images/stress.jpg',
                       fit: BoxFit
                           .cover, // Adjust how the image should fit within the space
                     ),
