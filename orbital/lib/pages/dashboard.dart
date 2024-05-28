@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'depression_api.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -18,24 +17,6 @@ class _DashboardState extends State<Dashboard> {
     "images/thomas.jpg",
     "images/happy.jpg",
   ];
-
-  Future<void> fetchDepressionData() async {
-    try {
-      final api = DepressionAPI(); // Create an instance of DepressionAPI
-      final data = await api.fetchDepressionData(); // Call the instance method
-      // Handle fetched data as needed
-      print(data);
-    } catch (e) {
-      // Handle error
-      print('Error fetching depression data: $e');
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fetchDepressionData();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,11 +69,27 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
+                  Expanded(
+                      child: Stack(
+                    // padding: const EdgeInsets.only(top: 70.0, left: 15.0),
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        color: Colors.blue,
+                      ),
+                      Container(
+                        width: 100,
+                        height: 200,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ))
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 45.0, left: 25.0),
+              padding: const EdgeInsets.only(top: 50.0, right: 10),
               child: CircleAvatar(
                 radius: 50,
               ),
