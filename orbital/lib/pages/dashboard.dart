@@ -15,9 +15,9 @@ class _DashboardState extends State<Dashboard> {
   final supabase = Supabase.instance.client;
   final _nameController = TextEditingController();
   final List<String> imagePaths = [
-    "images/carousel1.jpg",
-    "images/carousel2.jpg",
-    "images/carousel3.jpg",
+    "images/carousel1.png",
+    "images/carousel2.png",
+    "images/carousel3.png",
   ];
 
   void _onItemTapped(int index) {
