@@ -13,9 +13,12 @@ class _DashboardState extends State<Dashboard> {
   final supabase = Supabase.instance.client;
   final _nameController = TextEditingController();
   final List<String> imagePaths = [
-    "images/uplift.jpg",
-    "images/thomas.jpg",
-    "images/happy.jpg",
+    "images/carousel1.png",
+    "images/carousel2.png",
+    "images/carousel3.png",
+    "images/carousel4.png",
+    "images/carousel5.png",
+    "images/carousel6.png",
   ];
 
   @override
@@ -75,7 +78,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 50.0),
+              padding: const EdgeInsets.only(top: 30.0),
               child: Center(
                 child: CarouselSlider(
                   items: imagePaths.map((path) {
@@ -116,6 +119,12 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
+                  Positioned(
+                    top: 10.0,
+                    left: 30.0,
+                    child: Text(
+                      "New Articles",
+                      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold))),
                   Positioned(
                     top: 50.0, // Adjust the top position
                     left: 30.0, // Adjust the left position
@@ -195,6 +204,24 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
+            BottomNavigationBar(
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label:'Dashboard'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.contact_support),
+                  label: 'Advice'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.pets),
+                  label: 'Companion'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.library_music),
+                  label: 'Music'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.library_books),
+                  label: 'Journal')
+              ])
           ],
         ),
       ),
