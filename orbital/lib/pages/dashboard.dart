@@ -10,16 +10,21 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  int _selectedIdex = 0;
+
   final supabase = Supabase.instance.client;
   final _nameController = TextEditingController();
   final List<String> imagePaths = [
-    "images/carousel1.png",
-    "images/carousel2.png",
-    "images/carousel3.png",
-    "images/carousel4.png",
-    "images/carousel5.png",
-    "images/carousel6.png",
+    "images/carousel1.jpg",
+    "images/carousel2.jpg",
+    "images/carousel3.jpg",
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIdex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +69,11 @@ class _DashboardState extends State<Dashboard> {
                       top: 50), // Match this value to align with the Text
                   child: CircleAvatar(
                     radius: 40,
-                    backgroundColor: Colors.red,
+                    child: ClipOval(
+                      child: Image.asset(
+                        'images/default_profile_pic.jpg'
+                        ),
+                    )
                   ),
                 ),
                 Padding(
@@ -204,27 +213,33 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            BottomNavigationBar(
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label:'Dashboard'),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.contact_support),
-                  label: 'Advice'),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.pets),
-                  label: 'Companion'),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.library_music),
-                  label: 'Music'),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.library_books),
-                  label: 'Journal')
-              ])
           ],
         ),
       ),
+      bottomNavigationBar:  BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label:'Dashboard'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.contact_support),
+            label: 'Advice'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pets),
+            label: 'Companion'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_music),
+            label: 'Music'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            label: 'Journal')
+        ],
+        currentIndex: _selectedIdex,
+        showUnselectedLabels: true,
+        backgroundColor: Color(0xFFABEDE2),
+        selectedItemColor: Color(0xFF20795E),
+        unselectedItemColor: Color(0xFF000000),
+        onTap: _onItemTapped),
     );
   }
 }
