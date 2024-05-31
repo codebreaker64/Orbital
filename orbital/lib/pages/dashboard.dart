@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:http/http.dart' as http;
@@ -11,6 +12,8 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   int _selectedIdex = 0;
+
+  String? userName;
 
   final supabase = Supabase.instance.client;
   final _nameController = TextEditingController();

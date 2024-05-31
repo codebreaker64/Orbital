@@ -158,6 +158,7 @@ class _SignupState extends State<Signup> {
 
                       if (user != null) {
                         // Navigate to another page after successful signup
+                        await supabase.from('User').insert({'userId': user.id,'name': nameController, 'email': emailController});
                         Navigator.push(
                           context,
                           MaterialPageRoute(
