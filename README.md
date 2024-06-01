@@ -13,8 +13,9 @@ This application aims to help people who want to alleviate stress and loneliness
 
 # How to use the app
 
-Step 1: downlaod the apk from this link: 
+Step 1: downlaod the apk from this link: https://github.com/codebreaker64/Orbital/blob/main/app-armeabi-v7a-release.apk 
 
 Step 2: Install the apk
+
 Step 3: The app will open up and you can start using it!
 
