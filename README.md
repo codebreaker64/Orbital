@@ -19,3 +19,8 @@ Step 2: Install the apk
 
 Step 3: The app will open up and you can start using it!
 
+# For Iphone users
+
+Please follow this tutorial to download our apk: https://youtu.be/dFBJUsQSwTQ
+
+
