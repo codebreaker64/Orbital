@@ -13,10 +13,9 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   int _selectedIdex = 0;
 
-  String? userName;
+  String userName = "";
 
   final supabase = Supabase.instance.client;
-  final _nameController = TextEditingController();
   final List<String> imagePaths = [
     "images/carousel1.png",
     "images/carousel2.png",
@@ -27,6 +26,26 @@ class _DashboardState extends State<Dashboard> {
     setState(() {
       _selectedIdex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserName();
+  }
+
+  Future<void> getUserName() async {
+    final user = supabase.auth.currentUser;
+    if (user != null) {
+      final response = await supabase
+          .from('User')
+          .select('name')
+          .eq('email', user.email!)
+          .single();
+      setState(() {
+        userName = response['name'];
+      });
+    }
   }
 
   @override
@@ -82,7 +101,7 @@ class _DashboardState extends State<Dashboard> {
                 Padding(
                   padding: const EdgeInsets.only(top: 70.0, left: 15.0),
                   child: Text(
-                    'Welcome back,\nHow are you feeling today?',
+                    'Welcome back,' + userName + '\nHow are you feeling today?',
                     style:
                         TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
