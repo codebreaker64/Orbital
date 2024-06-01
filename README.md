@@ -11,3 +11,10 @@ A sections dedicated for mental wellness tips
 Usage
 This application aims to help people who want to alleviate stress and loneliness and also to improve their mental well-being.
 
+# How to use the app
+
+Step 1: downlaod the apk from this link: 
+
+Step 2: Install the apk
+Step 3: The app will open up and you can start using it!
+
