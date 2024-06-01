@@ -151,14 +151,14 @@ class _SignupState extends State<Signup> {
                     try {
                       // Attempt to sign up using Supabase
                       final AuthResponse res = await supabase.auth.signUp(
-                        email: emailController.text,
-                        password: passwordController.text,
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
                       );
                       final User? user = res.user;
 
                       if (user != null) {
                         // Navigate to another page after successful signup
-                        await supabase.from('User').insert({'userId': user.id,'name': nameController, 'email': emailController});
+                        await supabase.from('User').insert({'name': nameController.text.trim(), 'email': emailController.text.trim()});
                         Navigator.push(
                           context,
                           MaterialPageRoute(
