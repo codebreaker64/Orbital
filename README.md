@@ -12,8 +12,9 @@ Usage
 This application aims to help people who want to alleviate stress and loneliness and also to improve their mental well-being.
 
 # How to use the app
+Step 1:
 
-Step 1: downlaod the apk from this link: [https://github.com/codebreaker64/Orbital/blob/main/app-armeabi-v7a-release.apk](https://github.com/codebreaker64/Orbital/blob/main/milestone1.apk) (dont worry about the file not being able to display)
+Step 1: download the apk from this link: [https://github.com/codebreaker64/Orbital/blob/main/app-armeabi-v7a-release.apk](https://github.com/codebreaker64/Orbital/blob/main/milestone1.apk) (dont worry about the file not being able to display)
 
 Step 2: Install the apk
 
