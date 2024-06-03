@@ -15,6 +15,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   // Text editing controllers
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -75,14 +76,26 @@ class _SignupState extends State<Signup> {
                 ),
               ),
               // Email input field
-              Padding(
+              Form(
+                key: _formKey,
+                child:Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                child: TextField(
+                child: TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'email@domain.com',
+                  ),
+                  validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null;
+                  },
                   ),
                 ),
               ),
@@ -147,37 +160,38 @@ class _SignupState extends State<Signup> {
                       );
                       return;
                     }
-
-                    try {
-                      // Attempt to sign up using Supabase
-                      final AuthResponse res = await supabase.auth.signUp(
-                        email: emailController.text.trim(),
-                        password: passwordController.text.trim(),
-                      );
-                      final User? user = res.user;
-
-                      if (user != null) {
-                        // Navigate to another page after successful signup
-                        await supabase.from('User').insert({'name': nameController.text.trim(), 'email': emailController.text.trim()});
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginPage(),
-                          ),
+          if (_formKey.currentState!.validate()) {
+                      try {
+                        // Attempt to sign up using Supabase
+                        final AuthResponse res = await supabase.auth.signUp(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
                         );
-                      } else {
+                        final User? user = res.user;
+
+                        if (user != null) {
+                          // Navigate to another page after successful signup
+                          await supabase.from('User').insert({'name': nameController.text.trim(), 'email': emailController.text.trim()});
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginPage(),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Signup failed.'),
+                            ),
+                          );
+                        }
+                      } catch (error) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Signup failed.'),
+                            content: Text('Error: $error'),
                           ),
                         );
                       }
-                    } catch (error) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Error: $error'),
-                        ),
-                      );
                     }
                   },
                   child: Text('Sign up'),
