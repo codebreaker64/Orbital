@@ -12,7 +12,6 @@ Usage
 This application aims to help people who want to alleviate stress and loneliness and also to improve their mental well-being.
 
 # How to use the app for Android Users
-Step 1:
 
 Step 1: download the apk from this link: [https://github.com/codebreaker64/Orbital/blob/main/Milestone1.apk](https://github.com/codebreaker64/Orbital/blob/main/Milestone1.apk) on your android device(dont worry about the file not being able to display)
 
@@ -27,10 +26,13 @@ Please follow this tutorial to download our apk: https://youtu.be/dFBJUsQSwTQ
 # Alternative
 
 Step 1: Download Bluestack using [this](https://www.bluestacks.com/) and the apk from this link: [https://github.com/codebreaker64/Orbital/blob/main/Milestone1.apk](https://github.com/codebreaker64/Orbital/blob/main/Milestone1.apk) on your computer
+
 Step 2: Once installed, open it and go to App Player on the bottom left
+
 Step 3: Press 'Install APK' button on toolbar on the right side and click on peacepal apk to install it
+
 Step 4: The app will open and you can start using it. Change to potrait for better experience.
 
-If still unable to work, please find an Android phone to use :).
+If still unable to work, please find an Android phone to use :)
 
 
