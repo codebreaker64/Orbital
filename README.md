@@ -14,7 +14,7 @@ This application aims to help people who want to alleviate stress and loneliness
 # How to use the app for Android Users
 Step 1:
 
-Step 1: download the apk from this link: [https://github.com/codebreaker64/Orbital/blob/main/milestone1.apk](https://github.com/codebreaker64/Orbital/blob/main/milestone1.apk) on your android device(dont worry about the file not being able to display)
+Step 1: download the apk from this link: [https://github.com/codebreaker64/Orbital/blob/main/Milestone1.apk](https://github.com/codebreaker64/Orbital/blob/main/Milestone1.apk) on your android device(dont worry about the file not being able to display)
 
 Step 2: Install the apk using your phone app package installer.
 
