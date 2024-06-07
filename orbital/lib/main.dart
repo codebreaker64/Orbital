@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import "package:orbital/pages/forgot_password.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/LoginPage.dart";
-import "pages/signup.dart";
-import "pages/dashboard.dart"; // Ensure you have the signup page
+import "pages/update_password.dart";
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
@@ -17,6 +15,7 @@ Future<void> main() async {
   );
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,9 +31,11 @@ class MyApp extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF20795E),
                   foregroundColor: Colors.white))),
-      home: Scaffold(
-        body: LoginPage(),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/update-password': (context) => UpdatePassword(),
+      },
     );
   }
 }

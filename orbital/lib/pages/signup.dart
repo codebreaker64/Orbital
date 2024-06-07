@@ -146,18 +146,13 @@ class _SignupState extends State<Signup> {
                         final AuthResponse res = await supabase.auth.signUp(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
+                          emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/',
                         );
                         final User? user = res.user;
 
                         if (user != null) {
                           // Navigate to another page after successful signup
                           await supabase.from('User').insert({'name': nameController.text.trim(), 'email': emailController.text.trim()});
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginPage(),
-                            ),
-                          );
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -183,7 +178,6 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
               ),
-              // Navigate to login page
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: TextButton(
