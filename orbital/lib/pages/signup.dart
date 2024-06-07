@@ -143,23 +143,16 @@ class _SignupState extends State<Signup> {
           if (_formKey.currentState!.validate()) {
                       try {
                         // Attempt to sign up using Supabase
-                        final AuthResponse res = await supabase.auth.signUp(
+                        await supabase.auth.signUp(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
-                          emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/',
+                          data: {
+                              'name': nameController.text.trim(),
+                            }, 
+                          emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/login',
                         );
-                        final User? user = res.user;
 
-                        if (user != null) {
-                          // Navigate to another page after successful signup
-                          await supabase.from('User').insert({'name': nameController.text.trim(), 'email': emailController.text.trim()});
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Signup failed.'),
-                            ),
-                          );
-                        }
+                      
                       } catch (error) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

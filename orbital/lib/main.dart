@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginPage(),
         '/update-password': (context) => UpdatePassword(),
+        '/login': (context) => LoginPage()
       },
     );
   }
