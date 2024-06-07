@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orbital/pages/dashboard.dart';
+import 'package:orbital/pages/forgot_password.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'signup.dart'; // Ensure you have the signup page
 // Ensure you have a home page
@@ -113,13 +114,16 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, right: 168),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => ForgotPassword())
+                    );
+                }, 
                 child: Text(
-                  'Forget your password?',
-                  textAlign: TextAlign.left,
-                ),
-              ),
+                  "Forgot your password?",
+                  style: TextStyle(color: Colors.blue))),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: ElevatedButton(

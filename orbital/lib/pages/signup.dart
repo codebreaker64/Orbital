@@ -125,26 +125,6 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
               ),
-              // Forget password text button
-              Padding(
-                padding: const EdgeInsets.only(top: 0, right: 170),
-                child: Align(
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Forget your password?',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                ),
-              ),
               // Signup button
               Padding(
                 padding: const EdgeInsets.only(top: 20),
