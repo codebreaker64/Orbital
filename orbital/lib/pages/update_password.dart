@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import '../pages/password_updated.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UpdatePassword extends StatefulWidget {
   const UpdatePassword({super.key});
-
+  
   @override
   State<UpdatePassword> createState() => _UpdatePasswordState();
 }
 
 class _UpdatePasswordState extends State<UpdatePassword> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final newController = TextEditingController();
+  final supabase = Supabase.instance.client;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
               Container(
                 width: 300,
                 child: TextFormField(
+                  controller: newController,
                   decoration: const InputDecoration(
                     hintText: 'New Password',
                   ),
@@ -49,6 +54,8 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
+                    } else if (value != newController.text.trim()) {
+                      return 'Your password does not match';
                     }
                     return null;
                   },
@@ -57,11 +64,19 @@ class _UpdatePasswordState extends State<UpdatePassword> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // Validate will return true if the form is valid, or false if
                     // the form is invalid.
                     if (_formKey.currentState!.validate()) {
-                      // Process data.
+                      await supabase.auth.updateUser(
+                        UserAttributes(
+                          password: newController.text.trim(),
+                        )
+                      );
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => PasswordUpdated())
+                      );                       
                     }
                   },
                   child: const Text('Confirm'),

@@ -147,12 +147,15 @@ class _SignupState extends State<Signup> {
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                           data: {
-                              'name': nameController.text.trim(),
-                            }, 
-                          emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/login',
+                            'name': nameController.text.trim(),
+                          }, 
+                          emailRedirectTo: 'io.supabase.flutterquickstart://callback/',
                         );
-
-                      
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Email verification link has been sent. Please verify your email.'),
+                          ),
+                        );
                       } catch (error) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -175,7 +178,7 @@ class _SignupState extends State<Signup> {
                 padding: const EdgeInsets.only(top: 10),
                 child: TextButton(
                   onPressed: () {
-                    // Handle login logic
+                    Navigator.pushNamed(context, '/');
                   },
                   child: Text('Already have an account? Sign in'),
                 ),

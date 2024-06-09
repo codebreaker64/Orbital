@@ -30,12 +30,10 @@ class _LoginPageState extends State<LoginPage> {
 
       if (response.session != null) {
         // Sign-in successful
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  Dashboard()), // Navigate to HomePage after login
-        );
+        Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboard()),
+                );
       } else {
         // Sign-in failed
         ScaffoldMessenger.of(context).showSnackBar(
