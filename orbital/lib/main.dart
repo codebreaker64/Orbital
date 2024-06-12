@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import "package:hive/hive.dart";
+import "package:hive_flutter/adapters.dart";
+import "package:orbital/Journal/Journal.dart";
 import "package:orbital/pages/forgot_password.dart";
+import "package:orbital/Journal/journalentry.dart";
+import "package:orbital/Journal/moodTracker.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/LoginPage.dart";
 import "pages/signup.dart";
@@ -10,6 +15,12 @@ const supabaseKey =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53b2lienZrbHh2Znhod2x4bG9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyODU2NzEsImV4cCI6MjAzMTg2MTY3MX0.54GwJDi18MkMhvitOQY7sgvPfl-_QR6hSCqnK9EtkNU';
 
 Future<void> main() async {
+  //initialize hive
+  await Hive.initFlutter();
+
+  //opening up a box:
+  var box = await Hive.openBox("mybox");
+
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
     url: supabaseUrl,
@@ -33,7 +44,7 @@ class MyApp extends StatelessWidget {
                   backgroundColor: Color(0xFF20795E),
                   foregroundColor: Colors.white))),
       home: Scaffold(
-        body: LoginPage(),
+        body: Journalentry(),
       ),
     );
   }
