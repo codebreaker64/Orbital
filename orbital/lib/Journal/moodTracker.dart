@@ -10,9 +10,13 @@ import 'package:table_calendar/table_calendar.dart';
 class Moodtracker extends StatelessWidget {
   final controller;
   final VoidCallback onSave;
+  final VoidCallback onCancel;
 
   const Moodtracker(
-      {super.key, required this.controller, required this.onSave});
+      {super.key,
+      required this.controller,
+      required this.onSave,
+      required this.onCancel});
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +69,16 @@ class Moodtracker extends StatelessWidget {
                     ),
                     maxLines: 5,
                   ))),
-          ElevatedButton(
-            onPressed: onSave,
-            child: Text('Save'),
-          ),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            ElevatedButton(
+              onPressed: onSave,
+              child: Text('Save'),
+            ),
+            ElevatedButton(
+              onPressed: onCancel,
+              child: Text('Cancel'),
+            ),
+          ])
         ])));
   }
 }

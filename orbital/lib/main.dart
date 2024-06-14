@@ -19,7 +19,7 @@ Future<void> main() async {
   await Hive.initFlutter();
 
   //opening up a box:
-  var box = await Hive.openBox("mybox");
+  await Hive.openBox("moodDatabase");
 
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:orbital/Journal/database/moodDatabase.dart';
 import 'package:orbital/pages/LoginPage.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -10,7 +12,19 @@ class Journal extends StatefulWidget {
 }
 
 class _JournalState extends State<Journal> {
+  MoodDatabase db = MoodDatabase();
+  final _myBox = Hive.box("moodDatabase");
   DateTime today = DateTime.now();
+
+  @override
+  void initState() {
+    if (_myBox.get("CURRENT_HABIT_LIST") == null) {
+      db.createDefaultData();
+    } else {
+      db.loadData();
+    }
+    super.initState();
+  }
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
