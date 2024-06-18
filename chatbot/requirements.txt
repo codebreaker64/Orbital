@@ -3,4 +3,3 @@ uvicorn
 torch
 numpy
 nltk
-nltk.stem.porter
