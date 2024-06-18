@@ -31,11 +31,9 @@ class Companion extends StatelessWidget {
                   child: KeyboardListener(
                     focusNode: FocusNode(), // Ensure this widget has focus
                     onKeyEvent: (KeyEvent event) {
-                      if (event is KeyDownEvent &&
-                          event.logicalKey == LogicalKeyboardKey.enter) {
+                      if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.enter) {
                         if (chatController.textController.text.isNotEmpty) {
-                          chatController
-                              .sendMessage(chatController.textController.text);
+                          chatController.sendMessage(chatController.textController.text);
                           chatController.textController.clear();
                         }
                       }
@@ -43,8 +41,7 @@ class Companion extends StatelessWidget {
                     child: TextField(
                       focusNode: chatController.textFocusNode,
                       onSubmitted: (val) {
-                        chatController
-                            .sendMessage(chatController.textController.text);
+                        chatController.sendMessage(chatController.textController.text);
                         chatController.textController.clear();
                       },
                       controller: chatController.textController,
@@ -58,8 +55,7 @@ class Companion extends StatelessWidget {
                   icon: const Icon(Icons.send),
                   onPressed: () {
                     if (chatController.textController.text.isNotEmpty) {
-                      chatController
-                          .sendMessage(chatController.textController.text);
+                      chatController.sendMessage(chatController.textController.text);
                       chatController.textController.clear();
                     }
                   },
