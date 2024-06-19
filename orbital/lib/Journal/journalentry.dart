@@ -29,18 +29,6 @@ class _JournalState extends State<Journalentry> {
     super.initState();
   }
 
-  void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
-    setState(() {
-      today = selectedDay;
-    });
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LoginPage(),
-      ),
-    );
-  }
-
   final _newMoodController = TextEditingController();
   final _moodController = TextEditingController();
   final _dateController = TextEditingController();
@@ -68,12 +56,16 @@ class _JournalState extends State<Journalentry> {
       ]);
     });
     _newMoodController.clear();
+    _moodController.clear();
+    _dateController.clear();
     Navigator.of(context).pop(); // Close the dialog after saving
     db.updateDatabase();
   }
 
   void cancelName() {
     _newMoodController.clear();
+    _moodController.clear();
+    _dateController.clear();
     Navigator.of(context).pop();
   }
 
@@ -83,12 +75,20 @@ class _JournalState extends State<Journalentry> {
       db.moodList[index][1] = _moodController.text;
       db.moodList[index][2] = _dateController.text;
     });
+    _newMoodController.clear();
+    _moodController.clear();
+    _dateController.clear();
     Navigator.pop(context);
     db.updateDatabase();
   }
 
   //Editing the mood setting:
   void openHabitSettings(int index) {
+    setState(() {
+      _newMoodController.text = db.moodList[index][0];
+      _moodController.text = db.moodList[index][1];
+      _dateController.text = db.moodList[index][2];
+    });
     showDialog(
       context: context,
       builder: (context) {

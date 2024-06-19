@@ -5,28 +5,25 @@ final _myBox = Hive.box("moodDatabase");
 
 class MoodDatabase {
   List moodList = [];
+  List defaultValue = [];
 
   //create initial default data
   void createDefaultData() {
     moodList = [
       ["gay"],
     ];
+    defaultValue = [];
     _myBox.put("START_DATE", todaysDateFormatted());
   }
 
   //load data if it already exist
   void loadData() {
-    //iif it's a new day, get habit list from database
+    // If it's a new day, get habit list from database
     if (_myBox.get(todaysDateFormatted()) == null) {
-      moodList = _myBox.get("CURRENT_HABIT_LIST");
-      for (int i = 0; i < moodList.length; i++) {
-        //this is just setting every habit completed to false since it's a new day
-        //moodList[i][1] = SelectedMo;
-      }
-    }
-    //if it's not a new day, load todays List
-    else {
-      moodList = _myBox.get(todaysDateFormatted());
+      moodList = _myBox.get("CURRENT_HABIT_LIST", defaultValue: []);
+    } else {
+      // If it's not a new day, load today's list
+      moodList = _myBox.get(todaysDateFormatted(), defaultValue: []);
     }
   }
 

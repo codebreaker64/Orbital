@@ -27,6 +27,22 @@ class _MoodtrackerState extends State<Moodtracker> {
   DateTime? datetime;
   String text = '';
 
+  @override
+  void initState() {
+    super.initState();
+    // Parse date if it exists
+    if (widget.dateController.text.isNotEmpty) {
+      final parts = widget.dateController.text.split('-');
+      if (parts.length == 3) {
+        datetime = DateTime(
+          int.parse(parts[2]), // year
+          int.parse(parts[1]), // month
+          int.parse(parts[0]), // day
+        );
+      }
+    }
+  }
+
   void _selectMood(String mood) {
     setState(() {
       widget.moodController.text = mood;
