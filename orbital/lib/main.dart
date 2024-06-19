@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import "package:hive/hive.dart";
 import "package:hive_flutter/adapters.dart";
-import "package:orbital/Journal/Journal.dart";
 import "package:orbital/pages/forgot_password.dart";
-import "package:orbital/Journal/journalentry.dart";
+import 'package:orbital/Journal/journalentry.dart';
 import "package:orbital/Journal/moodTracker.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/LoginPage.dart";
@@ -13,6 +12,7 @@ import "pages/dashboard.dart"; // Ensure you have the signup page
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53b2lienZrbHh2Znhod2x4bG9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyODU2NzEsImV4cCI6MjAzMTg2MTY3MX0.54GwJDi18MkMhvitOQY7sgvPfl-_QR6hSCqnK9EtkNU';
+// Function to clear all Hive boxes
 
 Future<void> main() async {
   //initialize hive
@@ -29,6 +29,8 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
+// Iterate over each box and clear it
+// Function to delete all Hive boxes from disk
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override

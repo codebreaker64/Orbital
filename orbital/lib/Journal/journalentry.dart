@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:orbital/Journal/Journal.dart';
 import 'package:orbital/Journal/database/moodDatabase.dart';
 import 'package:orbital/Journal/moodtile.dart';
 import 'package:orbital/pages/LoginPage.dart';
@@ -43,23 +42,30 @@ class _JournalState extends State<Journalentry> {
   }
 
   final _newMoodController = TextEditingController();
+  final _moodController = TextEditingController();
+  final _dateController = TextEditingController();
 
   void createNewMood() {
     showDialog(
       context: context,
       builder: (context) {
         return Moodtracker(
-          controller: _newMoodController,
-          onSave: saveNewName,
-          onCancel: cancelName,
-        );
+            controller: _newMoodController,
+            onSave: saveNewName,
+            onCancel: cancelName,
+            moodController: _moodController,
+            dateController: _dateController);
       },
     );
   }
 
   void saveNewName() {
     setState(() {
-      db.moodList.add([_newMoodController.text]);
+      db.moodList.add([
+        _newMoodController.text,
+        _moodController.text,
+        _dateController.text
+      ]);
     });
     _newMoodController.clear();
     Navigator.of(context).pop(); // Close the dialog after saving
@@ -74,6 +80,8 @@ class _JournalState extends State<Journalentry> {
   void saveExistingHabit(int index) {
     setState(() {
       db.moodList[index][0] = _newMoodController.text;
+      db.moodList[index][1] = _moodController.text;
+      db.moodList[index][2] = _dateController.text;
     });
     Navigator.pop(context);
     db.updateDatabase();
@@ -82,13 +90,17 @@ class _JournalState extends State<Journalentry> {
   //Editing the mood setting:
   void openHabitSettings(int index) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return Moodtracker(
-              controller: _newMoodController,
-              onSave: () => saveExistingHabit(index),
-              onCancel: cancelName);
-        });
+      context: context,
+      builder: (context) {
+        return Moodtracker(
+          controller: _newMoodController,
+          onSave: () => saveExistingHabit(index),
+          onCancel: cancelName,
+          moodController: _moodController,
+          dateController: _dateController,
+        );
+      },
+    );
   }
 
   void delete(int index) {
@@ -107,6 +119,8 @@ class _JournalState extends State<Journalentry> {
         itemBuilder: (context, index) {
           return Moodtile(
             moodNote: db.moodList[index][0],
+            moodWise: db.moodList[index][1],
+            date: db.moodList[index][2],
             settingsTapped: (context) => openHabitSettings(index),
             deleteTapped: (context) => delete(index),
           );

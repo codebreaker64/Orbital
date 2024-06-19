@@ -12,19 +12,15 @@ class _UpdatePasswordState extends State<UpdatePassword> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Form(
       key: _formKey,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-               "Update your password",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0)),
-            Text(
-              "Enter your new password",
-              style: TextStyle(fontSize: 15)),
+            Text("Update your password",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0)),
+            Text("Enter your new password", style: TextStyle(fontSize: 15)),
             Container(
               width: 300,
               child: TextFormField(
@@ -37,7 +33,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                   }
                   return null;
                 },
-              ), 
+              ),
             ),
             Container(
               width: 300,

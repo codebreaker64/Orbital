@@ -21,7 +21,7 @@ class MoodDatabase {
       moodList = _myBox.get("CURRENT_HABIT_LIST");
       for (int i = 0; i < moodList.length; i++) {
         //this is just setting every habit completed to false since it's a new day
-        moodList[i][1] = false;
+        //moodList[i][1] = SelectedMo;
       }
     }
     //if it's not a new day, load todays List

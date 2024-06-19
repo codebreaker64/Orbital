@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart'; // Import this for Slidable
-import 'package:orbital/Journal/Journal.dart';
 import 'package:orbital/pages/LoginPage.dart';
 import 'package:orbital/Journal/moodTracker.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -7,12 +6,16 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 class Moodtile extends StatelessWidget {
   final String moodNote;
+  final String moodWise;
+  final String date;
 
   final Function(BuildContext)? settingsTapped;
   final Function(BuildContext)? deleteTapped;
   const Moodtile(
       {super.key,
       required this.moodNote,
+      required this.moodWise,
+      required this.date,
       required this.deleteTapped,
       required this.settingsTapped});
 
@@ -54,8 +57,47 @@ class Moodtile extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(moodNote),
+                if (moodWise == "Angry")
+                  Image.asset(
+                    "images/angry.png",
+                    width: 50,
+                    height: 50,
+                  ),
+                if (moodWise == "Sad")
+                  Image.asset(
+                    "images/sad.png",
+                    width: 50,
+                    height: 50,
+                  ),
+                if (moodWise == "Disappointed")
+                  Image.asset(
+                    "images/disappointed.png",
+                    width: 50,
+                    height: 50,
+                  ),
+                if (moodWise == "Happy")
+                  Image.asset(
+                    "images/happy.png",
+                    width: 50,
+                    height: 50,
+                  ),
+                Expanded(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Date: $date"),
+                        SizedBox(height: 10),
+                        Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Text(
+                              "Note: ${moodNote.trim()}",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            )),
+                      ]),
+                ),
               ],
             ),
           ),
