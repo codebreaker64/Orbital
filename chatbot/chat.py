@@ -9,7 +9,7 @@ from nltk_utils import bag_of_words, tokenize  # Importing utility functions for
 
 app = FastAPI()  # Creating a FastAPI application instance
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # Checking for GPU availability
+device = torch.device('cpu')  # Checking for GPU availability
 
 # Load intents and model
 with open("intents.json", 'r') as json_data:  # Opening and reading intents from a JSON file
