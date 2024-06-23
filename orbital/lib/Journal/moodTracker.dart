@@ -52,6 +52,7 @@ class _MoodtrackerState extends State<Moodtracker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(

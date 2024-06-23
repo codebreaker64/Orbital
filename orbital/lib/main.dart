@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
                   backgroundColor: Color(0xFF20795E),
                   foregroundColor: Colors.white))),
       home: Scaffold(
-        body: Journalentry(),
+        body: Dashboard(),
       ),
     );
   }

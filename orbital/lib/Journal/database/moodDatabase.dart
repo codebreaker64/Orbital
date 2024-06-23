@@ -9,9 +9,7 @@ class MoodDatabase {
 
   //create initial default data
   void createDefaultData() {
-    moodList = [
-      ["gay"],
-    ];
+    moodList = [];
     defaultValue = [];
     _myBox.put("START_DATE", todaysDateFormatted());
   }
