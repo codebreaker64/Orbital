@@ -44,8 +44,6 @@ dependencies:
   supabase_auth_ui: ^0.4.4
   carousel_slider: ^4.2.1
   url_launcher: ^6.2.6
-<<<<<<< HEAD
-<<<<<<< HEAD
   go_router: ^14.1.4
   hive: ^2.2.3
   hive_flutter: ^1.1.0
@@ -54,10 +52,6 @@ dependencies:
   
 dependency_overrides:
    archive: 3.1.2
-=======
->>>>>>> parent of c392fbc (Integrated deep linking and successfully implement redirect url for password recovery and sign up)
-=======
->>>>>>> parent of c392fbc (Integrated deep linking and successfully implement redirect url for password recovery and sign up)
 
 dev_dependencies:
   flutter_test:

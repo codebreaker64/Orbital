@@ -7,8 +7,6 @@ import "package:orbital/Journal/moodTracker.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/LoginPage.dart";
 import "pages/update_password.dart";
-import "pages/LoginPage.dart";
-import "pages/update_password.dart";
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
