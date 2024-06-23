@@ -7,14 +7,13 @@ import "package:orbital/Journal/moodTracker.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import "pages/LoginPage.dart";
 import "pages/update_password.dart";
+import "pages/LoginPage.dart";
+import "pages/update_password.dart";
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53b2lienZrbHh2Znhod2x4bG9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyODU2NzEsImV4cCI6MjAzMTg2MTY3MX0.54GwJDi18MkMhvitOQY7sgvPfl-_QR6hSCqnK9EtkNU';
-<<<<<<< HEAD
 // Function to clear all Hive boxes
-=======
->>>>>>> parent of c392fbc (Integrated deep linking and successfully implement redirect url for password recovery and sign up)
 
 Future<void> main() async {
   //initialize hive
@@ -31,17 +30,13 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-<<<<<<< HEAD
 // Iterate over each box and clear it
 // Function to delete all Hive boxes from disk
-=======
 
->>>>>>> parent of c392fbc (Integrated deep linking and successfully implement redirect url for password recovery and sign up)
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final GoRouter _router = GoRouter(
       initialLocation: '/',
       routes: [
@@ -57,12 +52,22 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp.router(
-=======
     return MaterialApp(
->>>>>>> parent of c392fbc (Integrated deep linking and successfully implement redirect url for password recovery and sign up)
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+          useMaterial3: true,
+          scaffoldBackgroundColor: Color(0xFFABEDE2),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF20795E),
+                  foregroundColor: Colors.white))),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/update-password': (context) => UpdatePassword(),
+        '/login': (context) => LoginPage()
+      },
           useMaterial3: true,
           scaffoldBackgroundColor: Color(0xFFABEDE2),
           elevatedButtonTheme: ElevatedButtonThemeData(
