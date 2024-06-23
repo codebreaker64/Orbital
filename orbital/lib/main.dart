@@ -66,18 +66,6 @@ class MyApp extends StatelessWidget {
         '/update-password': (context) => UpdatePassword(),
         '/login': (context) => LoginPage()
       },
-          useMaterial3: true,
-          scaffoldBackgroundColor: Color(0xFFABEDE2),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF20795E),
-                  foregroundColor: Colors.white))),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => LoginPage(),
-        '/update-password': (context) => UpdatePassword(),
-        '/login': (context) => LoginPage()
-      },
     );
   }
 }
