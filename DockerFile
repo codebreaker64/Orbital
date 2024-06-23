@@ -5,7 +5,7 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 WORKDIR /companion
 
 # Copy the requirements file into the container
-COPY chatbot/requirements.txt /companion//
+COPY chatbot/requirements.txt /companion/
 
 # Install the dependencies
 RUN pip install -r /companion/requirements.txt
