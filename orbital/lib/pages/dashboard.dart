@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:orbital/Journal/journalentry.dart';
+import 'package:orbital/music/music.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -11,7 +13,38 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  int _selectedIdex = 0;
+  //default index of 0
+  int _selectedIndex = 0;
+  //laying out all the icons in the nav bar
+  static List<Widget> body = <Widget>[
+    Text('Dashboard Page'),
+    Text('Advice Page'),
+    Text('Companion Page'),
+    Text('Music Page'),
+    Text('Journal'),
+  ];
+
+//ontap action.
+  void _onItemTapped(int index) {
+    //Journal index is at 4 so once we click the icon at index 4 the page will open up
+    if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => musicApp()),
+      );
+    }
+    if (index == 4) {
+      // Journal tab index
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Journalentry()),
+      );
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
 
   String userName = "";
 
@@ -21,12 +54,6 @@ class _DashboardState extends State<Dashboard> {
     "images/carousel2.png",
     "images/carousel3.png",
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIdex = index;
-    });
-  }
 
   @override
   void initState() {
@@ -90,13 +117,10 @@ class _DashboardState extends State<Dashboard> {
                       left: 300,
                       top: 50), // Match this value to align with the Text
                   child: CircleAvatar(
-                    radius: 40,
-                    child: ClipOval(
-                      child: Image.asset(
-                        'images/default_profile_pic.jpg'
-                        ),
-                    )
-                  ),
+                      radius: 40,
+                      child: ClipOval(
+                        child: Image.asset('images/default_profile_pic.jpg'),
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 70.0, left: 15.0),
@@ -151,11 +175,11 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   Positioned(
-                    top: 10.0,
-                    left: 30.0,
-                    child: Text(
-                      "New Articles",
-                      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold))),
+                      top: 10.0,
+                      left: 30.0,
+                      child: Text("New Articles",
+                          style: TextStyle(
+                              fontSize: 25.0, fontWeight: FontWeight.bold))),
                   Positioned(
                     top: 50.0, // Adjust the top position
                     left: 30.0, // Adjust the left position
@@ -238,30 +262,26 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
-      bottomNavigationBar:  BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label:'Dashboard'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.contact_support),
-            label: 'Advice'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pets),
-            label: 'Companion'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_music),
-            label: 'Music'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            label: 'Journal')
-        ],
-        currentIndex: _selectedIdex,
-        showUnselectedLabels: true,
-        backgroundColor: Color(0xFFABEDE2),
-        selectedItemColor: Color(0xFF20795E),
-        unselectedItemColor: Color(0xFF000000),
-        onTap: _onItemTapped),
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dashboard'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.contact_support), label: 'Advice'),
+            BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Companion'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.library_music), label: 'Music'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.library_books), label: 'Journal')
+          ],
+          //looking at curretindex and selected index.
+          currentIndex: _selectedIndex,
+          showUnselectedLabels: true,
+          backgroundColor: Color(0xFFABEDE2),
+          selectedItemColor: Color(0xFF20795E),
+          unselectedItemColor: Color(0xFF000000),
+
+          ///onItemtapped item.
+          onTap: _onItemTapped),
     );
   }
 }
