@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:orbital/Journal/journalentry.dart';
 import 'package:orbital/music/music.dart';
+import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
+import 'package:orbital/pages/custom_avatar.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -114,13 +116,20 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      left: 300,
+                      left: 275,
                       top: 50), // Match this value to align with the Text
-                  child: CircleAvatar(
-                      radius: 40,
-                      child: ClipOval(
-                        child: Image.asset('images/default_profile_pic.jpg'),
-                      )),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CustomAvatar()),
+                      );
+                    },
+                    child: FluttermojiCircleAvatar(
+                      backgroundColor: const Color(0xFF20795E), // Optional background color
+                      radius: 60, // Optional radius
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 70.0, left: 15.0),

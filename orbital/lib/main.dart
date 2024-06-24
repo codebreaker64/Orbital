@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import "package:hive/hive.dart";
 import "package:hive_flutter/adapters.dart";
-import "package:orbital/pages/forgot_password.dart";
-import 'package:orbital/Journal/journalentry.dart';
-import "package:orbital/Journal/moodTracker.dart";
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
-import "pages/LoginPage.dart";
 import "pages/update_password.dart";
+import 'package:orbital/pages/dashboard.dart';
+import 'package:fluttermoji/fluttermoji.dart';
+import 'package:get/get.dart';
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
@@ -26,6 +25,7 @@ Future<void> main() async {
     url: supabaseUrl,
     anonKey: supabaseKey,
   );
+  Get.lazyPut(() => FluttermojiController());
   runApp(MyApp());
 }
 
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => Journalentry(),
+          builder: (context, state) => Dashboard(),
         ),
       ],
     );
@@ -55,7 +55,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-          useMaterial3: true,
+        useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          color: Color(0xFFABEDE2)
+        ),
         scaffoldBackgroundColor: Color(0xFFABEDE2),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
