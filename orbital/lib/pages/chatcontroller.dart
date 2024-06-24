@@ -12,7 +12,7 @@ class ChatController extends GetxController {
     messages.add('You: $message');
 
     final response = await http.post(
-      Uri.parse('http://localhost:8000/chat/'),
+      Uri.parse('https://fastapi-chatbot-vt2wycnxiq-as.a.run.app/chat/'),
       headers: <String, String>{
         'Content-Type': 'application/json',
       },

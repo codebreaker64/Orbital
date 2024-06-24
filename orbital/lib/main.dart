@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orbital/pages/companion.dart';
+import 'package:orbital/pages/dashboard.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'pages/LoginPage.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => Companion(),
+          builder: (context, state) => Dashboard(),
         ),
       ],
     );

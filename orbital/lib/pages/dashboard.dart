@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:orbital/pages/companion.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -24,6 +26,18 @@ class _DashboardState extends State<Dashboard> {
 
   void _onItemTapped(int index) {
     setState(() {
+      if (index == 0) {
+        Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboard()),
+        );
+      }
+      else if (index == 2) {
+        Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Companion()),
+        );
+      }
       _selectedIdex = index;
     });
   }
