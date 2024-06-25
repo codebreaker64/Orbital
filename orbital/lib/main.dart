@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import "package:hive_flutter/adapters.dart";
 import 'package:orbital/music/music.dart';
 import 'package:orbital/pages/companion.dart';
@@ -11,6 +12,7 @@ import "pages/update_password.dart";
 import 'package:orbital/pages/LoginPage.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'package:get/get.dart';
+import 'Journal/journalentry.dart';
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
@@ -45,14 +47,6 @@ class MyApp extends StatelessWidget {
       initialLocation: '/',
       routes: [
         GoRoute(
-          path: '/music-library',
-          builder: (context, state) => musicApp(),
-        ),
-        GoRoute(
-          path: '/companion',
-          builder: (context, state) => Companion(),
-        ),
-        GoRoute(
           path: '/signup',
           builder: (context, state) => Signup(),
         ),
@@ -61,8 +55,8 @@ class MyApp extends StatelessWidget {
           builder: (context, state) => ForgotPassword(),
         ),
         GoRoute(
-          path: '/dashboard',
-          builder: (context, state) => Dashboard(),
+          path: '/main',
+          builder: (context, state) => Main(),
         ),
         GoRoute(
           path: '/update-password',
@@ -94,6 +88,61 @@ class MyApp extends StatelessWidget {
       routerDelegate: _router.routerDelegate,
       routeInformationParser: _router.routeInformationParser,
       routeInformationProvider: _router.routeInformationProvider,
+    );
+  }
+}
+
+class Main extends StatefulWidget {
+  const Main({super.key});
+
+  @override
+  State<Main> createState() => _MainState();
+}
+
+class _MainState extends State<Main> {
+  //default index of 0
+  int _selectedIndex = 0;
+  //laying out all the icons in the nav bar
+  final List<Widget> _pages = [
+    Dashboard(),
+    Text('test'),
+    Companion(),
+    musicApp(),
+    Journalentry()
+  ];
+
+  //ontap action.
+  void _onItemTapped(int index) {
+    setState(() {
+        _selectedIndex = index;
+      });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body:Center(
+          child: _pages[_selectedIndex],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dashboard'),
+            BottomNavigationBarItem(icon: Icon(Icons.contact_support), label: 'Mediatation'),
+            BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Companion'),
+            BottomNavigationBarItem(icon: Icon(Icons.library_music), label: 'Music'),
+            BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Journal')
+          ],
+          //looking at curretindex and selected index.
+          currentIndex: _selectedIndex,
+          showUnselectedLabels: true,
+          backgroundColor: Color(0xFFABEDE2),
+          selectedItemColor: Color(0xFF20795E),
+          unselectedItemColor: Color(0xFF000000),
+
+          ///onItemtapped item.
+          onTap: _onItemTapped
+          ),
     );
   }
 }

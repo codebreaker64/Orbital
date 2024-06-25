@@ -11,14 +11,6 @@ class Companion extends StatefulWidget {
 class _CompanionState extends State<Companion> {
   final ChatController chatController = Get.put(ChatController());
 
-  int _selectedIdex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIdex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,30 +62,6 @@ class _CompanionState extends State<Companion> {
           ),
         ],
       ),
-      bottomNavigationBar:  BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label:'Dashboard'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.contact_support),
-            label: 'Advice'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pets),
-            label: 'Companion'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_music),
-            label: 'Music'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            label: 'Journal')
-        ],
-        currentIndex: _selectedIdex,
-        showUnselectedLabels: true,
-        backgroundColor: Color(0xFFABEDE2),
-        selectedItemColor: Color(0xFF20795E),
-        unselectedItemColor: Color(0xFF000000),
-        onTap: _onItemTapped),
     );
   }
 }

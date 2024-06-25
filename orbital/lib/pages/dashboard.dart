@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbital/Journal/journalentry.dart';
-import 'package:orbital/music/music.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
-import 'package:orbital/pages/companion.dart';
 import 'package:orbital/pages/custom_avatar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -14,35 +11,6 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  //default index of 0
-  int _selectedIndex = 0;
-  //laying out all the icons in the nav bar
-  static List<Widget> body = <Widget>[
-    Text('Dashboard Page'),
-    Text('Advice Page'),
-    Text('Companion Page'),
-    Text('Music Page'),
-    Text('Journal'),
-  ];
-
-//ontap action.
-  void _onItemTapped(int index) {
-    //Journal index is at 4 so once we click the icon at index 4 the page will open up
-    if (index == 3) {
-      conte
-    }
-    if (index == 2) {
-      // Journal tab index
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Companion()),
-      );
-    } else {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
-  }
 
   String userName = "";
 
@@ -267,23 +235,6 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dashboard'),
-            BottomNavigationBarItem(icon: Icon(Icons.contact_support), label: 'Mediatation'),
-            BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Companion'),
-            BottomNavigationBarItem(icon: Icon(Icons.library_music), label: 'Music'),
-            BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Journal')
-          ],
-          //looking at curretindex and selected index.
-          currentIndex: _selectedIndex,
-          showUnselectedLabels: true,
-          backgroundColor: Color(0xFFABEDE2),
-          selectedItemColor: Color(0xFF20795E),
-          unselectedItemColor: Color(0xFF000000),
-
-          ///onItemtapped item.
-          onTap: _onItemTapped),
     );
   }
 }

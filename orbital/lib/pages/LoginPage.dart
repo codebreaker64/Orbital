@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
       if (response.session != null) {
         // Sign-in successful
-        context.go('/dashboard');
+        context.go('/main');
       } else {
         // Sign-in failed
         ScaffoldMessenger.of(context).showSnackBar(
