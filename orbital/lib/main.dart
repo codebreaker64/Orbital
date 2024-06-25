@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import "package:hive/hive.dart";
 import "package:hive_flutter/adapters.dart";
+import 'package:orbital/music/music.dart';
+import 'package:orbital/pages/companion.dart';
+import 'package:orbital/pages/dashboard.dart';
+import 'package:orbital/pages/forgot_password.dart';
+import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
 import "pages/update_password.dart";
-import 'package:orbital/pages/dashboard.dart';
+import 'package:orbital/pages/LoginPage.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +29,7 @@ Future<void> main() async {
     url: supabaseUrl,
     anonKey: supabaseKey,
   );
-  Get.lazyPut(() => FluttermojiController());
+  Get.put(FluttermojiController());
   runApp(MyApp());
 }
 
@@ -41,12 +45,32 @@ class MyApp extends StatelessWidget {
       initialLocation: '/',
       routes: [
         GoRoute(
+          path: '/music-library',
+          builder: (context, state) => musicApp(),
+        ),
+        GoRoute(
+          path: '/companion',
+          builder: (context, state) => Companion(),
+        ),
+        GoRoute(
+          path: '/signup',
+          builder: (context, state) => Signup(),
+        ),
+        GoRoute(
+          path: '/forgot-password',
+          builder: (context, state) => ForgotPassword(),
+        ),
+        GoRoute(
+          path: '/dashboard',
+          builder: (context, state) => Dashboard(),
+        ),
+        GoRoute(
           path: '/update-password',
           builder: (context, state) => UpdatePassword(),
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => Dashboard(),
+          builder: (context, state) => LoginPage(),
         ),
       ],
     );

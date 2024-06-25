@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:orbital/Journal/journalentry.dart';
 import 'package:orbital/music/music.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
+import 'package:orbital/pages/companion.dart';
 import 'package:orbital/pages/custom_avatar.dart';
-import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 class Dashboard extends StatefulWidget {
@@ -30,16 +29,13 @@ class _DashboardState extends State<Dashboard> {
   void _onItemTapped(int index) {
     //Journal index is at 4 so once we click the icon at index 4 the page will open up
     if (index == 3) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => musicApp()),
-      );
+      conte
     }
-    if (index == 4) {
+    if (index == 2) {
       // Journal tab index
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Journalentry()),
+        MaterialPageRoute(builder: (context) => Companion()),
       );
     } else {
       setState(() {
@@ -274,13 +270,10 @@ class _DashboardState extends State<Dashboard> {
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dashboard'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.contact_support), label: 'Advice'),
+            BottomNavigationBarItem(icon: Icon(Icons.contact_support), label: 'Mediatation'),
             BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Companion'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.library_music), label: 'Music'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.library_books), label: 'Journal')
+            BottomNavigationBarItem(icon: Icon(Icons.library_music), label: 'Music'),
+            BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Journal')
           ],
           //looking at curretindex and selected index.
           currentIndex: _selectedIndex,
