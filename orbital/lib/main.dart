@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import "package:hive_flutter/adapters.dart";
 import 'package:orbital/music/music.dart';
 import 'package:orbital/pages/companion.dart';
+import 'package:orbital/pages/custom_avatar.dart';
 import 'package:orbital/pages/dashboard.dart';
 import 'package:orbital/pages/forgot_password.dart';
 import 'package:orbital/pages/signup.dart';
@@ -47,6 +47,10 @@ class MyApp extends StatelessWidget {
       initialLocation: '/',
       routes: [
         GoRoute(
+          path: '/custom-avatar',
+          builder: (context, state) => CustomAvatar()
+        ),
+        GoRoute(
           path: '/signup',
           builder: (context, state) => Signup(),
         ),
@@ -64,7 +68,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => LoginPage(),
+          builder: (context, state) => Dashboard(),
         ),
       ],
     );

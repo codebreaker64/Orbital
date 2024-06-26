@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
-import 'package:orbital/pages/custom_avatar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:news_api_flutter_package/news_api_flutter_package.dart';
+import 'package:news_api_flutter_package/model/article.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
+
 
 class Dashboard extends StatefulWidget {
   @override
@@ -11,8 +14,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-
+  final NewsAPI _newsAPI = NewsAPI(apiKey: "a1747ed859ee43cabfbece39d2d64f56");
   String userName = "";
+
 
   final supabase = Supabase.instance.client;
   final List<String> imagePaths = [
@@ -25,6 +29,15 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     getUserName();
+  }
+
+  Future<void> _launchURL(String urlString) async {
+    final Uri uri = Uri.parse(urlString.trim());
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      print('Could not launch $urlString');
+    }
   }
 
   Future<void> getUserName() async {
@@ -43,32 +56,6 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    //first article link
-    final Uri s = Uri.parse(
-        "https://www.fulcrumfitness.com/blog/10-benefits-of-going-to-the-gym");
-    Future<void> _launchURL() async {
-      if (!await launchUrl(s)) {
-        throw Exception('Could not launch $s');
-      }
-    }
-
-//second article link
-    final Uri s1 = Uri.parse(
-        "https://www.medicalnewstoday.com/articles/154543#definition");
-    Future<void> _launchURL1() async {
-      if (!await launchUrl(s1)) {
-        throw Exception('Could not launch $s1');
-      }
-    }
-
-    //third article link:
-    final Uri s2 = Uri.parse(
-        "https://www.channelnewsasia.com/singapore/singapore-struggle-mental-health-issues-stress-emotions-work-studies-wellness-3883091");
-    Future<void> _launchURL2() async {
-      if (!await launchUrl(s2)) {
-        throw Exception('Could not launch $s2');
-      }
-    }
 
     return Scaffold(
       body: Center(
@@ -84,10 +71,7 @@ class _DashboardState extends State<Dashboard> {
                       top: 50), // Match this value to align with the Text
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CustomAvatar()),
-                      );
+                      context.go('/custom-avatar');
                     },
                     child: FluttermojiCircleAvatar(
                       backgroundColor: const Color(0xFF20795E), // Optional background color
@@ -135,101 +119,53 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(40.0),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                      top: 10.0,
-                      left: 30.0,
-                      child: Text("New Articles",
-                          style: TextStyle(
-                              fontSize: 25.0, fontWeight: FontWeight.bold))),
-                  Positioned(
-                    top: 50.0, // Adjust the top position
-                    left: 30.0, // Adjust the left position
-                    width: 100, // Adjust the width of the image
-                    height: 70.0, // Adjust the height of the image
-                    child: Image.asset(
-                      'images/gym.jpg',
-                      fit: BoxFit
-                          .cover, // Adjust how the image should fit within the space
-                    ),
-                  ),
-                  Positioned(
-                      top: 50,
-                      left: 150,
-                      child: TextButton(
-                        onPressed: () {
-                          // Define the action to be performed on button press
-                          _launchURL();
-                        },
-                        child: Text(
-                          '10 Benefits of Going to\n the Gym',
-                          style: TextStyle(fontSize: 16.0, color: Colors.black),
-                        ),
-                      )),
-
-                  //second section of the article
-                  Positioned(
-                    top: 150.0, // Adjust the top position
-                    left: 30.0, // Adjust the left position
-                    width: 100, // Adjust the width of the image
-                    height: 70.0, // Adjust the height of the image
-                    child: Image.asset(
-                      'images/health.png',
-                      fit: BoxFit
-                          .cover, // Adjust how the image should fit within the space
-                    ),
-                  ),
-                  Positioned(
-                      top: 150,
-                      left: 150,
-                      child: TextButton(
-                        onPressed: () {
-                          // Define the action to be performed on button press
-                          _launchURL1();
-                        },
-                        child: Text(
-                          'What is mental health?',
-                          style: TextStyle(fontSize: 16.0, color: Colors.black),
-                        ),
-                      )),
-
-                  //third section of the article
-                  Positioned(
-                    top: 250.0, // Adjust the top position
-                    left: 30.0, // Adjust the left position
-                    width: 100, // Adjust the width of the image
-                    height: 70.0, // Adjust the height of the image
-                    child: Image.asset(
-                      'images/stress.jpg',
-                      fit: BoxFit
-                          .cover, // Adjust how the image should fit within the space
-                    ),
-                  ),
-                  Positioned(
-                      top: 240,
-                      left: 150,
-                      child: TextButton(
-                        onPressed: () {
-                          // Define the action to be performed on button press
-                          _launchURL2();
-                        },
-                        child: Text(
-                          'Why do people in Singapore \nstruggle with mental health\nissue?',
-                          style: TextStyle(fontSize: 16.0, color: Colors.black),
-                        ),
-                      )),
-                ],
+              child: FutureBuilder<List<Article>>(
+                future: _newsAPI.getEverything(query: "practicing mental wellness"),
+                builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      return Container(
+                        color: Color(0xFFFFFFFF), 
+                        child: ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            final article = snapshot.data![index];
+                            return ListTile(
+                              title: Text(
+                              article.title!,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            subtitle: Text(
+                              article.description ?? article.content ?? "",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            trailing: article.urlToImage == null
+                                ? null
+                                : SizedBox(
+                                    width: 80,
+                                    child: Image.network(article.urlToImage!),
+                                  ),
+                              onTap: () async{
+                                if (article.url != null) {
+                                  await _launchURL(article.url!);
+                                } else {
+                                  print('URL is null');
+                                }
+                              } 
+                            );
+                          },
+                        )
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(child: Text('Error: ${snapshot.error}'));
+                    }
+                  }
+                  return Center(child: Text('Unexpected error occurred.'));
+                },
               ),
             ),
           ],
