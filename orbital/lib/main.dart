@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => Dashboard(),
+          builder: (context, state) => LoginPage(),
         ),
       ],
     );

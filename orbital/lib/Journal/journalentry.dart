@@ -115,12 +115,7 @@ class _JournalState extends State<Journalentry> {
     return Scaffold(
       appBar: AppBar(
           title: Text('Journal Page'),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios), // Different icon for back button
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          )),
+          ),
       resizeToAvoidBottomInset: false,
       body: ListView.builder(
         itemCount: db.moodList.length,

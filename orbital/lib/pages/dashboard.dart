@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -66,12 +67,22 @@ class _DashboardState extends State<Dashboard> {
             Stack(
               children: [
                 Padding(
+                  padding: const EdgeInsets.only(top: 30.0, left: 15.0),
+                  child: GestureDetector(
+                    onTap: () async{
+                      await supabase.auth.signOut();
+                      context.go('/');
+                    },
+                    child: Icon(Icons.logout_rounded),
+                  )
+                ),
+                Padding(
                   padding: EdgeInsets.only(
                       left: 275,
                       top: 50), // Match this value to align with the Text
                   child: GestureDetector(
                     onTap: () {
-                      context.go('/custom-avatar');
+                      context.push('/custom-avatar');
                     },
                     child: FluttermojiCircleAvatar(
                       backgroundColor: const Color(0xFF20795E), // Optional background color
