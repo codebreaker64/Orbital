@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orbital/Journal/journalentry.dart';
 import 'package:orbital/music/music.dart';
+import 'package:orbital/meditation%20exercise/medex.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -27,6 +28,12 @@ class _DashboardState extends State<Dashboard> {
 //ontap action.
   void _onItemTapped(int index) {
     //Journal index is at 4 so once we click the icon at index 4 the page will open up
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Medex()),
+      );
+    }
     if (index == 3) {
       Navigator.push(
         context,
