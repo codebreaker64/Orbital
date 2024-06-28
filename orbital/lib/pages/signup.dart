@@ -151,11 +151,11 @@ class _SignupState extends State<Signup> {
                             }, 
                           emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/login',
                         );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginPage()), 
-                        );
+                        /* ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Email verification link has been sent. Please verify your email.'),
+                          ),
+                        ); */
                       } catch (error) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
