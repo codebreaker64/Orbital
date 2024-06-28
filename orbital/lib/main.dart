@@ -7,8 +7,11 @@ import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'pages/LoginPage.dart';
+import 'Journal/journalentry.dart';
 import 'pages/update_password.dart';
 import 'pages/dashboard.dart';
+import 'package:get/get.dart';
+import 'package:fluttermoji/fluttermoji.dart';
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =

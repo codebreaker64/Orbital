@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbital/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-import 'LoginPage.dart';
 
 // Initialize the Supabase client
 final supabase = Supabase.instance.client;
