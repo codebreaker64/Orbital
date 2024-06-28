@@ -94,7 +94,7 @@ jobs:
 
       
       - name: Build and Push Container
-        uses: 'docker/build-push-action@v3'
+        uses: 'docker/build-push-action@v4'
         with:
           context: ${{ github.workspace }}  # This ensures it uses the root directory of your repo
           dockerfile: 'C:\Users\foong\OneDrive\Documents\GitHub\Orbital\Dockerfile'  # Path to your Dockerfile
