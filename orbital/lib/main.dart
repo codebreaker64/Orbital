@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:hive_flutter/adapters.dart";
+import 'package:orbital/meditation%20exercise/medex.dart';
 import 'package:orbital/music/music.dart';
 import 'package:orbital/pages/companion.dart';
 import 'package:orbital/pages/custom_avatar.dart';
@@ -109,7 +110,7 @@ class _MainState extends State<Main> {
   //laying out all the icons in the nav bar
   final List<Widget> _pages = [
     Dashboard(),
-    Text('test'),
+    Medex(),
     Companion(),
     musicApp(),
     Journalentry()
