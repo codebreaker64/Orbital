@@ -72,7 +72,7 @@ jobs:
         with:
           token_format: 'access_token'
           service_account: 'github-action-sa@peacepal-427210.iam.gserviceaccount.com' # e.g. - my-service-account@my-project.iam.gserviceaccount.com
-          workload_identity_provider: 'projects/755556984315/locations/global/workloadIdentityPools/github-action/providers/github-provide' # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
+          workload_identity_provider: 'projects/755556984315/locations/global/workloadIdentityPools/github-action/providers/github-provider' # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
     
       # NOTE: Alternative option - authentication via credentials json
       # - name: Google Auth
