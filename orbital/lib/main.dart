@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => LoginPage(),
+          builder: (context, state) => MusicApp(),
         ),
       ],
     );
@@ -110,7 +110,7 @@ class _MainState extends State<Main> {
     Dashboard(),
     Text('test'),
     Companion(),
-    musicApp(),
+    MusicApp(),
     Journalentry()
   ];
 
