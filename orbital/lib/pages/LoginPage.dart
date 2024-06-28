@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orbital/pages/dashboard.dart';
-import 'package:orbital/pages/forgot_password.dart';
+import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'signup.dart'; // Ensure you have the signup page
-// Ensure you have a home page
 
 class LoginPage extends StatefulWidget {
   @override
@@ -24,16 +21,13 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _login() async {
     try {
       final response = await Supabase.instance.client.auth.signInWithPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
       );
 
       if (response.session != null) {
         // Sign-in successful
-        Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Dashboard()),
-                );
+        context.go('/main');
       } else {
         // Sign-in failed
         ScaffoldMessenger.of(context).showSnackBar(
@@ -114,10 +108,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(builder: (context) => ForgotPassword())
-                    );
+                  context.push('/forgot-password');
                 }, 
                 child: Text(
                   "Forgot your password?",
@@ -139,10 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(top: 10),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Signup()),
-                    );
+                    context.push('/signup');
                   },
                   child: Text("Don't have an account? Sign up"),
                 ),
