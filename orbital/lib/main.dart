@@ -3,17 +3,16 @@ import "package:hive_flutter/adapters.dart";
 import 'package:orbital/meditation%20exercise/medex.dart';
 import 'package:orbital/music/music.dart';
 import 'package:orbital/pages/companion.dart';
-import 'package:orbital/pages/custom_avatar.dart';
-import 'package:orbital/pages/dashboard.dart';
 import 'package:orbital/pages/forgot_password.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
-import "pages/update_password.dart";
-import 'package:orbital/pages/LoginPage.dart';
-import 'package:fluttermoji/fluttermoji.dart';
-import 'package:get/get.dart';
+import 'pages/LoginPage.dart';
 import 'Journal/journalentry.dart';
+import 'pages/update_password.dart';
+import 'pages/dashboard.dart';
+import 'package:get/get.dart';
+import 'package:fluttermoji/fluttermoji.dart';
 
 const supabaseUrl = 'https://nwoibzvklxvfxhwlxloa.supabase.co';
 const supabaseKey =
@@ -48,20 +47,20 @@ class MyApp extends StatelessWidget {
       initialLocation: '/',
       routes: [
         GoRoute(
-          path: '/custom-avatar',
-          builder: (context, state) => CustomAvatar()
-        ),
-        GoRoute(
           path: '/signup',
           builder: (context, state) => Signup(),
+        ),
+        GoRoute(
+          path: '/dashboard',
+          builder: (context, state) => Dashboard(),
         ),
         GoRoute(
           path: '/forgot-password',
           builder: (context, state) => ForgotPassword(),
         ),
         GoRoute(
-          path: '/main',
-          builder: (context, state) => Main(),
+          path: '/companion',
+          builder: (context, state) => Companion(),
         ),
         GoRoute(
           path: '/update-password',
@@ -69,7 +68,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => LoginPage(),
+          builder: (context, state) => MusicApp(),
         ),
       ],
     );
@@ -112,7 +111,7 @@ class _MainState extends State<Main> {
     Dashboard(),
     Medex(),
     Companion(),
-    musicApp(),
+    MusicApp(),
     Journalentry()
   ];
 

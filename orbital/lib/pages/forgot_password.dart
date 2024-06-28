@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orbital/pages/update_password.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ForgotPassword extends StatefulWidget {

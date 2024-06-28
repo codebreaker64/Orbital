@@ -2,37 +2,30 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital/music/musictile.dart';
 
-// Import your musictile widget
-
-class musicApp extends StatefulWidget {
+class MusicApp extends StatefulWidget {
   @override
-  State<musicApp> createState() => _musicAppState();
+  State<MusicApp> createState() => _MusicAppState();
 }
 
-class _musicAppState extends State<musicApp> {
+class _MusicAppState extends State<MusicApp> {
   List musicList = [
     {
       'title': "Tech House Vibes",
       'singer': "Alejandro Mangana",
       'url': "https://assets.mixkit.co/music/preview/mixkit-summer-fun-13.mp3",
-      'coverUrl':
-          'images/midsummer.jpg', // Ensure this path is correct in pubspec.yaml
+      'coverUrl': 'images/midsummer.jpg',
     },
     {
       'title': "Feeling Happy",
       'singer': "Ahjay Stelino",
-      'url':
-          "https://assets.mixkit.co/music/preview/mixkit-feeling-happy-5.mp3",
-      'coverUrl':
-          'images/smile.jpeg', // Ensure this path is correct in pubspec.yaml
+      'url': "https://assets.mixkit.co/music/preview/mixkit-feeling-happy-5.mp3",
+      'coverUrl': 'images/smile.jpeg',
     },
     {
       'title': "Hazy after hours",
       'singer': "Alejandro Magaña (A. M.)",
-      'url':
-          "https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.mp3",
-      'coverUrl':
-          'images/hazy.jpeg', // Ensure this path is correct in pubspec.yaml
+      'url': "https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.mp3",
+      'coverUrl': 'images/hazy.jpeg',
     },
   ];
 
@@ -46,6 +39,16 @@ class _musicAppState extends State<musicApp> {
   final AudioPlayer audioPlayer = AudioPlayer();
   bool isPlaying = false;
   String currentSong = "";
+
+  String get _positionText => _formatDuration(currentPosition);
+  String get _durationText => _formatDuration(musicDuration);
+
+  String _formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    return '$minutes:$seconds';
+  }
 
   void playMusic(String url) async {
     if (isPlaying && currentSong != url) {
@@ -93,7 +96,8 @@ class _musicAppState extends State<musicApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(' Happy PlayList'),
+        title: Text('Happy Playlist'),
+        backgroundColor: Colors.deepPurple,
       ),
       body: Column(
         children: [
@@ -111,81 +115,101 @@ class _musicAppState extends State<musicApp> {
                 },
                 title: musicList[index]['title'],
                 singer: musicList[index]['singer'],
-                cover: musicList[index]
-                    ['coverUrl'], // Pass the coverUrl as asset path
+                cover: musicList[index]['coverUrl'],
               ),
             ),
           ),
+  
           Container(
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
                 BoxShadow(
                   color: Color(0x55212121),
                   blurRadius: 8.0,
                 )
-              ]),
-              child: Column(
-                children: [
-                  if (musicDuration.inSeconds > 0)
-                    Slider.adaptive(
-                        value: currentPosition.inSeconds.toDouble(),
-                        min: 0.0,
-                        max: musicDuration.inSeconds.toDouble(),
-                        onChanged: (value) {
-                          setState(() {
-                            audioPlayer.seek(Duration(seconds: value.toInt()));
-                          });
-                        }),
-                ],
-              )),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: 2.0, bottom: 8.0, left: 8.0, right: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: 60,
-                  width: 60,
-                  child: Image.asset(currentCover, fit: BoxFit.cover),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      currentTitle,
-                      style: TextStyle(
-                          fontSize: 18.0, fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(height: 5.0),
-                    Text(
-                      currentSinger,
-                      style: TextStyle(color: Colors.grey, fontSize: 16.0),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  onPressed: () {
-                    if (isPlaying) {
-                      audioPlayer.pause();
-                      setState(() {
-                        btnIcon = Icons.play_arrow;
-                        isPlaying = false;
-                      });
-                    } else {
-                      audioPlayer.resume();
-                      setState(() {
-                        btnIcon = Icons.pause;
-                        isPlaying = true;
-                      });
-                    }
-                  },
-                  iconSize: 42,
-                  icon: Icon(btnIcon),
-                )
               ],
             ),
-          ), // Optional: Add any additional widgets below the ListView
+            child: Column(
+              children: [
+                Slider(
+                  onChanged: (value) {
+                    final duration = musicDuration;
+                    if (duration == null) {
+                      return;
+                    }
+                    final position = value * duration.inMilliseconds;
+                    audioPlayer.seek(Duration(milliseconds: position.round()));
+                  },
+                  value: (currentPosition.inMilliseconds > 0 &&
+                          currentPosition.inMilliseconds < musicDuration.inMilliseconds)
+                      ? currentPosition.inMilliseconds / musicDuration.inMilliseconds
+                      : 0.0,
+                ),
+                Text(
+                  currentPosition != null
+                      ? '$_positionText / $_durationText'
+                      : musicDuration != null
+                          ? _durationText
+                          : '',
+                  style: const TextStyle(fontSize: 16.0),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 2.0, bottom: 8.0, left: 8.0, right: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        child: Image.asset(currentCover, fit: BoxFit.cover),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            currentTitle,
+                            style: TextStyle(
+                                fontSize: 18.0, fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(height: 5.0),
+                          Text(
+                            currentSinger,
+                            style: TextStyle(
+                                color: Colors.grey, fontSize: 16.0),
+                          ),
+                        ],
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          if (isPlaying) {
+                            audioPlayer.pause();
+                            setState(() {
+                              btnIcon = Icons.play_arrow;
+                              isPlaying = false;
+                            });
+                          } else {
+                            audioPlayer.resume();
+                            setState(() {
+                              btnIcon = Icons.pause;
+                              isPlaying = true;
+                            });
+                          }
+                        },
+                        iconSize: 42,
+                        icon: Icon(btnIcon),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 }
+

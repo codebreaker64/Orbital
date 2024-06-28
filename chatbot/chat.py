@@ -57,6 +57,7 @@ async def chat(message: Message):  # Handler function for processing chat messag
     else:
         return { "response": "I do not understand..." }  # Returning a default response if confidence is low
 
-    
-
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
     

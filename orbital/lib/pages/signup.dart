@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbital/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-import 'LoginPage.dart';
 
 // Initialize the Supabase client
 final supabase = Supabase.instance.client;
@@ -151,11 +148,11 @@ class _SignupState extends State<Signup> {
                             }, 
                           emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/login',
                         );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginPage()), 
-                        );
+                        /* ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Email verification link has been sent. Please verify your email.'),
+                          ),
+                        ); */
                       } catch (error) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
