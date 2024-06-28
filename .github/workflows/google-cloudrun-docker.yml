@@ -96,8 +96,7 @@ jobs:
       - name: Build and Push Container
         uses: 'docker/build-push-action@v6'
         with:
-          context: ${{ github.workspace }}  # This ensures it uses the root directory of your repo
-          dockerfile: 'C:\Users\foong\OneDrive\Documents\GitHub\Orbital\Dockerfile'  # Path to your Dockerfile
+          context: .  # This ensures it uses the root directory of your repo
           push: true
           tags: '${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}'
 
