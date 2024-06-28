@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => MusicApp(),
+          builder: (context, state) => LoginPage(),
         ),
       ],
     );
