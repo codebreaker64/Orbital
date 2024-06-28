@@ -71,7 +71,6 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           token_format: 'access_token'
-          workload_identity_provider: 'projects/755556984315/locations/global/workloadIdentityPools/github-action/providers/github-provider' # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
           service_account: 'github-action-sa@peacepal-427210.iam.gserviceaccount.com' # e.g. - my-service-account@my-project.iam.gserviceaccount.com
 
       # NOTE: Alternative option - authentication via credentials json
