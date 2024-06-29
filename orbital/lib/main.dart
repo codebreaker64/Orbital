@@ -5,6 +5,7 @@ import 'package:orbital/music/music.dart';
 import 'package:orbital/pages/companion.dart';
 import 'package:orbital/pages/custom_avatar.dart';
 import 'package:orbital/pages/forgot_password.dart';
+import 'package:orbital/pages/password_updated.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -48,6 +49,10 @@ class MyApp extends StatelessWidget {
     final GoRouter _router = GoRouter(
       initialLocation: '/',
       routes: [
+        GoRoute(
+          path: '/password-updated',
+          builder: (context, state) => PasswordUpdated()
+        ),
         GoRoute(
           path: '/custom-avatar',
           builder: (context, state) => CustomAvatar()
