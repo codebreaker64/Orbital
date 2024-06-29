@@ -3,6 +3,7 @@ import "package:hive_flutter/hive_flutter.dart";
 import 'package:orbital/meditation%20exercise/medex.dart';
 import 'package:orbital/music/music.dart';
 import 'package:orbital/pages/companion.dart';
+import 'package:orbital/pages/custom_avatar.dart';
 import 'package:orbital/pages/forgot_password.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -48,6 +49,10 @@ class MyApp extends StatelessWidget {
       initialLocation: '/',
       routes: [
         GoRoute(
+          path: '/custom-avatar',
+          builder: (context, state) => CustomAvatar()
+        ),
+        GoRoute(
           path: '/signup',
           builder: (context, state) => Signup(),
         ),
@@ -69,7 +74,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => MusicApp(),
+          builder: (context, state) => LoginPage(),
         ),
         GoRoute(
           path: '/main',
