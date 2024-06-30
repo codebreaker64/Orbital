@@ -35,6 +35,9 @@ jobs:
       - name: Run widget tests
         run: flutter test test/moodtracker_test.dart
 
+      - name: Clean Flutter build cache
+        run: flutter clean
+        
       # Build the APK.
       - name: Build APK
         run: flutter build apk --split-per-abi
