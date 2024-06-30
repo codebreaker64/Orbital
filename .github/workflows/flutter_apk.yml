@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the repository to the runner.
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # Setup Java environment to build the Android app.
       - uses: actions/setup-java@v1
@@ -26,7 +26,7 @@ jobs:
           
       # Navigate to the Flutter project directory.
       - name: Change directory to orbital
-        run: cd orbital/orbital
+        run: cd orbital
 
       # Get Flutter dependencies.
       - name: Get Flutter dependencies
