@@ -26,10 +26,7 @@ jobs:
           
       # Navigate to the Flutter project directory.
       - name: Change directory to orbital
-        run: cd orbital
-
-      - name: ls
-        run: ls
+        run: cd orbital/orbital
 
       # Get Flutter dependencies.
       - name: Get Flutter dependencies
