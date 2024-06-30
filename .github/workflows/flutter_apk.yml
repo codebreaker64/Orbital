@@ -21,11 +21,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '12.x'
-          distribution: 'adopt'  # Specify the distribution (e.g., adopt, zulu)
+          distribution: 'adopt'
           server-id: github
-          server-username: ${{ github.actor }}
+          server-user: ${{ github.actor }}
           server-password: ${{ secrets.GITHUB_TOKEN }}
-          overwrite-settings: true
+          cache: 'gradle'  # Optional: cache Gradle dependencies for faster builds
 
       # Setup the Flutter environment.
       - uses: subosito/flutter-action@v2
