@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orbital/pages/LoginPage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Initialize the Supabase client
@@ -75,24 +76,25 @@ class _SignupState extends State<Signup> {
               // Email input field
               Form(
                 key: _formKey,
-                child:Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                child: TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'email@domain.com',
-                  ),
-                  validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-                    return 'Please enter a valid email address';
-                  }
-                  return null;
-                  },
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'email@domain.com',
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      } else if (!RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value)) {
+                        return 'Please enter a valid email address';
+                      }
+                      return null;
+                    },
                   ),
                 ),
               ),
@@ -137,16 +139,17 @@ class _SignupState extends State<Signup> {
                       );
                       return;
                     }
-          if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate()) {
                       try {
                         // Attempt to sign up using Supabase
                         await supabase.auth.signUp(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                           data: {
-                              'name': nameController.text.trim(),
-                            }, 
-                          emailRedirectTo: 'io.supabase.flutterquickstart://callback/',
+                            'name': nameController.text.trim(),
+                          },
+                          emailRedirectTo:
+                              'io.supabase.flutterquickstart://callback/',
                         );
                         /* ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -175,7 +178,10 @@ class _SignupState extends State<Signup> {
                 padding: const EdgeInsets.only(top: 10),
                 child: TextButton(
                   onPressed: () {
-                    // Handle login logic
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
                   },
                   child: Text('Already have an account? Sign in'),
                 ),
