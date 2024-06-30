@@ -68,12 +68,19 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                     // Validate will return true if the form is valid, or false if
                     // the form is invalid.
                     if (_formKey.currentState!.validate()) {
-                      await supabase.auth.updateUser(
+                      try {
+                        await supabase.auth.updateUser(
                         UserAttributes(
                           password: newController.text.trim(),
                         )
                       );
                       context.go('/password-updated');
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(e.toString())),
+                          );
+                        }
                     }
                   },
                   child: const Text('Confirm'),
