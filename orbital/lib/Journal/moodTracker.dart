@@ -52,7 +52,6 @@ class _MoodtrackerState extends State<Moodtracker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
@@ -69,6 +68,7 @@ class _MoodtrackerState extends State<Moodtracker> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
+                  key: Key('mood_happy'),
                   onTap: () {
                     _selectMood("Happy");
                   },

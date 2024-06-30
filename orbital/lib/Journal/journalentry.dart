@@ -11,6 +11,8 @@ class Journalentry extends StatefulWidget {
 
   @override
   _JournalState createState() => _JournalState();
+
+  void createNewMood() {}
 }
 
 class _JournalState extends State<Journalentry> {
@@ -38,6 +40,7 @@ class _JournalState extends State<Journalentry> {
       context: context,
       builder: (context) {
         return Moodtracker(
+            key: Key('addMood'),
             controller: _newMoodController,
             onSave: saveNewName,
             onCancel: cancelName,
@@ -114,8 +117,8 @@ class _JournalState extends State<Journalentry> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Journal Page'),
-          ),
+        title: Text('Journal Page'),
+      ),
       resizeToAvoidBottomInset: false,
       body: ListView.builder(
         itemCount: db.moodList.length,
