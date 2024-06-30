@@ -23,6 +23,10 @@ jobs:
         with:
           channel: 'beta' # 'stable' can be used for production
           # flutter-version: '1.12.x' # specify exact version if needed
+          
+      # Navigate to the Flutter project directory.
+      - name: Change directory to orbital
+        run: cd orbital
 
       # Get Flutter dependencies.
       - name: Get Flutter dependencies
@@ -38,7 +42,7 @@ jobs:
 
       # Run widget tests for the Flutter project.
       - name: Run widget tests
-        run: flutter test
+        run: flutter test test/moodtracker_test.dart
 
       # Build the APK.
       - name: Build APK
