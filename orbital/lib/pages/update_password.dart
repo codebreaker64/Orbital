@@ -55,7 +55,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
                     } else if (value != newController.text.trim()) {
-                    return 'Your password does not match';
+                      return 'Your password does not match';
                     }
                     return null;
                   },

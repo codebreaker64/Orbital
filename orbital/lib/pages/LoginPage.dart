@@ -3,6 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
+  final SupabaseClient? supabaseClient;
+
+  const LoginPage({Key? key, this.supabaseClient}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
