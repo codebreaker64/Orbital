@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:orbital/Journal/moodtracker.dart';
+import '../lib/Journal/moodtracker.dart';
 
 void main() {
   testWidgets('Moodtracker widget test', (WidgetTester tester) async {
