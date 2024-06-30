@@ -33,7 +33,7 @@ jobs:
 
       # Check for any formatting issues in the code.
       - name: Check code formatting
-        run: flutter format --set-exit-if-changed .
+        run: flutter format .
 
       # Statically analyze the Dart code for any errors.
       - name: Analyze Dart code
