@@ -37,7 +37,7 @@ jobs:
 
       # Build the APK.
       - name: Build APK
-        run: flutter build apk
+        run: flutter build apk --split-per-abi
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
@@ -46,6 +46,6 @@ jobs:
         run: |
           curl -H "Authorization: token $GITHUB_TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
-               --data-binary @build/app/outputs/flutter-apk/app-release.apk \
+               --data-binary @build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk\
                -X PUT \
                "https://uploads.github.com/repos/${{ github.repository }}/contents/Milestone1.apk?ref=main&message=Update%20Milestone1.apk&committer.name=github-actions&committer.email=actions@github.com"
