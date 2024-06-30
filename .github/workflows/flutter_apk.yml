@@ -1,0 +1,56 @@
+name: Flutter APK
+# This workflow is triggered on pushes to the main branch.
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    # This job will run on an Ubuntu virtual machine.
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository to the runner.
+      - uses: actions/checkout@v2
+
+      # Setup Java environment to build the Android app.
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      # Setup the Flutter environment.
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'beta' # 'stable' can be used for production
+          # flutter-version: '1.12.x' # specify exact version if needed
+
+      # Get Flutter dependencies.
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      # Check for any formatting issues in the code.
+      - name: Check code formatting
+        run: flutter format --set-exit-if-changed .
+
+      # Statically analyze the Dart code for any errors.
+      - name: Analyze Dart code
+        run: flutter analyze
+
+      # Run widget tests for the Flutter project.
+      - name: Run widget tests
+        run: flutter test
+
+      # Build the APK.
+      - name: Build APK
+        run: flutter build apk
+
+      # Upload the generated APK to the repository using GitHub API.
+      - name: Upload APK to GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -H "Authorization: token $GITHUB_TOKEN" \
+               -H "Accept: application/vnd.github.v3+json" \
+               --data-binary @build/app/outputs/flutter-apk/app-release.apk \
+               -X PUT \
+               "https://uploads.github.com/repos/${{ github.repository }}/contents/Milestone1.apk?ref=main&message=Update%20Milestone1.apk&committer.name=github-actions&committer.email=actions@github.com"
