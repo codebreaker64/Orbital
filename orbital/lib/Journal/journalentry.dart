@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:orbital/Journal/database/moodDatabase.dart';
 import 'package:orbital/Journal/moodtile.dart';
-import 'package:orbital/pages/LoginPage.dart';
 import 'package:orbital/Journal/moodTracker.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class Journalentry extends StatefulWidget {
   const Journalentry({super.key});

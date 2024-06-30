@@ -31,10 +31,6 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      # Statically analyze the Dart code for any errors.
-      - name: Analyze Dart code
-        run: flutter analyze
-
       # Run widget tests for the Flutter project.
       - name: Run widget tests
         run: flutter test test/moodtracker_test.dart

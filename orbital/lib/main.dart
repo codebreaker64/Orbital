@@ -38,7 +38,7 @@ Future<void> main() async {
   // Initialize Fluttermoji controller
   Get.put(FluttermojiController());
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GoRouter _router = GoRouter(
+    final GoRouter router = GoRouter(
       initialLocation: '/',
       routes: [
         GoRoute(
@@ -102,9 +102,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      routerDelegate: _router.routerDelegate,
-      routeInformationParser: _router.routeInformationParser,
-      routeInformationProvider: _router.routeInformationProvider,
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
+      routeInformationProvider: router.routeInformationProvider,
     );
   }
 }
@@ -124,7 +124,7 @@ class _MainState extends State<Main> {
     Medex(),
     Companion(),
     MusicApp(),
-    Journalentry(),
+    const Journalentry(),
   ];
 
   void _onItemTapped(int index) {

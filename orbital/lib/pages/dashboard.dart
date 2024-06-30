@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -77,7 +76,7 @@ class _DashboardState extends State<Dashboard> {
                   )
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                       left: 275,
                       top: 50), // Match this value to align with the Text
                   child: GestureDetector(
@@ -93,9 +92,9 @@ class _DashboardState extends State<Dashboard> {
                 Padding(
                   padding: const EdgeInsets.only(top: 70.0, left: 15.0),
                   child: Text(
-                    'Welcome back,' + userName + '\nHow are you feeling today?',
+                    'Welcome back, ${userName}\nHow are you feeling today?',
                     style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                        const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -106,9 +105,9 @@ class _DashboardState extends State<Dashboard> {
                 child: CarouselSlider(
                   items: imagePaths.map((path) {
                     return Container(
-                      margin: EdgeInsets.all(5.0),
+                      margin: const EdgeInsets.all(5.0),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                         child: Image.asset(
                           path,
                           fit: BoxFit.cover,
@@ -123,7 +122,7 @@ class _DashboardState extends State<Dashboard> {
                     autoPlay: true,
                     aspectRatio: 16 / 9,
                     autoPlayCurve: Curves.fastOutSlowIn,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayAnimationDuration: const Duration(milliseconds: 800),
                     enableInfiniteScroll: true,
                   ),
                 ),
@@ -134,11 +133,11 @@ class _DashboardState extends State<Dashboard> {
                 future: _newsAPI.getEverything(query: "practicing mental wellness"),
                 builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasData) {
                       return Container(
-                        color: Color(0xFFFFFFFF), 
+                        color: const Color(0xFFFFFFFF), 
                         child: ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
@@ -163,9 +162,7 @@ class _DashboardState extends State<Dashboard> {
                               onTap: () async{
                                 if (article.url != null) {
                                   await _launchURL(article.url!);
-                                } else {
-                                  print('URL is null');
-                                }
+                                } 
                               } 
                             );
                           },
@@ -175,7 +172,7 @@ class _DashboardState extends State<Dashboard> {
                       return Center(child: Text('Error: ${snapshot.error}'));
                     }
                   }
-                  return Center(child: Text('Unexpected error occurred.'));
+                  return const Center(child: Text('Unexpected error occurred.'));
                 },
               ),
             ),

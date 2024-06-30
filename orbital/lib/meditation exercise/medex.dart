@@ -9,9 +9,9 @@ class Medex extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meditation Exercises"),
+        title: const Text("Meditation Exercises"),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.push(
               context,
@@ -29,14 +29,14 @@ class Medex extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFFFFF),
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(40.0),
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   top: 10.0,
                   left: 30.0,
                   child: Text(
@@ -68,7 +68,7 @@ class Medex extends StatelessWidget {
                             builder: (context) => BreathingHomePage()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       '1. The stimulating breath \n(Bellows breath) ',
                       style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
@@ -95,7 +95,7 @@ class Medex extends StatelessWidget {
                             builder: (context) => BreathingHomePage1()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       '2. Relaxing breathing \n(4-7-8) exercise',
                       style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
@@ -122,7 +122,7 @@ class Medex extends StatelessWidget {
                             builder: (context) => BreathingHomePage3()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       '3. Counting the breath',
                       style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart'; // Import this for Slidable
-import 'package:orbital/pages/LoginPage.dart';
-import 'package:orbital/Journal/moodTracker.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class Moodtile extends StatelessWidget {

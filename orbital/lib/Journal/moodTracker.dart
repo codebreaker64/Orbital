@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orbital/pages/LoginPage.dart';
-import 'package:orbital/Journal/journalentry.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class Moodtracker extends StatefulWidget {
   final TextEditingController controller;
