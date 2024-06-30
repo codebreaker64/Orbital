@@ -46,7 +46,7 @@ jobs:
 
       # Build the APK.
       - name: Build APK
-        run: flutter build apk --split-per-abi --verbose
+        run: flutter build apk --split-per-abi --target-platform android-arm
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
