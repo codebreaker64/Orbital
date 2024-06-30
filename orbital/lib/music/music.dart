@@ -84,6 +84,11 @@ class _MusicAppState extends State<MusicApp> {
         musicDuration = duration;
       });
     });
+
+    final duration = await audioPlayer.getDuration();
+    setState(() {
+      musicDuration = duration!;
+    });
   }
 
   @override

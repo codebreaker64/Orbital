@@ -146,7 +146,7 @@ class _SignupState extends State<Signup> {
                           data: {
                               'name': nameController.text.trim(),
                             }, 
-                          emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/login',
+                          emailRedirectTo: 'io.supabase.flutterquickstart://callback/',
                         );
                         /* ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
