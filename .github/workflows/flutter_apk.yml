@@ -17,9 +17,15 @@ jobs:
       - uses: actions/checkout@v4
 
       # Setup Java environment to build the Android app.
-      - uses: actions/setup-java@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           java-version: '12.x'
+          distribution: 'adopt'  # Specify the distribution (e.g., adopt, zulu)
+          server-id: github
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
+          overwrite-settings: true
 
       # Setup the Flutter environment.
       - uses: subosito/flutter-action@v2
