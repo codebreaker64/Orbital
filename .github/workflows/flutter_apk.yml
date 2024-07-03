@@ -1,10 +1,9 @@
 name: Flutter APK
 # This workflow is triggered on pushes to the main branch.
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
+  
 
+      
 jobs:
   build:
     # This job will run on an Ubuntu virtual machine.
@@ -33,6 +32,12 @@ jobs:
           channel: 'stable' # 'stable' can be used for production
           flutter-version: '3.22.2' # specify exact version if needed
 
+      # Check Java and Flutter versions.
+      - name: Check Java and Flutter versions
+        run: |
+          java -version
+          flutter --version
+
       # Run widget tests for the Flutter project.
       - name: Run widget tests
         run: flutter test test/moodtracker_test.dart
@@ -44,9 +49,9 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      # Build the APK.
+      # Build the APK with verbose logs.
       - name: Build APK
-        run: flutter build apk --split-per-abi --target-platform android-arm
+        run: flutter build apk --split-per-abi --target-platform android-arm -v
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
@@ -55,6 +60,7 @@ jobs:
         run: |
           curl -H "Authorization: token $GITHUB_TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
-               --data-binary @build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk\
+               --data-binary @build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk \
                -X PUT \
                "https://uploads.github.com/repos/${{ github.repository }}/contents/Milestone1.apk?ref=main&message=Update%20Milestone1.apk&committer.name=github-actions&committer.email=actions@github.com"
+
