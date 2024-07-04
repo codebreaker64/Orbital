@@ -47,16 +47,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GoRouter _router = GoRouter(
-      initialLocation: '/',
+      initialLocation: '/main', //initial location
       routes: [
         GoRoute(
-          path: '/password-updated',
-          builder: (context, state) => PasswordUpdated()
-        ),
+            path: '/password-updated',
+            builder: (context, state) => PasswordUpdated()),
         GoRoute(
-          path: '/custom-avatar',
-          builder: (context, state) => CustomAvatar()
-        ),
+            path: '/custom-avatar',
+            builder: (context, state) => CustomAvatar()),
         GoRoute(
           path: '/signup',
           builder: (context, state) => Signup(),

@@ -21,6 +21,7 @@ class BreathingHomePage1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: null,
         title: Text('4-7-8 Breathing'),
       ),
       body: SingleChildScrollView(
@@ -36,7 +37,7 @@ class BreathingHomePage1 extends StatelessWidget {
                 Image.asset(width: 200, height: 200, 'images/wobreathe.jpeg'),
                 Text(
                   '• Breathe in through the nose for 2 seconds',
-                  style: TextStyle(fontSize: 16.0),
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'Schyler'),
                 ),
                 Text(
                   '• Hold the breath for a count of 3.5 seconds',

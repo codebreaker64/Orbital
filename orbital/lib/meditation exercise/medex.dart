@@ -9,16 +9,10 @@ class Medex extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meditation Exercises"),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Dashboard()),
-            );
-          },
+        title: Center(
+          child: Text("Meditation Exercises"),
         ),
+        leading: null,
       ),
       body: Column(
         children: [
