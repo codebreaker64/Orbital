@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orbital/pages/LoginPage.dart';
-import 'package:orbital/Journal/journalentry.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class Moodtracker extends StatefulWidget {
   final TextEditingController controller;
@@ -138,13 +135,8 @@ class _MoodtrackerState extends State<Moodtracker> {
               style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
             ),
             SizedBox(height: 30),
-            Text(
-              datetime == null
-                  ? 'Nothing has been picked yet'
-                  : 'Selected date: ${datetime!.day.toString().padLeft(2, '0')}-${datetime!.month.toString().padLeft(2, '0')}-${datetime!.year.toString()}',
-            ),
-            ElevatedButton(
-              onPressed: () async {
+            GestureDetector(
+              onTap: () async {
                 final selectedDate = await showDatePicker(
                   context: context,
                   initialDate: datetime ?? DateTime.now(),
@@ -164,11 +156,15 @@ class _MoodtrackerState extends State<Moodtracker> {
                   });
                 }
               },
-              child: Text('Pick a date'),
-            ),
-            Text(
-              "Jot down your thoughts",
-              style: TextStyle(fontSize: 18),
+              child: Text(
+                datetime == null
+                    ? DateTime.now().day.toString() +
+                        "-" +
+                        DateTime.now().month.toString() +
+                        "-" +
+                        DateTime.now().year.toString()
+                    : '${datetime!.day.toString().padLeft(2, '0')}-${datetime!.month.toString().padLeft(2, '0')}-${datetime!.year.toString()}',
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(20.0),
