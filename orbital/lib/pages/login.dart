@@ -3,12 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
-  final SupabaseClient? supabaseClient;
 
-  const LoginPage({Key? key, this.supabaseClient}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -31,20 +30,24 @@ class _LoginPageState extends State<LoginPage> {
 
       if (response.session != null) {
         // Sign-in successful
-        context.go('/main');
+        if(mounted)context.go('/main');
       } else {
         // Sign-in failed
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text('Login failed. Please check your credentials.')),
-        );
+        if(mounted) {
+           ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Login failed. Please check your credentials.')),
+          );
+        }
       }
     } catch (e) {
       // Handle any exceptions
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text('Login failed. Please check your credentials.')),
-        );
+      if(mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+                content: Text('Login failed. Please check your credentials.')),
+          );
+      }
     }
   }
 
@@ -58,8 +61,8 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 40),
+              const Padding(
+                padding: EdgeInsets.only(top: 40),
                 child: Text(
                   'Peacepal',
                   style: TextStyle(
@@ -77,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
                   height: 150,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 0),
+              const Padding(
+                padding: EdgeInsets.only(top: 0),
                 child: Text(
                   'Sign in',
                   style: TextStyle(
@@ -93,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                 child: TextField(
                   controller: emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Enter Your Email',
                   ),
@@ -105,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: TextField(
                   controller: passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Enter Your password',
                   ),
@@ -115,20 +118,20 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   context.push('/forgot-password');
                 }, 
-                child: Text(
+                child: const Text(
                   "Forgot your password?",
                   style: TextStyle(color: Colors.blue))),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: ElevatedButton(
                   onPressed: _login,
-                  child: Text('Login'),
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Color.fromARGB(255, 253, 253, 253),
-                    backgroundColor: Color.fromARGB(255, 32, 121, 94),
-                    fixedSize: Size(200, 50),
-                    textStyle: TextStyle(fontSize: 20),
+                    foregroundColor: const Color.fromARGB(255, 253, 253, 253),
+                    backgroundColor: const Color.fromARGB(255, 32, 121, 94),
+                    fixedSize: const Size(200, 50),
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
+                  child: const Text('Login'),
                 ),
               ),
               Padding(
@@ -137,14 +140,14 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     context.push('/signup');
                   },
-                  child: Text("Don't have an account? Sign up"),
+                  child: const Text("Don't have an account? Sign up"),
                 ),
               ),
             ],
           ),
         ),
       ),
-      backgroundColor: Color(0xFFABEDE2),
+      backgroundColor: const Color(0xFFABEDE2),
     );
   }
 }

@@ -35,13 +35,13 @@ class Moodtile extends StatelessWidget {
               // A SlidableAction can have an icon and/or a label.
               SlidableAction(
                 onPressed: settingsTapped,
-                backgroundColor: Color.fromARGB(255, 9, 9, 9),
+                backgroundColor: const Color.fromARGB(255, 9, 9, 9),
                 foregroundColor: Colors.white,
                 icon: Icons.settings,
               ),
               SlidableAction(
                 onPressed: deleteTapped,
-                backgroundColor: Color(0xFFFE4A49),
+                backgroundColor: const Color(0xFFFE4A49),
                 foregroundColor: Colors.white,
                 icon: Icons.delete,
               ),
@@ -85,9 +85,9 @@ class Moodtile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text("Date: $date"),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Padding(
-                            padding: EdgeInsets.only(left: 20),
+                            padding: const EdgeInsets.only(left: 20),
                             child: Text(
                               "Note: ${moodNote.trim()}",
                               maxLines: 2,

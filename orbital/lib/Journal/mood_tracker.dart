@@ -17,7 +17,7 @@ class Moodtracker extends StatefulWidget {
   });
 
   @override
-  _MoodtrackerState createState() => _MoodtrackerState();
+  State<Moodtracker> createState() => _MoodtrackerState();
 }
 
 class _MoodtrackerState extends State<Moodtracker> {
@@ -53,19 +53,19 @@ class _MoodtrackerState extends State<Moodtracker> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 20),
               child: Text(
                 "How are you feeling today?",
                 style: TextStyle(fontSize: 24),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                  key: Key('mood_happy'),
+                  key: const Key('mood_happy'),
                   onTap: () {
                     _selectMood("Happy");
                   },
@@ -76,7 +76,7 @@ class _MoodtrackerState extends State<Moodtracker> {
                         width: 50,
                         height: 50,
                       ),
-                      Text("Happy"),
+                      const Text("Happy"),
                     ],
                   ),
                 ),
@@ -91,7 +91,7 @@ class _MoodtrackerState extends State<Moodtracker> {
                         width: 50,
                         height: 50,
                       ),
-                      Text("Angry"),
+                      const Text("Angry"),
                     ],
                   ),
                 ),
@@ -106,7 +106,7 @@ class _MoodtrackerState extends State<Moodtracker> {
                         width: 50,
                         height: 50,
                       ),
-                      Text("Sad"),
+                      const Text("Sad"),
                     ],
                   ),
                 ),
@@ -121,20 +121,20 @@ class _MoodtrackerState extends State<Moodtracker> {
                         width: 50,
                         height: 50,
                       ),
-                      Text("Disappointed"),
+                      const Text("Disappointed"),
                     ],
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               widget.moodController.text.isNotEmpty
                   ? 'You are feeling ${widget.moodController.text}'
                   : 'Select your mood above',
-              style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+              style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Text(
               datetime == null
                   ? 'Nothing has been picked yet'
@@ -153,28 +153,24 @@ class _MoodtrackerState extends State<Moodtracker> {
                   setState(() {
                     datetime = DateTime(selectedDate.year, selectedDate.month,
                         selectedDate.day);
-                    widget.dateController.text = datetime!.day.toString() +
-                        "-" +
-                        datetime!.month.toString() +
-                        "-" +
-                        datetime!.year.toString();
+                    widget.dateController.text = "${datetime!.day}-${datetime!.month}-${datetime!.year}";
                   });
                 }
               },
-              child: Text('Pick a date'),
+              child: const Text('Pick a date'),
             ),
-            Text(
+            const Text(
               "Jot down your thoughts",
               style: TextStyle(fontSize: 18),
             ),
             Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: SizedBox(
                 width: 350,
                 height: 200,
                 child: TextField(
                   controller: widget.controller,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(
@@ -193,11 +189,11 @@ class _MoodtrackerState extends State<Moodtracker> {
               children: [
                 ElevatedButton(
                   onPressed: widget.onSave,
-                  child: Text('Save'),
+                  child: const Text('Save'),
                 ),
                 ElevatedButton(
                   onPressed: widget.onCancel,
-                  child: Text('Cancel'),
+                  child: const Text('Cancel'),
                 ),
               ],
             ),

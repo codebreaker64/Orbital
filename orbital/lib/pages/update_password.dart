@@ -24,13 +24,13 @@ class _UpdatePasswordState extends State<UpdatePassword> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 "Update your password",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0)),
-              Text(
+              const Text(
                 "Enter your new password",
                 style: TextStyle(fontSize: 15)),
-              Container(
+              SizedBox(
                 width: 300,
                 child: TextFormField(
                   controller: newController,
@@ -45,7 +45,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                   },
                 ), 
               ),
-              Container(
+              SizedBox(
                 width: 300,
                 child: TextFormField(
                   decoration: const InputDecoration(
@@ -74,12 +74,14 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                           password: newController.text.trim(),
                         )
                       );
-                      context.go('/password-updated');
+                      if(context.mounted)context.go('/password-updated');
                       } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(e.toString())),
-                          );
+                        if(context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(e.toString())),
+                            );
+                          }
                         }
                     }
                   },

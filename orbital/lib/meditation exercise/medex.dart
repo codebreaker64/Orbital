@@ -5,6 +5,8 @@ import 'package:orbital/meditation%20exercise/respective%20pages/thirdbeathing.d
 import 'package:orbital/pages/dashboard.dart';
 
 class Medex extends StatelessWidget {
+  const Medex({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,7 @@ class Medex extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Dashboard()),
+              MaterialPageRoute(builder: (context) => const Dashboard()),
             );
           },
         ),
@@ -65,7 +67,7 @@ class Medex extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BreathingHomePage()),
+                            builder: (context) => const BreathingHomePage()),
                       );
                     },
                     child: const Text(
@@ -92,7 +94,7 @@ class Medex extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BreathingHomePage1()),
+                            builder: (context) => const BreathingHomePage1()),
                       );
                     },
                     child: const Text(
@@ -119,7 +121,7 @@ class Medex extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BreathingHomePage3()),
+                            builder: (context) => const BreathingHomePage3()),
                       );
                     },
                     child: const Text(

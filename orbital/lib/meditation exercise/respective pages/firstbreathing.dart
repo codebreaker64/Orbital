@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BreathingApp extends StatelessWidget {
+  const BreathingApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -8,12 +10,14 @@ class BreathingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BreathingHomePage(),
+      home: const BreathingHomePage(),
     );
   }
 }
 
 class BreathingHomePage extends StatelessWidget {
+  const BreathingHomePage({super.key});
+
   // Corrected class name and syntax
   @override
   Widget build(BuildContext context) {

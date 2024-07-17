@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Companion extends StatefulWidget {
+  const Companion({super.key});
   @override
   State<Companion> createState() => _CompanionState();
 }

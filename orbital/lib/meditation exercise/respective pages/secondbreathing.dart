@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BreathingApp1 extends StatelessWidget {
+  const BreathingApp1({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -9,12 +10,13 @@ class BreathingApp1 extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BreathingHomePage1(),
+      home: const BreathingHomePage1(),
     );
   }
 }
 
 class BreathingHomePage1 extends StatelessWidget {
+  const BreathingHomePage1({super.key});
   // Corrected class name and syntax
   @override
   Widget build(BuildContext context) {

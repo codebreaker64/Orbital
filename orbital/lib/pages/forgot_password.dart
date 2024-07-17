@@ -23,18 +23,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 90),
+              padding: const EdgeInsets.only(top: 90),
               child: Align(
                 alignment: Alignment.center,
                 child: Image.asset("images/forgot_password_logo.png"),
               ),
             ),
-            Text("Forgot Password?",
+            const Text("Forgot Password?",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40.0)),
-            Text("Type your email to reset your password.",
+            const Text("Type your email to reset your password.",
                 style: TextStyle(fontSize: 15)),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: 300,
                 child: TextFormField(
                   controller: emailController,
@@ -56,20 +56,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
-                onPressed: () async {
+                onPressed: () {
                   // Validate will return true if the form is valid, or false if
                   // the form is invalid.
                   if (_formKey.currentState!.validate()) {
                     try{
-                      await supabase.auth.resetPasswordForEmail(
+                      supabase.auth.resetPasswordForEmail(
                       emailController.text.trim(),
                       redirectTo: "io.supabase.flutterquickstart://callback/update-password");
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Password Reset link has been sent. Please click on the link.'),
-                        ),
-                      );
+                      if (!mounted) return;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Password Reset link has been sent. Please click on the link.'),
+                          ),
+                        );
                     } catch (error) {
+                      if (!mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('Error: $error'),
@@ -77,7 +79,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       );
                     }
                   }
-                  return null;
+                  return;
                 },
                 child: const Text('Confirm'),
               ),

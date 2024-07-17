@@ -9,7 +9,7 @@ import 'package:orbital/pages/password_updated.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:orbital/pages/LoginPage.dart';
+import 'package:orbital/pages/login.dart';
 import 'package:orbital/Journal/journalentry.dart';
 import 'package:orbital/pages/update_password.dart';
 import 'package:orbital/pages/dashboard.dart';
@@ -51,39 +51,39 @@ class MyApp extends StatelessWidget {
       routes: [
         GoRoute(
           path: '/password-updated',
-          builder: (context, state) => PasswordUpdated()
+          builder: (context, state) => const PasswordUpdated()
         ),
         GoRoute(
           path: '/custom-avatar',
-          builder: (context, state) => CustomAvatar()
+          builder: (context, state) => const CustomAvatar()
         ),
         GoRoute(
           path: '/signup',
-          builder: (context, state) => Signup(),
+          builder: (context, state) => const Signup(),
         ),
         GoRoute(
           path: '/dashboard',
-          builder: (context, state) => Dashboard(),
+          builder: (context, state) => const Dashboard(),
         ),
         GoRoute(
           path: '/forgot-password',
-          builder: (context, state) => ForgotPassword(),
+          builder: (context, state) => const ForgotPassword(),
         ),
         GoRoute(
           path: '/companion',
-          builder: (context, state) => Companion(),
+          builder: (context, state) => const Companion(),
         ),
         GoRoute(
           path: '/update-password',
-          builder: (context, state) => UpdatePassword(),
+          builder: (context, state) => const UpdatePassword(),
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => LoginPage(),
+          builder: (context, state) => const LoginPage(),
         ),
         GoRoute(
           path: '/main',
-          builder: (context, state) => Main(),
+          builder: (context, state) => const Main(),
         ),
       ],
     );
@@ -93,11 +93,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        appBarTheme: AppBarTheme(color: Color(0xFFABEDE2)),
-        scaffoldBackgroundColor: Color(0xFFABEDE2),
+        appBarTheme: const AppBarTheme(color: Color(0xFFABEDE2)),
+        scaffoldBackgroundColor: const Color(0xFFABEDE2),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF20795E),
+            backgroundColor: const Color(0xFF20795E),
             foregroundColor: Colors.white,
           ),
         ),
@@ -120,10 +120,10 @@ class _MainState extends State<Main> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    Dashboard(),
-    Medex(),
-    Companion(),
-    MusicApp(),
+    const Dashboard(),
+    const Medex(),
+    const Companion(),
+    const MusicApp(),
     const Journalentry(),
   ];
 
@@ -152,9 +152,9 @@ class _MainState extends State<Main> {
         ],
         currentIndex: _selectedIndex,
         showUnselectedLabels: true,
-        backgroundColor: Color(0xFFABEDE2),
-        selectedItemColor: Color(0xFF20795E),
-        unselectedItemColor: Color(0xFF000000),
+        backgroundColor: const Color(0xFFABEDE2),
+        selectedItemColor: const Color(0xFF20795E),
+        unselectedItemColor: const Color(0xFF000000),
         onTap: _onItemTapped,
       ),
     );

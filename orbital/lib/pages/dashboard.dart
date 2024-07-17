@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 
 
 class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
   @override
   State<Dashboard> createState() => _DashboardState();
 }
@@ -35,9 +36,7 @@ class _DashboardState extends State<Dashboard> {
     final Uri uri = Uri.parse(urlString.trim());
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
-    } else {
-      print('Could not launch $urlString');
-    }
+    } 
   }
 
   Future<void> getUserName() async {
@@ -70,9 +69,9 @@ class _DashboardState extends State<Dashboard> {
                   child: GestureDetector(
                     onTap: () async{
                       await supabase.auth.signOut();
-                      context.go('/');
+                      if(context.mounted)context.go('/');
                     },
-                    child: Icon(Icons.logout_rounded),
+                    child: const Icon(Icons.logout_rounded),
                   )
                 ),
                 Padding(
@@ -92,7 +91,7 @@ class _DashboardState extends State<Dashboard> {
                 Padding(
                   padding: const EdgeInsets.only(top: 70.0, left: 15.0),
                   child: Text(
-                    'Welcome back, ${userName}\nHow are you feeling today?',
+                    'Welcome back, $userName\nHow are you feeling today?',
                     style:
                         const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
