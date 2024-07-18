@@ -19,7 +19,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: '12.x'
+          java-version: '21'
           distribution: 'adopt'
           server-id: github
           server-user: ${{ github.actor }}
