@@ -22,7 +22,6 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
           server-id: github
-          server-user: ${{ github.actor }}
           server-password: ${{ secrets.GITHUB_TOKEN }}
           cache: 'gradle'  # Optional: cache Gradle dependencies for faster builds
 
@@ -51,16 +50,16 @@ jobs:
 
       # Build the APK with verbose logs.
       - name: Build APK
-        run: flutter build apk --split-per-abi --target-platform android-arm -v
+        run: flutter build apk --split-per-abi --target-platform android-arm 
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -H "Authorization: token $GITHUB_TOKEN" \
-               -H "Accept: application/vnd.github.v3+json" \
-               --data-binary @build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk \
-               -X PUT \
+          curl -H "Authorization: token $GITHUB_TOKEN" 
+               -H "Accept: application/vnd.github.v3+json" 
+               --data-binary @build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk 
+               -X PUT 
                "https://uploads.github.com/repos/${{ github.repository }}/contents/Milestone1.apk?ref=main&message=Update%20Milestone1.apk&committer.name=github-actions&committer.email=actions@github.com"
 
