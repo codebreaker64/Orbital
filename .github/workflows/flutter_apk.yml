@@ -51,6 +51,9 @@ jobs:
       # Build the APK with verbose logs.
       - name: Build APK
         run: flutter build apk --split-per-abi --target-platform android-arm 
+      
+      - name: ls
+        run: ls
 
       - name: List build directory contents after build
         run: |
