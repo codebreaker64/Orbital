@@ -45,7 +45,7 @@ jobs:
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.13.0
         with:
           artifacts: "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
           tag: v0.0.${{ github.run_number }}
