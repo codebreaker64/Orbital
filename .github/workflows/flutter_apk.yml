@@ -54,8 +54,9 @@ jobs:
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" --data-binary @build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk -X PUT "https://api.github.com/repos/${{ github.repository }}/contents/Milestone1.apk?ref=main&message=Update%20Milestone1.apk&committer.name=github-actions&committer.email=actions@github.com"
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
+          tag: v0.0.${{ github.run_number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
