@@ -42,6 +42,16 @@ jobs:
       # Build the APK with verbose logs.
       - name: Build APK
         run: flutter build apk --release --split-per-abi --target-platform android-arm 
+      
+      # Debug: Check if the file exists before uploading
+      - name: Check if APK exists
+        run: |
+          if [ -f build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk ]; then
+            echo "APK exists."
+          else
+            echo "APK does not exist."
+            exit 1
+          fi
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
