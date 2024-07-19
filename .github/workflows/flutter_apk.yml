@@ -54,7 +54,7 @@ jobs:
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.14.0
         with:
           artifacts: "build/app/outputs/apk/release/*.apk"
           tag: v0.0.${{ github.run_number }}
