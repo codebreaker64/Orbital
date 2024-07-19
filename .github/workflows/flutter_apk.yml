@@ -60,3 +60,5 @@ jobs:
           tag: v0.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
+permissions:
+  contents: write
