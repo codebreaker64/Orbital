@@ -43,11 +43,16 @@ jobs:
       - name: Build APK
         run: flutter build apk --release --split-per-abi --target-platform android-arm 
 
+      - name: check if apk exist
+        run: | 
+          cd build/app/outputs/flutter-apk
+          ls
+
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
-        uses: ncipollo/release-action@main
+        uses: ncipollo/release-action@v1.14.0
         with:
-          artifacts: "${{ github.workspace}}/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
+          artifacts: "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
           tag: v0.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
