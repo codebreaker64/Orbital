@@ -50,20 +50,13 @@ jobs:
 
       # Build the APK with verbose logs.
       - name: Build APK
-        run: flutter build apk --split-per-abi --target-platform android-arm 
-
-      - name: List build directory contents after build
-        run: |
-          echo "Contents of build/app/outputs/flutter-apk:"
-          ls -R build/app/outputs/flutter-apk/
-          echo "Contents of build/app/outputs/apk:"
-          ls -R build/app/outputs/apk/
+        run: flutter build apk --release --split-per-abi --target-platform android-arm 
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
+          artifacts: "build/app/outputs/apk/release/*.apk"
           tag: v0.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
