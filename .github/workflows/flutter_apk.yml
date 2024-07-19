@@ -1,6 +1,8 @@
 name: Flutter APK
 # This workflow is triggered on pushes to the main branch.
-on: workflow_dispatch
+on: 
+  push:
+    branches: [ "main" ]
 jobs:
   build:
     # This job will run on an Ubuntu virtual machine.
@@ -41,11 +43,6 @@ jobs:
       # Build the APK with verbose logs.
       - name: Build APK
         run: flutter build apk --split-per-abi --target-platform android-arm 
-
-      - name: check if apk exist
-        run: | 
-          cd build/app/outputs/flutter-apk
-          ls
 
       # Upload the generated APK to the repository using GitHub API.
       - name: Upload APK to GitHub
