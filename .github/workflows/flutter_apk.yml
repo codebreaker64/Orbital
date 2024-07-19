@@ -31,19 +31,13 @@ jobs:
           channel: 'stable' # 'stable' can be used for production
           flutter-version: '3.22.2' # specify exact version if needed
 
-      # Check Java and Flutter versions.
-      - name: Check Java and Flutter versions
-        run: |
-          java -version
-          flutter --version
+      # Get Flutter dependencies.
+      - name: Get Flutter dependencies
+        run: flutter pub get
 
       # Run widget tests for the Flutter project.
       - name: Run widget tests
         run: flutter test test/moodtracker_test.dart
-
-      # Get Flutter dependencies.
-      - name: Get Flutter dependencies
-        run: flutter pub get
 
       # Build the APK with verbose logs.
       - name: Build APK
@@ -53,7 +47,7 @@ jobs:
       - name: Upload APK to GitHub
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/release/*.apk"
+          artifacts: build/app/outputs/apk/release/*.apk
           tag: v0.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
