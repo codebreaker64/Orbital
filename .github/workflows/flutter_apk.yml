@@ -51,6 +51,6 @@ jobs:
       - name: Upload APK to GitHub
         uses: ncipollo/release-action@v1.14.0
         with:
-          artifacts: "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
+          artifacts: "orbital/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
           tag: v0.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
