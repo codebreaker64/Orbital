@@ -5,6 +5,8 @@ jobs:
   build:
     # This job will run on an Ubuntu virtual machine.
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     defaults:
       run:
         working-directory: ./orbital
@@ -52,6 +54,3 @@ jobs:
           artifacts: "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
           tag: v0.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
-
-permissions:
-  contents: write
