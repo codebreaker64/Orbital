@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Initialize the Supabase client
@@ -88,8 +89,8 @@ class _SignupState extends State<Signup> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
                   }
-                  else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-                    return 'Please enter a valid email address';
+                  else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com)$").hasMatch(value)) {
+                    return 'Please enter your gmail/outlook email';
                   }
                   return null;
                   },
@@ -148,11 +149,13 @@ class _SignupState extends State<Signup> {
                             }, 
                           emailRedirectTo: 'io.supabase.flutterquickstart://callback/',
                         );
-                        /* ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Email verification link has been sent. Please verify your email.'),
-                          ),
-                        ); */
+                        if(context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Email verification link has been sent. Please verify your email.'),
+                            ),
+                          ); 
+                        }
                       } catch (error) {
                         if(context.mounted){
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -177,7 +180,7 @@ class _SignupState extends State<Signup> {
                 padding: const EdgeInsets.only(top: 10),
                 child: TextButton(
                   onPressed: () {
-                    // Handle login logic
+                    context.push("/");
                   },
                   child: const Text('Already have an account? Sign in'),
                 ),

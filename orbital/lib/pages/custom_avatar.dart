@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'dart:math';
+import 'package:get/get.dart';
 
 class CustomAvatar extends StatelessWidget {
   const CustomAvatar({super.key});
@@ -31,7 +32,14 @@ class CustomAvatar extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const Spacer(),
-                    FluttermojiSaveWidget(),
+                    FluttermojiSaveWidget(
+                      child:  ElevatedButton(
+                        onPressed: () async{ 
+                          await Get.find<FluttermojiController>().setFluttermoji();
+                        },
+                        child: const Text("Save"),
+                      )
+                    ),
                   ],
                 ),
               ),

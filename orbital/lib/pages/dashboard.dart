@@ -89,7 +89,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 70.0, left: 15.0),
+                  padding: const EdgeInsets.only(top: 90.0, left: 15.0),
                   child: Text(
                     'Welcome back, $userName\nHow are you feeling today?',
                     style:
@@ -136,7 +136,10 @@ class _DashboardState extends State<Dashboard> {
                   } else if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasData) {
                       return Container(
-                        color: const Color(0xFFFFFFFF), 
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          color: const Color(0xFFFFFFFF)
+                        ),
                         child: ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {

@@ -39,14 +39,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 child: TextFormField(
                   controller: emailController,
                   decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Enter your email',
                   ),
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
                     }
-                    else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-                      return 'Please enter a valid email address';
+                    else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com)$").hasMatch(value)) {
+                      return 'Please enter your gmail/outlook email you have used for SignUp';
                     }
                     return null;
                   },

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Moodtracker extends StatefulWidget {
   final TextEditingController controller;
@@ -135,7 +134,7 @@ class _MoodtrackerState extends State<Moodtracker> {
                   : 'Select your mood above',
               style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Text(
               datetime == null
                   ? 'Nothing has been picked yet'
@@ -158,7 +157,7 @@ class _MoodtrackerState extends State<Moodtracker> {
                   });
                 }
               },
-              child: Text('Pick a date'),
+              child: const Text('Pick a date'),
             ),
             const Text(
               "Jot down your thoughts",

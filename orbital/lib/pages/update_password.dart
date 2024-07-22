@@ -35,6 +35,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                 child: TextFormField(
                   controller: newController,
                   decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'New Password',
                   ),
                   validator: (String? value) {
@@ -49,6 +50,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                 width: 300,
                 child: TextFormField(
                   decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Confirm Password',
                   ),
                   validator: (String? value) {

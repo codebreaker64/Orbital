@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:orbital/meditation%20exercise/respective%20pages/firstbreathing.dart';
 import 'package:orbital/meditation%20exercise/respective%20pages/secondbreathing.dart';
 import 'package:orbital/meditation%20exercise/respective%20pages/thirdbeathing.dart';
-import 'package:orbital/pages/dashboard.dart';
 
 class Medex extends StatelessWidget {
   const Medex({super.key});

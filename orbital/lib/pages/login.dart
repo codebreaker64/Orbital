@@ -72,13 +72,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Image.asset(
-                  "images/peacepal_logo.jpeg",
-                  width: 150,
-                  height: 150,
-                ),
+              
+              ClipOval( 
+                  child: SizedBox.fromSize( 
+                      size: const Size.fromRadius(80), // Image radius 
+                      child: Image.asset('images/peacepal_logo.jpeg', fit: BoxFit.cover), 
+                  ), 
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 0),
