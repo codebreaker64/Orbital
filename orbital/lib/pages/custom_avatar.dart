@@ -50,8 +50,8 @@ class CustomAvatar extends StatelessWidget {
                   scaffoldWidth: min(600, width * 0.85),
                   autosave: false,
                   theme: FluttermojiThemeData(
-                      primaryBgColor: const Color(0xFFFFFDD0),
-                      secondaryBgColor: const Color.fromARGB(255, 73, 155, 93),
+                      primaryBgColor: const Color(0xFFFFDAB9),
+                      secondaryBgColor: const Color(0xFF008080),
                       boxDecoration: const BoxDecoration(boxShadow: [BoxShadow()])),
                 ),
               ),

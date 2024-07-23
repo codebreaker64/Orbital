@@ -6,6 +6,7 @@ import 'package:news_api_flutter_package/news_api_flutter_package.dart';
 import 'package:news_api_flutter_package/model/article.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
+import '../widget/wellness_carousel.dart';
 
 
 class Dashboard extends StatefulWidget {
@@ -20,11 +21,6 @@ class _DashboardState extends State<Dashboard> {
 
 
   final supabase = Supabase.instance.client;
-  final List<String> imagePaths = [
-    "images/carousel1.png",
-    "images/carousel2.png",
-    "images/carousel3.png",
-  ];
 
   @override
   void initState() {
@@ -98,33 +94,10 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 30.0, bottom: 30.0),
               child: Center(
-                child: CarouselSlider(
-                  items: imagePaths.map((path) {
-                    return Container(
-                      margin: const EdgeInsets.all(5.0),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                        child: Image.asset(
-                          path,
-                          fit: BoxFit.cover,
-                          width: 1000.0,
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                  options: CarouselOptions(
-                    height: 200.0,
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                    aspectRatio: 16 / 9,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                    enableInfiniteScroll: true,
-                  ),
-                ),
+                child: WellnessCarousel()
               ),
             ),
             Expanded(
