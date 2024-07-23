@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:news_api_flutter_package/news_api_flutter_package.dart';
 import 'package:news_api_flutter_package/model/article.dart';
 import 'package:url_launcher/url_launcher.dart';
