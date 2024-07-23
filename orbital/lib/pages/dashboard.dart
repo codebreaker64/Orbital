@@ -15,6 +15,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  //API key for NewsAPI
   final NewsAPI _newsAPI = NewsAPI(apiKey: "a1747ed859ee43cabfbece39d2d64f56");
   String userName = "";
 
