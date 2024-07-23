@@ -36,6 +36,13 @@ class CustomAvatar extends StatelessWidget {
                       child:  ElevatedButton(
                         onPressed: () async{ 
                           await Get.find<FluttermojiController>().setFluttermoji();
+                          if(context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Avatar has been saved'),
+                            ),
+                          ); 
+                        }
                         },
                         child: const Text("Save"),
                       )
