@@ -72,7 +72,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 275,
+                      left: 285,
                       top: 50), // Match this value to align with the Text
                   child: GestureDetector(
                     onTap: () {
@@ -80,7 +80,7 @@ class _DashboardState extends State<Dashboard> {
                     },
                     child: FluttermojiCircleAvatar(
                       backgroundColor: const Color(0xFF20795E), // Optional background color
-                      radius: 60, // Optional radius
+                      radius: 50, // Optional radius
                     ),
                   ),
                 ),
