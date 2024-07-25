@@ -23,30 +23,31 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 90),
+              padding: const EdgeInsets.only(top: 90),
               child: Align(
                 alignment: Alignment.center,
                 child: Image.asset("images/forgot_password_logo.png"),
               ),
             ),
-            Text("Forgot Password?",
+            const Text("Forgot Password?",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40.0)),
-            Text("Type your email to reset your password.",
+            const Text("Type your email to reset your password.",
                 style: TextStyle(fontSize: 15)),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: 300,
                 child: TextFormField(
                   controller: emailController,
                   decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Enter your email',
                   ),
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
                     }
-                    else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-                      return 'Please enter a valid email address';
+                    else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)$").hasMatch(value.trim())) {
+                      return 'Please enter your gmail/outlook email you have used for SignUp';
                     }
                     return null;
                   },
@@ -56,28 +57,32 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
-                onPressed: () async {
+                onPressed: () {
                   // Validate will return true if the form is valid, or false if
                   // the form is invalid.
                   if (_formKey.currentState!.validate()) {
                     try{
-                      await supabase.auth.resetPasswordForEmail(
+                      supabase.auth.resetPasswordForEmail(
                       emailController.text.trim(),
                       redirectTo: "io.supabase.flutterquickstart://callback/update-password");
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Password Reset link has been sent. Please click on the link.'),
-                        ),
-                      );
+                      if (!mounted) return;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            dismissDirection: DismissDirection.horizontal,
+                            content: Text('Password Reset link has been sent. Please click on the link.'),
+                          ),
+                        );
                     } catch (error) {
+                      if (!mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          dismissDirection: DismissDirection.horizontal,
                           content: Text('Error: $error'),
                         ),
                       );
                     }
                   }
-                  return null;
+                  return;
                 },
                 child: const Text('Confirm'),
               ),

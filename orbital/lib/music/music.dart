@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:orbital/music/musictile.dart';
 
 class MusicApp extends StatefulWidget {
+  const MusicApp({super.key});
   @override
   State<MusicApp> createState() => _MusicAppState();
 }
@@ -18,14 +19,30 @@ class _MusicAppState extends State<MusicApp> {
     {
       'title': "Feeling Happy",
       'singer': "Ahjay Stelino",
-      'url': "https://assets.mixkit.co/music/preview/mixkit-feeling-happy-5.mp3",
+      'url':
+          "https://assets.mixkit.co/music/preview/mixkit-feeling-happy-5.mp3",
       'coverUrl': 'images/smile.jpeg',
     },
     {
       'title': "Hazy after hours",
       'singer': "Alejandro Magaña (A. M.)",
-      'url': "https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.mp3",
+      'url':
+          "https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.mp3",
       'coverUrl': 'images/hazy.jpeg',
+    },
+    {
+      'title': "A very happy Christmas",
+      'singer': "Tanjiro Uzumaki",
+      'url':
+          "https://assets.mixkit.co/music/preview/mixkit-tinsel-and-mistletoe-93.mp3",
+      'coverUrl': 'images/ariana.jpg',
+    },
+    {
+      'title': "Chill bro",
+      'singer': "Hovey Benjamin",
+      'url':
+          "https://audio-previews.elements.envatousercontent.com/files/280033962/preview.mp3?response-content-disposition=attachment%3B+filename%3D%229PKANYU-chill-bro.mp3%22",
+      'coverUrl': 'images/hovey.jpeg',
     },
   ];
 
@@ -101,7 +118,7 @@ class _MusicAppState extends State<MusicApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Happy Playlist'),
+        title: const Text('Happy Playlist'),
         backgroundColor: Colors.deepPurple,
       ),
       body: Column(
@@ -124,10 +141,9 @@ class _MusicAppState extends State<MusicApp> {
               ),
             ),
           ),
-  
           Container(
             padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -148,8 +164,10 @@ class _MusicAppState extends State<MusicApp> {
                     audioPlayer.seek(Duration(milliseconds: position.round()));
                   },
                   value: (currentPosition.inMilliseconds > 0 &&
-                          currentPosition.inMilliseconds < musicDuration.inMilliseconds)
-                      ? currentPosition.inMilliseconds / musicDuration.inMilliseconds
+                          currentPosition.inMilliseconds <
+                              musicDuration.inMilliseconds)
+                      ? currentPosition.inMilliseconds /
+                          musicDuration.inMilliseconds
                       : 0.0,
                 ),
                 Text(
@@ -166,7 +184,7 @@ class _MusicAppState extends State<MusicApp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 60,
                         width: 60,
                         child: Image.asset(currentCover, fit: BoxFit.cover),
@@ -176,14 +194,14 @@ class _MusicAppState extends State<MusicApp> {
                         children: [
                           Text(
                             currentTitle,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 18.0, fontWeight: FontWeight.w600),
                           ),
-                          SizedBox(height: 5.0),
+                          const SizedBox(height: 5.0),
                           Text(
                             currentSinger,
-                            style: TextStyle(
-                                color: Colors.grey, fontSize: 16.0),
+                            style:
+                                const TextStyle(color: Colors.grey, fontSize: 16.0),
                           ),
                         ],
                       ),
@@ -217,4 +235,3 @@ class _MusicAppState extends State<MusicApp> {
     );
   }
 }
-
