@@ -33,6 +33,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
               SizedBox(
                 width: 300,
                 child: TextFormField(
+                  obscureText: true,
                   controller: newController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -46,21 +47,25 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                   },
                 ), 
               ),
-              SizedBox(
-                width: 300,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Confirm Password',
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Confirm Password',
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      } else if (value != newController.text.trim()) {
+                        return 'Your password does not match';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    } else if (value != newController.text.trim()) {
-                      return 'Your password does not match';
-                    }
-                    return null;
-                  },
                 ),
               ),
               Padding(
@@ -81,7 +86,8 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                         if(context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                  content: Text(e.toString())),
+                                dismissDirection: DismissDirection.horizontal,
+                                content: Text(e.toString())),
                             );
                           }
                         }

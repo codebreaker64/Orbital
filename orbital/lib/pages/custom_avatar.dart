@@ -39,6 +39,7 @@ class CustomAvatar extends StatelessWidget {
                           if(context.mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
+                              dismissDirection: DismissDirection.horizontal,
                               content: Text('Avatar has been saved'),
                             ),
                           ); 

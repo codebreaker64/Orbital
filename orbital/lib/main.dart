@@ -144,7 +144,7 @@ class _MainState extends State<Main> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dashboard'),
           BottomNavigationBarItem(
               icon: Icon(Icons.contact_support), label: 'Meditation'),
-          BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Companion'),
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Companion'),
           BottomNavigationBarItem(
               icon: Icon(Icons.library_music), label: 'Music'),
           BottomNavigationBarItem(

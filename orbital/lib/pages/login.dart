@@ -36,7 +36,8 @@ class _LoginPageState extends State<LoginPage> {
         if(mounted) {
            ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-                content: Text('Login failed. Please check your credentials.')),
+              dismissDirection: DismissDirection.horizontal,
+              content: Text('Login failed. Please check your credentials.')),
           );
         }
       }
@@ -45,7 +46,8 @@ class _LoginPageState extends State<LoginPage> {
       if(mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-                content: Text('Login failed. Please check your credentials.')),
+            dismissDirection: DismissDirection.horizontal,
+            content: Text('Login failed. Please check your credentials.')),
           );
       }
     }

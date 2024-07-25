@@ -46,7 +46,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
                     }
-                    else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com)$").hasMatch(value)) {
+                    else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)$").hasMatch(value.trim())) {
                       return 'Please enter your gmail/outlook email you have used for SignUp';
                     }
                     return null;
@@ -68,6 +68,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       if (!mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
+                            dismissDirection: DismissDirection.horizontal,
                             content: Text('Password Reset link has been sent. Please click on the link.'),
                           ),
                         );
@@ -75,6 +76,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       if (!mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          dismissDirection: DismissDirection.horizontal,
                           content: Text('Error: $error'),
                         ),
                       );

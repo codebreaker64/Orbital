@@ -89,7 +89,7 @@ class _SignupState extends State<Signup> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
                   }
-                  else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com)$").hasMatch(value)) {
+                  else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)$").hasMatch(value.trim())) {
                     return 'Please enter your gmail/outlook email';
                   }
                   return null;
@@ -133,6 +133,7 @@ class _SignupState extends State<Signup> {
                         confirmPasswordController.text) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
+                          dismissDirection: DismissDirection.horizontal,
                           content: Text('Passwords do not match!'),
                         ),
                       );
@@ -152,6 +153,7 @@ class _SignupState extends State<Signup> {
                         if(context.mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
+                              dismissDirection: DismissDirection.horizontal,
                               content: Text('Email verification link has been sent. Please verify your email.'),
                             ),
                           ); 
@@ -160,6 +162,7 @@ class _SignupState extends State<Signup> {
                         if(context.mounted){
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
+                              dismissDirection: DismissDirection.horizontal,
                               content: Text('Error: $error'),
                             ),
                           );
