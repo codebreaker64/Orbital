@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:orbital/meditation%20exercise/respective%20pages/firstbreathing.dart';
 import 'package:orbital/meditation%20exercise/respective%20pages/secondbreathing.dart';
 import 'package:orbital/meditation%20exercise/respective%20pages/thirdbeathing.dart';
-import 'package:orbital/pages/dashboard.dart';
 
 class Medex extends StatelessWidget {
+  const Medex({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+<<<<<<< Updated upstream
         title: Center(
+=======
+        title: const Center(
+>>>>>>> Stashed changes
           child: Text("Meditation Exercises"),
         ),
         leading: null,
@@ -23,14 +28,14 @@ class Medex extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFFFFF),
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(40.0),
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   top: 10.0,
                   left: 30.0,
                   child: Text(
@@ -59,10 +64,10 @@ class Medex extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BreathingHomePage()),
+                            builder: (context) => const BreathingHomePage()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       '1. The stimulating breath \n(Bellows breath) ',
                       style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
@@ -86,10 +91,10 @@ class Medex extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BreathingHomePage1()),
+                            builder: (context) => const BreathingHomePage1()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       '2. Relaxing breathing \n(4-7-8) exercise',
                       style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
@@ -113,10 +118,10 @@ class Medex extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BreathingHomePage3()),
+                            builder: (context) => const BreathingHomePage3()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       '3. Counting the breath',
                       style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),

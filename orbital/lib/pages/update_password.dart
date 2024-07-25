@@ -24,17 +24,19 @@ class _UpdatePasswordState extends State<UpdatePassword> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 "Update your password",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0)),
-              Text(
+              const Text(
                 "Enter your new password",
                 style: TextStyle(fontSize: 15)),
-              Container(
+              SizedBox(
                 width: 300,
                 child: TextFormField(
+                  obscureText: true,
                   controller: newController,
                   decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'New Password',
                   ),
                   validator: (String? value) {
@@ -45,20 +47,25 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                   },
                 ), 
               ),
-              Container(
-                width: 300,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Confirm Password',
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Confirm Password',
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      } else if (value != newController.text.trim()) {
+                        return 'Your password does not match';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    } else if (value != newController.text.trim()) {
-                      return 'Your password does not match';
-                    }
-                    return null;
-                  },
                 ),
               ),
               Padding(
@@ -74,12 +81,15 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                           password: newController.text.trim(),
                         )
                       );
-                      context.go('/password-updated');
+                      if(context.mounted)context.go('/password-updated');
                       } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                        if(context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                dismissDirection: DismissDirection.horizontal,
                                 content: Text(e.toString())),
-                          );
+                            );
+                          }
                         }
                     }
                   },

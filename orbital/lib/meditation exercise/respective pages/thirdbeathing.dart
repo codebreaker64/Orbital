@@ -1,10 +1,14 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+=======
+import 'package:google_fonts/google_fonts.dart';
+>>>>>>> Stashed changes
 
 class BreathingApp3 extends StatelessWidget {
+  const BreathingApp3({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,23 +16,31 @@ class BreathingApp3 extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BreathingHomePage3(),
+      home: const BreathingHomePage3(),
     );
   }
 }
 
 class BreathingHomePage3 extends StatelessWidget {
+<<<<<<< Updated upstream
+=======
+  const BreathingHomePage3({super.key});
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Counting the breath'),
+        title: const Text('Counting the breath'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
+<<<<<<< Updated upstream
               decoration: BoxDecoration(
+=======
+              decoration: const BoxDecoration(
+>>>>>>> Stashed changes
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,

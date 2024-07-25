@@ -1,30 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:news_api_flutter_package/news_api_flutter_package.dart';
 import 'package:news_api_flutter_package/model/article.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
+import '../widget/wellness_carousel.dart';
 
 
 class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
   @override
   State<Dashboard> createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
+  
   final NewsAPI _newsAPI = NewsAPI(apiKey: "a1747ed859ee43cabfbece39d2d64f56");
   String userName = "";
 
 
   final supabase = Supabase.instance.client;
-  final List<String> imagePaths = [
-    "images/carousel1.png",
-    "images/carousel2.png",
-    "images/carousel3.png",
-  ];
 
   @override
   void initState() {
@@ -36,9 +32,7 @@ class _DashboardState extends State<Dashboard> {
     final Uri uri = Uri.parse(urlString.trim());
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
-    } else {
-      print('Could not launch $urlString');
-    }
+    } 
   }
 
   Future<void> getUserName() async {
@@ -71,14 +65,14 @@ class _DashboardState extends State<Dashboard> {
                   child: GestureDetector(
                     onTap: () async{
                       await supabase.auth.signOut();
-                      context.go('/');
+                      if(context.mounted)context.go('/');
                     },
-                    child: Icon(Icons.logout_rounded),
+                    child: const Icon(Icons.logout_rounded),
                   )
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                      left: 275,
+                  padding: const EdgeInsets.only(
+                      left: 285,
                       top: 50), // Match this value to align with the Text
                   child: GestureDetector(
                     onTap: () {
@@ -86,47 +80,24 @@ class _DashboardState extends State<Dashboard> {
                     },
                     child: FluttermojiCircleAvatar(
                       backgroundColor: const Color(0xFF20795E), // Optional background color
-                      radius: 60, // Optional radius
+                      radius: 50, // Optional radius
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 70.0, left: 15.0),
+                  padding: const EdgeInsets.only(top: 90.0, left: 15.0),
                   child: Text(
-                    'Welcome back,' + userName + '\nHow are you feeling today?',
+                    'Welcome back, $userName\nHow are you feeling today?',
                     style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                        const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 30.0, bottom: 30.0),
               child: Center(
-                child: CarouselSlider(
-                  items: imagePaths.map((path) {
-                    return Container(
-                      margin: EdgeInsets.all(5.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                        child: Image.asset(
-                          path,
-                          fit: BoxFit.cover,
-                          width: 1000.0,
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                  options: CarouselOptions(
-                    height: 200.0,
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                    aspectRatio: 16 / 9,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    enableInfiniteScroll: true,
-                  ),
-                ),
+                child: WellnessCarousel()
               ),
             ),
             Expanded(
@@ -134,11 +105,14 @@ class _DashboardState extends State<Dashboard> {
                 future: _newsAPI.getEverything(query: "practicing mental wellness"),
                 builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasData) {
                       return Container(
-                        color: Color(0xFFFFFFFF), 
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          color: const Color(0xFFFFFFFF)
+                        ),
                         child: ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
@@ -163,9 +137,7 @@ class _DashboardState extends State<Dashboard> {
                               onTap: () async{
                                 if (article.url != null) {
                                   await _launchURL(article.url!);
-                                } else {
-                                  print('URL is null');
-                                }
+                                } 
                               } 
                             );
                           },
@@ -175,7 +147,7 @@ class _DashboardState extends State<Dashboard> {
                       return Center(child: Text('Error: ${snapshot.error}'));
                     }
                   }
-                  return Center(child: Text('Unexpected error occurred.'));
+                  return const Center(child: Text('Unexpected error occurred.'));
                 },
               ),
             ),
