@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:orbital/Journal/database/mood_database.dart';
+import 'package:orbital/Journal/database/moodDatabase.dart';
 import 'package:orbital/Journal/moodtile.dart';
-import 'package:orbital/Journal/mood_tracker.dart';
+import 'package:orbital/pages/LoginPage.dart';
+import 'package:orbital/Journal/moodTracker.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class Journalentry extends StatefulWidget {
   const Journalentry({super.key});
 
   @override
-  State<Journalentry> createState() => _JournalState();
+  _JournalState createState() => _JournalState();
 
   void createNewMood() {}
 }
@@ -38,7 +40,7 @@ class _JournalState extends State<Journalentry> {
       context: context,
       builder: (context) {
         return Moodtracker(
-            key: const Key('addMood'),
+            key: Key('addMood'),
             controller: _newMoodController,
             onSave: saveNewName,
             onCancel: cancelName,
@@ -115,7 +117,7 @@ class _JournalState extends State<Journalentry> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Journal Page'),
+        title: Text('Journal Page'),
       ),
       resizeToAvoidBottomInset: false,
       body: ListView.builder(
@@ -132,7 +134,7 @@ class _JournalState extends State<Journalentry> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewMood,
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );

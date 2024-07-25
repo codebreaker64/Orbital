@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase/supabase.dart';
 import 'package:mockito/mockito.dart';
-import 'package:orbital/pages/login.dart';
+import 'package:orbital/pages/LoginPage.dart';
 
 class MockSupabaseClient extends Mock implements SupabaseClient {}
 class MockGoTrueClient extends Mock implements GoTrueClient {}
@@ -21,8 +21,8 @@ void main() {
               ));
 
       // Build the LoginPage widget with the mock SupabaseClient
-      await tester.pumpWidget(const MaterialApp(
-        home: LoginPage(),
+      await tester.pumpWidget(MaterialApp(
+        home: LoginPage(supabaseClient: mockSupabaseClient),
       ));
 
       // Enter email and password
@@ -47,8 +47,8 @@ void main() {
           .thenAnswer((_) async => AuthResponse());
 
       // Build the LoginPage widget with the mock SupabaseClient
-      await tester.pumpWidget(const MaterialApp(
-        home: LoginPage(),
+      await tester.pumpWidget(MaterialApp(
+        home: LoginPage(supabaseClient: mockSupabaseClient),
       ));
 
       // Enter email and password

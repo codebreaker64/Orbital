@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BreathingApp extends StatelessWidget {
-  const BreathingApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,34 +9,24 @@ class BreathingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BreathingHomePage(),
+      home: BreathingHomePage(),
     );
   }
 }
 
 class BreathingHomePage extends StatelessWidget {
-  const BreathingHomePage({super.key});
-
   // Corrected class name and syntax
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-<<<<<<< Updated upstream
           title: Text('Bellow breath'),
-=======
-          title: const Text('Bellow breath'),
->>>>>>> Stashed changes
         ),
         body: SingleChildScrollView(
             child: Column(
           children: [
             Container(
-<<<<<<< Updated upstream
                 decoration: BoxDecoration(
-=======
-                decoration: const BoxDecoration(
->>>>>>> Stashed changes
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,

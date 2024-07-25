@@ -12,10 +12,10 @@ class PasswordUpdated extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center ,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'You have successfully',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-            const Text(
+            Text(
               'changed your password',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
             ElevatedButton(onPressed: () {

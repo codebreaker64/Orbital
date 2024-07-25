@@ -9,7 +9,7 @@ import 'package:orbital/pages/password_updated.dart';
 import 'package:orbital/pages/signup.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:orbital/pages/login.dart';
+import 'package:orbital/pages/LoginPage.dart';
 import 'package:orbital/Journal/journalentry.dart';
 import 'package:orbital/pages/update_password.dart';
 import 'package:orbital/pages/dashboard.dart';
@@ -38,7 +38,7 @@ Future<void> main() async {
   // Initialize Fluttermoji controller
   Get.put(FluttermojiController());
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -46,60 +46,42 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< Updated upstream
     final GoRouter _router = GoRouter(
       initialLocation: '/main', //initial location
-=======
-    final GoRouter router = GoRouter(
-      //initial screen
-      initialLocation: '/music',
->>>>>>> Stashed changes
       routes: [
-        GoRoute(path: '/music', builder: (context, state) => const MusicApp()),
         GoRoute(
-<<<<<<< Updated upstream
             path: '/password-updated',
             builder: (context, state) => PasswordUpdated()),
         GoRoute(
             path: '/custom-avatar',
             builder: (context, state) => CustomAvatar()),
-=======
-            path: '/journal',
-            builder: (context, state) => const Journalentry()),
-        GoRoute(
-            path: '/password-updated',
-            builder: (context, state) => const PasswordUpdated()),
-        GoRoute(
-            path: '/custom-avatar',
-            builder: (context, state) => const CustomAvatar()),
->>>>>>> Stashed changes
         GoRoute(
           path: '/signup',
-          builder: (context, state) => const Signup(),
+          builder: (context, state) => Signup(),
         ),
         GoRoute(
           path: '/dashboard',
-          builder: (context, state) => const Dashboard(),
+          builder: (context, state) => Dashboard(),
         ),
         GoRoute(
           path: '/forgot-password',
-          builder: (context, state) => const ForgotPassword(),
+          builder: (context, state) => ForgotPassword(),
         ),
         GoRoute(
           path: '/companion',
-          builder: (context, state) => const Companion(),
+          builder: (context, state) => Companion(),
         ),
         GoRoute(
           path: '/update-password',
-          builder: (context, state) => const UpdatePassword(),
+          builder: (context, state) => UpdatePassword(),
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => const LoginPage(),
+          builder: (context, state) => LoginPage(),
         ),
         GoRoute(
           path: '/main',
-          builder: (context, state) => const Main(),
+          builder: (context, state) => Main(),
         ),
       ],
     );
@@ -109,18 +91,18 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(color: Color(0xFFABEDE2)),
-        scaffoldBackgroundColor: const Color(0xFFABEDE2),
+        appBarTheme: AppBarTheme(color: Color(0xFFABEDE2)),
+        scaffoldBackgroundColor: Color(0xFFABEDE2),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF20795E),
+            backgroundColor: Color(0xFF20795E),
             foregroundColor: Colors.white,
           ),
         ),
       ),
-      routerDelegate: router.routerDelegate,
-      routeInformationParser: router.routeInformationParser,
-      routeInformationProvider: router.routeInformationProvider,
+      routerDelegate: _router.routerDelegate,
+      routeInformationParser: _router.routeInformationParser,
+      routeInformationProvider: _router.routeInformationProvider,
     );
   }
 }
@@ -136,11 +118,11 @@ class _MainState extends State<Main> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const Dashboard(),
-    const Medex(),
-    const Companion(),
-    const MusicApp(),
-    const Journalentry(),
+    Dashboard(),
+    Medex(),
+    Companion(),
+    MusicApp(),
+    Journalentry(),
   ];
 
   void _onItemTapped(int index) {
@@ -160,7 +142,7 @@ class _MainState extends State<Main> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dashboard'),
           BottomNavigationBarItem(
               icon: Icon(Icons.contact_support), label: 'Meditation'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Companion'),
+          BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Companion'),
           BottomNavigationBarItem(
               icon: Icon(Icons.library_music), label: 'Music'),
           BottomNavigationBarItem(
@@ -168,9 +150,9 @@ class _MainState extends State<Main> {
         ],
         currentIndex: _selectedIndex,
         showUnselectedLabels: true,
-        backgroundColor: const Color(0xFFABEDE2),
-        selectedItemColor: const Color(0xFF20795E),
-        unselectedItemColor: const Color(0xFF000000),
+        backgroundColor: Color(0xFFABEDE2),
+        selectedItemColor: Color(0xFF20795E),
+        unselectedItemColor: Color(0xFF000000),
         onTap: _onItemTapped,
       ),
     );

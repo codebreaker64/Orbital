@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:orbital/Journal/mood_tracker.dart';
+import 'package:orbital/Journal/moodtracker.dart';
 
 void main() {
   testWidgets('Moodtracker widget test', (WidgetTester tester) async {
@@ -33,7 +33,7 @@ void main() {
     expect(find.byType(TextField), findsOneWidget);
 
     // Tap on the Happy mood icon and verify the mood is selected
-    await tester.tap(find.byKey(const Key('mood_happy')));
+    await tester.tap(find.byKey(Key('mood_happy')));
     await tester.pump();
     expect(moodController.text, 'Happy');
     expect(find.text('You are feeling Happy'), findsOneWidget);

@@ -9,26 +9,26 @@ Widget musictile({
   return GestureDetector(
     onTap: onTap,
     child: Container(
-      padding: const EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
       child: Row(
         children: [
-          SizedBox(
+          Container(
             height: 80,
             width: 80,
             child: Image.asset(cover, fit: BoxFit.cover),
           ),
-          const SizedBox(width: 10.0),
+          SizedBox(width: 10.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
               ),
-              const SizedBox(height: 5.0),
+              SizedBox(height: 5.0),
               Text(
                 singer,
-                style: const TextStyle(color: Colors.grey, fontSize: 16.0),
+                style: TextStyle(color: Colors.grey, fontSize: 16.0),
               ),
             ],
           ),
