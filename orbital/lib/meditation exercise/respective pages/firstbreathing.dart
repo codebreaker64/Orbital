@@ -34,7 +34,10 @@ class BreathingHomePage extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [Colors.blue, Colors.green],
+                    colors: [
+                      const Color.fromARGB(255, 126, 189, 240),
+                      const Color.fromARGB(255, 153, 208, 155)
+                    ],
                   ),
                 ),
                 child: Column(
@@ -49,6 +52,13 @@ class BreathingHomePage extends StatelessWidget {
                               'The stimulating breath can help you increase your energy and help you be more alert. The bellows breath is a safe practice, but it could make you dizzy initially until your body gets used to the increased energy.\n\n'
                               'Strive for no more than 15 seconds or so on your first try, working up to a minute. Each time you practice this breath, you can increase your time little by little.\n',
                               style: GoogleFonts.openSans(fontSize: 16),
+                            ),
+                            Text(
+                              'Steps:\n',
+                              style: GoogleFonts.openSans(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             Image.asset(
                                 width: 200, height: 200, 'images/shoulder.png'),

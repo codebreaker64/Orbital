@@ -59,8 +59,22 @@ class _MoodtrackerState extends State<Moodtracker> {
                 "How are you feeling today?",
                 style: TextStyle(fontSize: 24),
               ),
-            ),
-            const SizedBox(height: 20),
+              SizedBox(width: 30, height: 40),
+              InkWell(
+                //fix it by putting key up here
+                key: const Key('Cancel'),
+                onTap: () {
+                  // Your onTap code here
+                  widget.onCancel();
+                },
+                child: Icon(
+                  Icons.close,
+                  color: Colors.black,
+                  size: 30.0,
+                ),
+              )
+            ]),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -157,11 +171,18 @@ class _MoodtrackerState extends State<Moodtracker> {
                   });
                 }
               },
-              child: const Text('Pick a date'),
-            ),
-            const Text(
-              "Jot down your thoughts",
-              style: TextStyle(fontSize: 18),
+              child: Text(
+                key: Key('Pick a date'),
+                datetime == null
+                    ? DateTime.now().day.toString() +
+                        "-" +
+                        DateTime.now().month.toString() +
+                        "-" +
+                        DateTime.now().year.toString()
+                    : '${datetime!.day.toString().padLeft(2, '0')}-${datetime!.month.toString().padLeft(2, '0')}-${datetime!.year.toString()}',
+                style: GoogleFonts.openSans(
+                    fontWeight: FontWeight.bold, fontSize: 16.0),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),

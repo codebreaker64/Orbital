@@ -32,7 +32,10 @@ class BreathingHomePage1 extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Colors.blue, Colors.green],
+                  colors: [
+                    const Color.fromARGB(255, 126, 189, 240),
+                    const Color.fromARGB(255, 153, 208, 155)
+                  ],
                 ),
               ),
               child: Column(
@@ -43,22 +46,34 @@ class BreathingHomePage1 extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
+                            '4-7-8 breathing technique is a simple yet powerful tool for managing stress, improving sleep, and enhancing overall well-being.\n',
+                            style: GoogleFonts.openSans(
+                              fontSize: 16.0,
+                            )),
+                        Text(
                             'Before starting the breathing pattern, adopt a comfortable sitting position and place the tip of the tongue on the tissue right behind the top front teeth. To use the 4-7-8 technique, focus on the following breathing pattern\n',
                             style: GoogleFonts.openSans(
                               fontSize: 16.0,
                             )),
+                        Text(
+                          'Steps:',
+                          style: GoogleFonts.openSans(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         Image.asset('images/wobreathe.jpeg',
                             width: 200, height: 200),
                         Text(
-                          '• Breathe in through the nose for 2 seconds',
+                          '1. Breathe in through the nose for 2 seconds',
                           style: GoogleFonts.racingSansOne(fontSize: 16.0),
                         ),
                         Text(
-                          '• Hold the breath for a count of 3.5 seconds',
+                          '2. Hold the breath for a count of 3.5 seconds',
                           style: GoogleFonts.racingSansOne(fontSize: 16.0),
                         ),
                         Text(
-                          '• Exhale through the mouth for 4 seconds',
+                          '3. Exhale through the mouth for 4 seconds',
                           style: GoogleFonts.racingSansOne(fontSize: 16.0),
                         ),
                       ],

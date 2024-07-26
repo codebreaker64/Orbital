@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:orbital/music/musictile.dart';
 
 class MusicApp extends StatefulWidget {
@@ -67,6 +68,7 @@ class _MusicAppState extends State<MusicApp> {
     return '$minutes:$seconds';
   }
 
+//play music function up in this shit
   void playMusic(String url) async {
     if (isPlaying && currentSong != url) {
       await audioPlayer.pause();
@@ -118,8 +120,12 @@ class _MusicAppState extends State<MusicApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Happy Playlist'),
-        backgroundColor: Colors.deepPurple,
+        title: Center(
+            child: Text(
+          'Happy Playlist',
+          style: GoogleFonts.oswald(),
+        )),
+        backgroundColor: Color.fromARGB(255, 40, 210, 199),
       ),
       body: Column(
         children: [
@@ -141,9 +147,10 @@ class _MusicAppState extends State<MusicApp> {
               ),
             ),
           ),
+          //this is only for showing the playbar
           Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: const BoxDecoration(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -206,6 +213,7 @@ class _MusicAppState extends State<MusicApp> {
                         ],
                       ),
                       IconButton(
+                        key: Key('playbutton'),
                         onPressed: () {
                           if (isPlaying) {
                             audioPlayer.pause();
