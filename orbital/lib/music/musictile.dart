@@ -6,7 +6,7 @@ Widget musictile({
   required String cover,
   VoidCallback? onTap,
 }) {
-  return GestureDetector(
+  return InkWell(
     onTap: onTap,
     child: Container(
       padding: EdgeInsets.all(8),
@@ -17,7 +17,7 @@ Widget musictile({
             width: 80,
             child: Image.asset(cover, fit: BoxFit.cover),
           ),
-          SizedBox(width: 10.0),
+          SizedBox(width: 30.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

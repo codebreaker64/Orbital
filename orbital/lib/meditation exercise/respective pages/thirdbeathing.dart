@@ -32,7 +32,10 @@ class BreathingHomePage3 extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Colors.blue, Colors.green],
+                  colors: [
+                    const Color.fromARGB(255, 126, 189, 240),
+                    const Color.fromARGB(255, 153, 208, 155)
+                  ],
                 ),
               ),
               child: Column(
@@ -43,7 +46,14 @@ class BreathingHomePage3 extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          'Counting the breath is another good exercise.\n',
+                          'Counting the breath exercise, also known as "breath counting," is a simple yet effective mindfulness technique that can help improve focus, reduce stress, and promote relaxation.\n',
+                          style: GoogleFonts.openSans(
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          'Steps:',
                           style: GoogleFonts.openSans(
                               fontSize: 20, fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
