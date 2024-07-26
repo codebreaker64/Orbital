@@ -179,10 +179,9 @@
       "tag": "name",
       "patterns": [
         "My name is ",
-        "I am name.",
+        "I am name",
         "I go by ",
-        "You can call me",
-        "name"
+        "You can call me"
       ],
       "responses": [
         "Oh nice to meet you. Tell me how was your week?",
@@ -303,6 +302,20 @@
           "I'm here to listen. What do you think is the cause of your anger? Talking about your feelings with a trusted friend or therapist can provide perspective and support.",
           "Let's talk about your anger. What can I do to help you manage it? Learning anger management strategies and techniques can help you control your responses."
       ]
+  },
+  {
+    "tag": "emotion-annoyed",
+    "patterns": [
+      "I'm feeling annoyed",
+      "I'm so frustrated right now",
+      "This is really irritating",
+      "I'm getting fed up with this"
+    ],
+    "responses": [
+      "I'm sorry to hear you're feeling this way. Can you tell me more about what's bothering you?",
+      "It sounds like you're having a tough time. Is there anything specific that's causing your frustration?",
+      "I understand that things might be frustrating right now. How can I assist you in making things better?"
+    ]
   },
   {
       "tag": "eating_disorders",
