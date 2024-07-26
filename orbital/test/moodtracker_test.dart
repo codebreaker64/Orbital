@@ -29,7 +29,8 @@ void main() {
     // Verify the initial state of the widget
     expect(find.text('How are you feeling today?'), findsOneWidget);
     expect(find.text('Select your mood above'), findsOneWidget);
-    expect(find.text('Nothing has been picked yet'), findsOneWidget);
+    //change to pick a date to directly find the date widget
+    expect(find.byKey(Key('Pick a date')), findsOneWidget);
     expect(find.byType(TextField), findsOneWidget);
 
     // Tap on the Happy mood icon and verify the mood is selected
@@ -39,7 +40,7 @@ void main() {
     expect(find.text('You are feeling Happy'), findsOneWidget);
 
     // Tap on the Pick a date button and select a date
-    await tester.tap(find.text('Pick a date'));
+    await tester.tap(find.byKey(Key('Pick a date')));
     await tester.pumpAndSettle();
     await tester.tap(find.text('15')); // Select 15th of the month
     await tester.tap(find.text('OK'));
@@ -55,7 +56,8 @@ void main() {
     await tester.pump();
 
     // Tap the Cancel button
-    await tester.tap(find.text('Cancel'));
+    //change to find by key and see how it loads up 
+    await tester.tap(find.byKey(Key('Cancel')));
     await tester.pump();
   });
 }

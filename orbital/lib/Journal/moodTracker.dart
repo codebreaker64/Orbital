@@ -63,6 +63,8 @@ class _MoodtrackerState extends State<Moodtracker> {
               ),
               SizedBox(width: 30, height: 40),
               InkWell(
+                //fix it by putting key up here
+                key: const Key('Cancel'),
                 onTap: () {
                   // Your onTap code here
                   widget.onCancel();
@@ -171,6 +173,7 @@ class _MoodtrackerState extends State<Moodtracker> {
                 }
               },
               child: Text(
+                key: Key('Pick a date'),
                 datetime == null
                     ? DateTime.now().day.toString() +
                         "-" +

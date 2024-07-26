@@ -212,6 +212,7 @@ class _MusicAppState extends State<MusicApp> {
                         ],
                       ),
                       IconButton(
+                        key: Key('playbutton'),
                         onPressed: () {
                           if (isPlaying) {
                             audioPlayer.pause();
