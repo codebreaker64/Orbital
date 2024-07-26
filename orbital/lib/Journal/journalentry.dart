@@ -115,7 +115,7 @@ class _JournalState extends State<Journalentry> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Journal Page')),
+        title: const Center(child: Text('Journal Page')),
       ),
       resizeToAvoidBottomInset: false,
       body: ListView.builder(

@@ -27,29 +27,34 @@ class _LoginPageState extends State<LoginPage> {
       final response = await widget.supabaseClient.auth.signInWithPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
-      );
+      );  
 
       if (response.session != null) {
         // Sign-in successful
-        if(mounted)context.go('/main');
+        if (mounted) {
+          context.go('/main');
+        }
       } else {
         // Sign-in failed
-        if(mounted) {
-           ScaffoldMessenger.of(context).showSnackBar(
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               dismissDirection: DismissDirection.horizontal,
-              content: Text('Login failed. Please check your credentials.')),
+              content: Text('Login failed. Please check your credentials.'),
+            ),
           );
         }
       }
     } catch (e) {
+      print(e);
       // Handle any exceptions
-      if(mounted) {
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             dismissDirection: DismissDirection.horizontal,
-            content: Text('Login failed. Please check your credentials.')),
-          );
+            content: Text('Login failed. Please check your credentials.'),
+          ),
+        );
       }
     }
   }
@@ -75,12 +80,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              
-              ClipOval( 
-                  child: SizedBox.fromSize( 
-                      size: const Size.fromRadius(80), // Image radius 
-                      child: Image.asset('images/peacepal_logo.jpeg', fit: BoxFit.cover), 
-                  ), 
+              ClipOval(
+                child: SizedBox.fromSize(
+                  size: const Size.fromRadius(80), // Image radius
+                  child: Image.asset('images/peacepal_logo.jpeg', fit: BoxFit.cover),
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 0),
@@ -94,8 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                 child: TextField(
                   controller: emailController,
                   decoration: const InputDecoration(
@@ -105,8 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 0),
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 0),
                 child: TextField(
                   controller: passwordController,
                   obscureText: true,
@@ -119,10 +121,8 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                 onPressed: () {
                   context.push('/forgot-password');
-                }, 
-                child: const Text(
-                  "Forgot your password?",
-                  style: TextStyle(color: Colors.blue))),
+                },
+                child: const Text("Forgot your password?", style: TextStyle(color: Colors.blue))),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: ElevatedButton(

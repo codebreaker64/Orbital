@@ -125,7 +125,7 @@ class _MusicAppState extends State<MusicApp> {
           'Happy Playlist',
           style: GoogleFonts.oswald(),
         )),
-        backgroundColor: Color.fromARGB(255, 40, 210, 199),
+        backgroundColor: const Color.fromARGB(255, 40, 210, 199),
       ),
       body: Column(
         children: [
@@ -150,7 +150,7 @@ class _MusicAppState extends State<MusicApp> {
           //this is only for showing the playbar
           Container(
             padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -213,7 +213,7 @@ class _MusicAppState extends State<MusicApp> {
                         ],
                       ),
                       IconButton(
-                        key: Key('playbutton'),
+                        key: const Key('playbutton'),
                         onPressed: () {
                           if (isPlaying) {
                             audioPlayer.pause();

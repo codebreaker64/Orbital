@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Moodtracker extends StatefulWidget {
   final TextEditingController controller;
@@ -53,13 +54,14 @@ class _MoodtrackerState extends State<Moodtracker> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text(
-                "How are you feeling today?",
-                style: TextStyle(fontSize: 24),
+            Row(children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 20, left: 50),
+                child: Text("How are you feeling today?",
+                    style: TextStyle(fontSize: 24),
+                    textAlign: TextAlign.center),
               ),
-              SizedBox(width: 30, height: 40),
+              const SizedBox(width: 30, height: 40),
               InkWell(
                 //fix it by putting key up here
                 key: const Key('Cancel'),
@@ -67,14 +69,14 @@ class _MoodtrackerState extends State<Moodtracker> {
                   // Your onTap code here
                   widget.onCancel();
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.close,
                   color: Colors.black,
                   size: 30.0,
                 ),
               )
             ]),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -149,13 +151,8 @@ class _MoodtrackerState extends State<Moodtracker> {
               style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
             ),
             const SizedBox(height: 30),
-            Text(
-              datetime == null
-                  ? 'Nothing has been picked yet'
-                  : 'Selected date: ${datetime!.day.toString().padLeft(2, '0')}-${datetime!.month.toString().padLeft(2, '0')}-${datetime!.year.toString()}',
-            ),
-            ElevatedButton(
-              onPressed: () async {
+            GestureDetector(
+              onTap: () async {
                 final selectedDate = await showDatePicker(
                   context: context,
                   initialDate: datetime ?? DateTime.now(),
@@ -167,18 +164,14 @@ class _MoodtrackerState extends State<Moodtracker> {
                   setState(() {
                     datetime = DateTime(selectedDate.year, selectedDate.month,
                         selectedDate.day);
-                    widget.dateController.text = "${datetime!.day}-${datetime!.month}-${datetime!.year}";
+                    widget.dateController.text = "${datetime!.day.toString()} - ${datetime!.month.toString()} - ${datetime!.year.toString()}";
                   });
                 }
               },
               child: Text(
-                key: Key('Pick a date'),
+                key: const Key('Pick a date'),
                 datetime == null
-                    ? DateTime.now().day.toString() +
-                        "-" +
-                        DateTime.now().month.toString() +
-                        "-" +
-                        DateTime.now().year.toString()
+                    ? '${DateTime.now().day.toString()} - ${DateTime.now().month.toString()} - ${DateTime.now().year.toString()}'
                     : '${datetime!.day.toString().padLeft(2, '0')}-${datetime!.month.toString().padLeft(2, '0')}-${datetime!.year.toString()}',
                 style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold, fontSize: 16.0),
@@ -211,10 +204,6 @@ class _MoodtrackerState extends State<Moodtracker> {
                 ElevatedButton(
                   onPressed: widget.onSave,
                   child: const Text('Save'),
-                ),
-                ElevatedButton(
-                  onPressed: widget.onCancel,
-                  child: const Text('Cancel'),
                 ),
               ],
             ),

@@ -17,7 +17,7 @@ Widget musictile({
             width: 80,
             child: Image.asset(cover, fit: BoxFit.cover),
           ),
-          SizedBox(width: 30.0),
+          const SizedBox(width: 30.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
