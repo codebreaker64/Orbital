@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
+  final SupabaseClient supabaseClient;
 
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.supabaseClient});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -23,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _login() async {
     try {
-      final response = await Supabase.instance.client.auth.signInWithPassword(
+      final response = await widget.supabaseClient.auth.signInWithPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );

@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
         ),
         GoRoute(
           path: '/',
-          builder: (context, state) => const LoginPage(),
+          builder: (context, state) => LoginPage(supabaseClient: Supabase.instance.client),
         ),
         GoRoute(
           path: '/main',
