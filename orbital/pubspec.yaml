@@ -55,8 +55,8 @@ dependencies:
   google_fonts: ^6.2.1
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  integration_test:
+      sdk: flutter
   flutter_launcher_icons: ^0.13.1
   mockito: ^5.0.16
   mocktail: ^1.0.4
