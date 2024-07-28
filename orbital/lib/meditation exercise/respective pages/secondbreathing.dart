@@ -1,9 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class BreathingApp1 extends StatelessWidget {
+  const BreathingApp1({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,24 +10,25 @@ class BreathingApp1 extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BreathingHomePage1(),
+      home: const BreathingHomePage1(),
     );
   }
 }
 
 class BreathingHomePage1 extends StatelessWidget {
+  const BreathingHomePage1({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: null,
-        title: Text('4-7-8 Breathing'),
+        title: const Text('4-7-8 Breathing'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,

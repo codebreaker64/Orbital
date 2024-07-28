@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:orbital/music/musictile.dart';
 
 class MusicApp extends StatefulWidget {
+  const MusicApp({super.key});
   @override
   State<MusicApp> createState() => _MusicAppState();
 }
@@ -124,7 +125,7 @@ class _MusicAppState extends State<MusicApp> {
           'Happy Playlist',
           style: GoogleFonts.oswald(),
         )),
-        backgroundColor: Color.fromARGB(255, 40, 210, 199),
+        backgroundColor: const Color.fromARGB(255, 40, 210, 199),
       ),
       body: Column(
         children: [
@@ -149,7 +150,7 @@ class _MusicAppState extends State<MusicApp> {
           //this is only for showing the playbar
           Container(
             padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -190,7 +191,7 @@ class _MusicAppState extends State<MusicApp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 60,
                         width: 60,
                         child: Image.asset(currentCover, fit: BoxFit.cover),
@@ -200,19 +201,19 @@ class _MusicAppState extends State<MusicApp> {
                         children: [
                           Text(
                             currentTitle,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 18.0, fontWeight: FontWeight.w600),
                           ),
-                          SizedBox(height: 5.0),
+                          const SizedBox(height: 5.0),
                           Text(
                             currentSinger,
                             style:
-                                TextStyle(color: Colors.grey, fontSize: 16.0),
+                                const TextStyle(color: Colors.grey, fontSize: 16.0),
                           ),
                         ],
                       ),
                       IconButton(
-                        key: Key('playbutton'),
+                        key: const Key('playbutton'),
                         onPressed: () {
                           if (isPlaying) {
                             audioPlayer.pause();

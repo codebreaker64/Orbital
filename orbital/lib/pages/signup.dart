@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Initialize the Supabase client
@@ -49,8 +50,8 @@ class _SignupState extends State<Signup> {
                 ),
               ),
               // Title text
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
+              const Padding(
+                padding: EdgeInsets.only(top: 10, bottom: 10),
                 child: Text(
                   'Sign up',
                   style: TextStyle(
@@ -66,7 +67,7 @@ class _SignupState extends State<Signup> {
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
                 child: TextField(
                   controller: nameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Name',
                   ),
@@ -75,24 +76,25 @@ class _SignupState extends State<Signup> {
               // Email input field
               Form(
                 key: _formKey,
-                child:Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                child: TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'email@domain.com',
-                  ),
-                  validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-                    return 'Please enter a valid email address';
-                  }
-                  return null;
-                  },
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'email@domain.com',
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      } else if (!RegExp(
+                              r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)$")
+                          .hasMatch(value.trim())) {
+                        return 'Please enter your gmail/outlook email';
+                      }
+                      return null;
+                    },
                   ),
                 ),
               ),
@@ -103,7 +105,7 @@ class _SignupState extends State<Signup> {
                 child: TextField(
                   controller: passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Password',
                   ),
@@ -116,7 +118,7 @@ class _SignupState extends State<Signup> {
                 child: TextField(
                   controller: confirmPasswordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Confirm Password',
                   ),
@@ -131,73 +133,83 @@ class _SignupState extends State<Signup> {
                     if (passwordController.text !=
                         confirmPasswordController.text) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
+                          dismissDirection: DismissDirection.horizontal,
                           content: Text('Passwords do not match!'),
                         ),
                       );
                       return;
                     }
-          if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate()) {
                       try {
                         // Attempt to sign up using Supabase
                         await supabase.auth.signUp(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                           data: {
-                              'name': nameController.text.trim(),
-                            }, 
-                          emailRedirectTo: 'io.supabase.flutterquickstart://callback/',
+                            'name': nameController.text.trim(),
+                          },
+                          emailRedirectTo:
+                              'io.supabase.flutterquickstart://callback/',
                         );
-                        /* ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Email verification link has been sent. Please verify your email.'),
-                          ),
-                        ); */
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              dismissDirection: DismissDirection.horizontal,
+                              content: Text(
+                                  'Email verification link has been sent. Please verify your email.'),
+                            ),
+                          );
+                        }
                       } catch (error) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Error: $error'),
-                          ),
-                        );
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              dismissDirection: DismissDirection.horizontal,
+                              content: Text('Error: $error'),
+                            ),
+                          );
+                        }
                       }
                     }
                   },
-                  child: Text('Sign up'),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Color(0xFF20795E),
-                    fixedSize: Size(200, 50),
-                    textStyle: TextStyle(fontSize: 20),
+                    backgroundColor: const Color(0xFF20795E),
+                    fixedSize: const Size(200, 50),
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
+                  child: const Text('Sign up'),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: TextButton(
                   onPressed: () {
-                    // Handle login logic
+                    context.push("/");
                   },
-                  child: Text('Already have an account? Sign in'),
+                  child: const Text('Already have an account? Sign in'),
                 ),
               ),
             ],
           ),
         ),
       ),
-      backgroundColor: Color(0xFFABEDE2),
+      backgroundColor: const Color(0xFFABEDE2),
     );
   }
 }
 
 // Placeholder for another page
 class AnotherPage extends StatelessWidget {
+  const AnotherPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Another Page'),
+        title: const Text('Another Page'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Welcome to another page!'),
       ),
     );

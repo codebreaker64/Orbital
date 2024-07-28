@@ -9,26 +9,26 @@ Widget musictile({
   return InkWell(
     onTap: onTap,
     child: Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             height: 80,
             width: 80,
             child: Image.asset(cover, fit: BoxFit.cover),
           ),
-          SizedBox(width: 30.0),
+          const SizedBox(width: 30.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
+                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
               ),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               Text(
                 singer,
-                style: TextStyle(color: Colors.grey, fontSize: 16.0),
+                style: const TextStyle(color: Colors.grey, fontSize: 16.0),
               ),
             ],
           ),

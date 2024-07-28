@@ -6,7 +6,7 @@ void main() {
   testWidgets('MusicApp widget test', (WidgetTester tester) async {
     // Build the MusicApp widget
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: MusicApp(),
       ),
     );

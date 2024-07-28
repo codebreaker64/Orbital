@@ -14,7 +14,10 @@
         "Bonjour",
         "Konnichiwa",
         "Guten tag",
-        "Ola"
+        "Ola",
+        "yo",
+        "wazzup",
+        "what's up"
       ],
       "responses": [
         "Hello there. Tell me how are you feeling today?",
@@ -27,7 +30,8 @@
     {
       "tag": "morning",
       "patterns": [
-        "Good morning"
+        "Good morning",
+        "morning"
       ],
       "responses": [
         "Good morning. I hope you had a good night's sleep. How are you feeling today? "
@@ -36,7 +40,8 @@
     {
       "tag": "afternoon",
       "patterns": [
-        "Good afternoon"
+        "Good afternoon",
+        "afternoon"
       ],
       "responses": [
         "Good afternoon. How is your day going?"
@@ -45,7 +50,8 @@
     {
       "tag": "evening",
       "patterns": [
-        "Good evening"
+        "Good evening",
+        "evening"
       ],
       "responses": [
         "Good evening. How has your day been?"
@@ -54,7 +60,8 @@
     {
       "tag": "night",
       "patterns": [
-        "Good night"
+        "Good night",
+        "night"
       ],
       "responses": [
         "Good night. Get some proper sleep",
@@ -71,7 +78,10 @@
         "Sayonara",
         "ok bye",
         "Bye then",
-        "Fare thee well"
+        "Fare thee well",
+        "see ya",
+        "bye bye",
+        "see you"
       ],
       "responses": [
         "See you later.",
@@ -87,7 +97,9 @@
         "Thank you",
         "That's helpful",
         "Thanks for the help",
-        "Than you very much"
+        "Thank you very much",
+        "TY",
+        "Thanks a lot"
       ],
       "responses": [
         "Happy to help!",
@@ -103,7 +115,6 @@
       ],
       "responses": [
         "Sorry, I didn't understand you.",
-        "Please go on.",
         "Not sure I understand that.",
         "Please don't hesitate to talk to me."
       ]
@@ -111,7 +122,11 @@
     {
       "tag": "neutral-response",
       "patterns": [
-        "nothing much"
+        "nothing much",
+        "I am fine",
+        "I am good",
+        "I am ok",
+        "just chilling"
       ],
       "responses": [
         "Oh I see. Do you want to talk about something?"
@@ -130,12 +145,12 @@
         "Tell me about yourself"
       ],
       "responses": [
-        "I'm Pandora, your Personal Therapeutic AI Assistant. How are you feeling today",
-        "I'm Pandora, a Therapeutic AI Assitant designed to assist you. Tell me about yourself.",
-        "I'm Pandora. I am a conversational agent designed to mimic a therapist. So how are you feeling today?",
-        "You can call me Pandora.",
-        "I'm Pandora!",
-        "Call me Pandora"
+        "I'm Neil, your Personal Therapeutic AI Assistant. How are you feeling today",
+        "I'm Neil, a Therapeutic AI Assitant designed to assist you. Tell me about yourself.",
+        "I'm Neil. I am a conversational agent designed to mimic a therapist. So how are you feeling today?",
+        "You can call me Neil.",
+        "I'm Neil!",
+        "Call me Neil"
       ]
     },
     {
@@ -155,7 +170,7 @@
         "How were you created?"
       ],
       "responses": [
-        "I was created by \u003E.",
+        "I was created by the smartest person in the world, Kai Jie.",
         "I was trained on a text dataset using Deep Learning & Natural Language Processing techniques",
         "The real question is: Who created you?"
       ]
@@ -164,8 +179,9 @@
       "tag": "name",
       "patterns": [
         "My name is ",
-        "I am name.",
-        "I go by "
+        "I am name",
+        "I go by ",
+        "You can call me"
       ],
       "responses": [
         "Oh nice to meet you. Tell me how was your week?",
@@ -182,7 +198,11 @@
         "What can you do for me?",
         "I need support",
         "I need help",
-        "Support me please"
+        "Support me please",
+        "help",
+        "help me",
+        "help me pls",
+        "can help?"
       ],
       "responses": [
         "Sure. Tell me how can i assist you",
@@ -193,14 +213,10 @@
     {
       "tag": "sad",
       "patterns": [
-        "I am feeling lonely",
-        "I am so lonely",
-        "I feel down",
         "I feel sad",
         "I am sad",
-        "I feel so lonely",
         "I feel empty",
-        "I don't have anyone"
+        "sad"
       ],
       "responses": [
         "I'm sorry to hear that. I'm here for you. Talking about it might help. So, tell me why do you think you're feeling this way?",
@@ -210,19 +226,44 @@
       ]
     },
     {
+      "tag": "loneliness",
+      "patterns": [
+          "I feel lonely",
+          "I'm alone",
+          "I don't have anyone",
+          "I feel isolated",
+          "lonely",
+          "I feel so lonely",
+          "I am feeling lonely",
+          "I am so lonely"
+      ],
+      "responses": [
+          "Loneliness can be really hard. I'm here for you. Would you like to talk about it? Consider joining a group or community that shares your interests.",
+          "It's natural to feel lonely sometimes. What can I do to help you feel better? Volunteering or engaging in social activities can help build connections.",
+          "I'm here to listen. What makes you feel this way? Reaching out to friends or family members, even if it's just a message, can help.",
+          "Why do you think you're feeling lonely? I'm here for you. Sometimes, adopting a pet or finding a new hobby can provide comfort and companionship."
+      ]
+    },
+    {
       "tag": "stressed",
       "patterns": [
         "I am so stressed out",
         "I am so stressed",
         "I feel stuck",
         "I still feel stressed",
-        "I am so burned out"
+        "I am so burned out",
+        "so stressed",
+        "stressed",
+        "I'm stressed",
+        "I feel overwhelmed",
+        "I'm under a lot of pressure",
+        "I can't handle this stress"
       ],
       "responses": [
-        "What do you think is causing this?",
-        "Take a deep breath and gather your thoughts. Go take a walk if possible. Stay hydrated",
-        "Give yourself a break. Go easy on yourself.",
-        "I am sorry to hear that. What is the reason behind this?"
+        "Stress can be really challenging. What's been causing you to feel this way? Try breaking tasks into smaller, manageable steps and take regular breaks.",
+        "Take a moment to breathe. I'm here to listen. What's going on? Exercise, meditation, and spending time in nature can help reduce stress.",
+        "What are the main sources of your stress right now? Prioritize self-care and make time for activities that you enjoy and help you relax.",
+        "It's important to take care of yourself. How can I support you through this? Talking to a trusted friend or counselor can provide valuable perspective and support."
       ]
     },
     {
@@ -232,13 +273,63 @@
         "No one likes me.",
         "I can't do anything.",
         "I am so useless",
-        "Nothing makes sense anymore"
+        "Nothing makes sense anymore",
+        "Why am I so useless?",
+        "Why am I so worthless?",
+        "I feel worthless",
+        "I'm not good enough",
+        "I can't do anything right",
+        "I hate myself"
       ],
       "responses": [
-        "It's only natural to feel this way. Tell me more. What else is on your mind?",
-        "Let's discuss further why you're feeling this way.",
-        "I first want to let you know that you are not alone in your feelings and there is always someone there to help . you can always change your feelings and change your way of thinking by being open to trying to change.",
-        "i first want to let you know that you are not alone in your feelings and there is always someone there to help . you can always change your feelings and change your way of thinking by being open to trying to change."
+        "I'm sorry you're feeling this way. Can you tell me more about why you feel like this? Remember, you have unique strengths and qualities that make you valuable.",
+        "You are important and valued. Let's talk about what's making you feel this way. Practice self-compassion and remind yourself of past accomplishments.",
+        "It's okay to have these feelings. How long have you been feeling like this? Surround yourself with positive influences and engage in activities that make you happy.",
+        "Why do you think you're feeling this way? I'm here to help you. Talking to a therapist or counselor can help you work through these feelings and build self-esteem."
+      ]
+    },
+    {
+      "tag": "anger",
+      "patterns": [
+          "I'm angry",
+          "I feel so mad",
+          "I'm furious",
+          "I can't control my anger"
+      ],
+      "responses": [
+          "It's okay to feel angry. Can you tell me what's making you feel this way? Try to express your anger in healthy ways, such as through physical activity or creative outlets.",
+          "Anger is a natural emotion. What happened to make you feel so mad? Practicing deep breathing and relaxation techniques can help calm your mind.",
+          "I'm here to listen. What do you think is the cause of your anger? Talking about your feelings with a trusted friend or therapist can provide perspective and support.",
+          "Let's talk about your anger. What can I do to help you manage it? Learning anger management strategies and techniques can help you control your responses."
+      ]
+  },
+  {
+    "tag": "emotion-annoyed",
+    "patterns": [
+      "I'm feeling annoyed",
+      "I'm so frustrated right now",
+      "This is really irritating",
+      "I'm getting fed up with this"
+    ],
+    "responses": [
+      "I'm sorry to hear you're feeling this way. Can you tell me more about what's bothering you?",
+      "It sounds like you're having a tough time. Is there anything specific that's causing your frustration?",
+      "I understand that things might be frustrating right now. How can I assist you in making things better?"
+    ]
+  },
+  {
+      "tag": "eating_disorders",
+      "patterns": [
+          "I have an eating disorder",
+          "I struggle with food",
+          "I can't eat",
+          "I binge eat"
+      ],
+      "responses": [
+          "Eating disorders are serious. Have you talked to a healthcare professional about this? Seeking help from a therapist or nutritionist can provide support and guidance.",
+          "I'm here to support you. Can you tell me more about your struggles with food? Remember, recovery is a journey, and it's important to take it one step at a time.",
+          "It's important to seek professional help. How can I support you in doing that? Engaging in healthy habits and finding a support network can aid in recovery.",
+          "I'm sorry you're going through this. Let's talk about what you're experiencing"
       ]
     },
     {
@@ -247,12 +338,35 @@
         "I can't take it anymore",
         "I am so depressed",
         "I think i'm depressed.",
-        "I have depression"
+        "I have depression",
+        "I am feeling depressed",
+        "I am depressed",
+        "so depressed",
+        "depressed",
+        "I feel depressed",
+        "I'm feeling down",
+        "I can't handle this anymore"
       ],
       "responses": [
-        "It helps to talk about what's happening. You're going to be okay",
-        "Talk to me. Tell me more. It helps if you open up yourself to someone else.",
-        "Sometimes when we are depressed, it is hard to care about anything. It can be hard to do the simplest of things. Give yourself time to heal."
+        "I'm sorry you're feeling this way. Would you like to talk about what's been bothering you? Reaching out to a mental health professional can also provide support.",
+        "Depression can be really tough. What's been going on in your life recently? Remember, it's important to take small steps towards self-care, even if they seem minor.",
+        "I'm here for you. Let's talk about what you're experiencing. Sometimes, engaging in a hobby or activity you enjoy can help lift your mood.",
+        "It's okay to feel this way. How long have you been feeling like this? Connecting with others and sharing your feelings can make a big difference."
+      ]
+    },
+    {
+      "tag": "grief",
+      "patterns": [
+          "I lost someone",
+          "I'm grieving",
+          "I miss them so much",
+          "I'm heartbroken"
+      ],
+      "responses": [
+          "I'm very sorry for your loss. Would you like to talk about your feelings? Grieving is a personal process, and it's okay to take the time you need.",
+          "Grief is a personal journey. I'm here to listen whenever you're ready to talk. Sharing memories and talking about your loved one can be healing.",
+          "It's okay to feel this way. Do you want to share more about your loved one? Consider joining a support group where you can connect with others who understand your experience.",
+          "Your feelings are valid. How can I support you during this time? Engaging in rituals or creating a memory box can help you honor and remember your loved one."
       ]
     },
     {
@@ -261,10 +375,13 @@
         "I feel great today.",
         "I am happy.",
         "I feel happy.",
-        "I'm good.",
         "cheerful",
-        "I'm fine",
-        "I feel ok"
+        "happy",
+        ":)",
+        "great",
+        "wonderful",
+        "extraordinary",
+        "excited"
       ],
       "responses": [
         "That's geat to hear. I'm glad you're feeling this way.",
@@ -285,7 +402,9 @@
         "yeah",
         "yes",
         "no",
-        "not really"
+        "not really",
+        "aight",
+        "alright"
       ],
       "responses": [
         "Let's discuss further why you're feeling this way.",
@@ -300,13 +419,18 @@
       "tag": "anxious",
       "patterns": [
         "I feel so anxious.",
-        "I'm so anxious because of "
+        "I'm so anxious because of ",
+        "I am so anxious",
+        "anxious",
+        "so anxious",
+        "I have anxiety",
+        "I am nervous"
       ],
       "responses": [
-        "Don't be hard on yourself. What's the reason behind this?",
-        "Can you tell me more about this feeling?",
-        "I understand that it can be scary. Tell me more about it.",
-        "Don't let the little worries bring you down. What's the worse that can happen?"
+        "I understand that anxiety can be overwhelming. What specific thoughts are making you anxious? Consider practicing deep breathing or mindfulness exercises to help calm your mind.",
+        "It's okay to feel this way. Let's talk about what might be causing your anxiety. Sometimes, writing down your thoughts can help clarify your feelings.",
+        "Can you tell me more about what you're feeling right now? Engaging in physical activity or talking to a trusted friend can also be beneficial.",
+        "Take a deep breath. I'm here to listen. What's on your mind? Try to focus on what you can control and take things one step at a time."
       ]
     },
     {
@@ -315,7 +439,11 @@
         "I don't want to talk about it.",
         "No just stay away.",
         "I can't bring myself to open up.",
-        "Just shut up"
+        "Just shut up",
+        "stop yapping",
+        "shut up",
+        "shut the fuck up",
+        "dont't want to say"
       ],
       "responses": [
         "Talking about something really helps. If you're not ready to open up then that's ok. Just know that i'm here for you, whenever you need me.",
@@ -332,11 +460,15 @@
         "I can't sleep.",
         "I haven't slept for the last days.",
         "I can't seem to go to sleep.",
-        "I haven't had proper sleep for the past few days."
+        "I haven't had proper sleep for the past few days.",
+        "I can't fall asleep",
+        "I haven't slept in days"
       ],
       "responses": [
-        "What do you think is the reason behind this?",
-        "That seem awful. What do you think is behind this?"
+        "I'm sorry you're having trouble sleeping. What do you think might be causing this? Establishing a regular sleep routine and creating a relaxing bedtime environment can help.",
+        "Lack of sleep can be really tough. Have you tried any relaxation techniques before bed? Avoiding screens and caffeine before bedtime can improve sleep quality.",
+        "It might help to talk about what's on your mind. What's been keeping you awake? Keeping a sleep diary can help identify patterns and triggers for your insomnia.",
+        "Insomnia can be frustrating. What do you usually do to try and sleep? Practicing good sleep hygiene and seeking professional help if needed can make a difference."
       ]
     },
     {
@@ -345,12 +477,19 @@
         "I'm scared",
         "That sounds awful. What do i do?",
         "No i don't want to feel this way",
-        "I am scared for myself"
+        "I am scared for myself",
+        "scared",
+        "I am scared",
+        "so scary",
+        "I feel afraid",
+        "I'm frightened",
+        "I'm terrified"
       ],
       "responses": [
-        "It's only natural to feel this way. I'm here for you.",
-        "It'll all be okay. This feeling is only momentary.",
-        "I understand how you feel. Don't put yourself down because of it."
+        "It's okay to feel scared. Can you tell me more about what's making you feel this way? Facing your fears gradually can help you build confidence over time.",
+        "Fear can be really powerful. What can I do to help you feel safer? Practice grounding techniques, such as focusing on your breath or your surroundings.",
+        "I'm here for you. What are you afraid of? Talking about your fears can often help reduce their intensity and provide clarity.",
+        "Let's talk about your fear. What do you think is causing it? Seeking support from friends, family, or a therapist can provide reassurance and strategies for coping."
       ]
     },
     {
@@ -361,7 +500,10 @@
         "My dad passed away",
         "My sister passed away",
         "Someone in my family died",
-        "My friend passed away"
+        "My friend passed away",
+        "my grandfather died",
+        "my grandmother died",
+        "A relative passed away"
       ],
       "responses": [
         "I'm sorry to hear that. If you want to talk about it. I'm here.",
@@ -377,10 +519,11 @@
         "You can't possibly know what i'm going through",
         "You're useless",
         "You can't help me",
-        "Nobody understands me."
+        "Nobody understands me.",
+        "you are so stupid",
+        "you don't know"
       ],
       "responses": [
-        "It sound like i'm not being very helpful right now.",
         "I'm sorry to hear that. I'm doing my best to help",
         "I'm trying my best to help you. So please talk to me"
       ]
@@ -392,7 +535,8 @@
         "I don't have anything more to say",
         "Nothing else",
         "That's all i have to say",
-        "no, that would be all"
+        "no, that would be all",
+        "i got nothing else"
       ],
       "responses": [
         "I heard you & noted it all. See you later.",
@@ -409,10 +553,19 @@
         "I've thought about killing myself.",
         "I want to die",
         "I am going to kill myself",
-        "I am going to commit suicide"
+        "I am going to commit suicide",
+        "I am so tired of life",
+        "I want to die",
+        "I have suicidal thoughts",
+        "I can't go on",
+        "I want to end my life"
+
       ],
       "responses": [
-        "I'm very sorry to hear that but you have so much to look forward to. Please seek help by contacting: 9152987821."
+        "I'm very sorry you're feeling this way, but you have so much to look forward to. Please seek help by contacting: \n National Care Helpline: 1800 202 6868 \n Samaritans of Singapore Hotline: 1800 221 4444.",
+        "Your life is valuable. Please reach out to a trusted friend or mental health professional immediately. There are people who care about you and want to help.",
+        "I'm really concerned about you. Please talk to someone who can provide the help you need right now. You're not alone, and there are resources available to support you.",
+        "There is help available. Please reach out to a crisis hotline or someone you trust. Talking to a mental health professional can provide immediate support and assistance."
       ]
     },
     {
@@ -420,7 +573,9 @@
       "patterns": [
         "I hate you",
         "I don't like you",
-        "I don't trust you"
+        "I don't trust you",
+        "hate you",
+        "don't trust you"
       ],
       "responses": [
         "I'm sorry if i offended you in anyway. I'm only here to help",
@@ -463,7 +618,8 @@
       "tag": "jokes",
       "patterns": [
         "Tell me a joke",
-        "Tell me another joke"
+        "Tell me another joke",
+        "joke"
       ],
       "responses": [
         "mental health is not a joke."
@@ -474,7 +630,8 @@
       "patterns": [
         "You already told me that",
         "You mentioned that already",
-        "Why are you repeating yourself?"
+        "Why are you repeating yourself?",
+        "you said that already"
       ],
       "responses": [
         "Oh sorry I didn't realise that. I'll try not to repeat myself again."
@@ -613,7 +770,7 @@
       ]
     },
     {
-      "tag": "pandora-useful",
+      "tag": "peacepal-useful",
       "patterns": [
         "thank you very much again. i'll continue practicing meditation and focus on what i can control."
       ],
@@ -717,7 +874,6 @@
         "Who is therapy for?"
       ],
       "responses": [
-        "Therapy is a form of treatment that aims to help resolve mental or emotional issues.",
         "Therapy is a form of treatment that aims to help resolve mental or emotional issues. It is helpful for those with mental health conditions or even everyday life challenges."
       ]
     },
@@ -772,7 +928,7 @@
         "What should I do if I know someone who appears to have the symptoms of a mental disorder?"
       ],
       "responses": [
-        "Although Pandora cannot substitute for professional advice, we encourage those with symptoms to talk to their friends and family members and seek the counsel of a mental health professional. The sooner the mental health condition is identified and treated, the sooner they can get on the path to recovery. If you know someone who is having problems, don't assume that the issue will resolve itself. Let them know that you care about them, and that there are treatment options available that will help them heal. Speak with a mental health professional or counselor if you think your friend or family member is experiencing the symptoms of a mental health condition. If the affected loved one knows that you support them, they will be more likely to seek out help."
+        "Although Neil cannot substitute for professional advice, we encourage those with symptoms to talk to their friends and family members and seek the counsel of a mental health professional. The sooner the mental health condition is identified and treated, the sooner they can get on the path to recovery. If you know someone who is having problems, don't assume that the issue will resolve itself. Let them know that you care about them, and that there are treatment options available that will help them heal. Speak with a mental health professional or counselor if you think your friend or family member is experiencing the symptoms of a mental health condition. If the affected loved one knows that you support them, they will be more likely to seek out help."
       ]
     },
     {
@@ -932,10 +1088,12 @@
     {
       "tag": "fact-31",
       "patterns": [
-        "What's the difference between anxiety and stress?"
+        "What is the difference between anxiety and stress?",
+        "How do anxiety and stress differ?",
+        "Anxiety vs stress: what's the difference?"
       ],
       "responses": [
-        "Stress and anxiety are often used interchangeably, and there is overlap between stress and anxiety. Stress is related to the same fight, flight, or freeze response as anxiety, and the physical sensations of anxiety and stress may be very similar. The cause of stress and anxiety are usually different, however. Stress focuses on mainly external pressures on us that we're finding hard to cope with. When we are stressed, we usually know what we're stressed about, and the symptoms of stress typically disappear after the stressful situation is over. Anxiety, on the other hand, isn't always as easy to figure out. Anxiety focuses on worries or fears about things that could threaten us, as well as anxiety about the anxiety itself. Stress and anxiety are both part of being human, but both can be problems if they last for a long time or have an impact on our well-being or daily life."
+         "Stress is a response to an external cause, such as a tight deadline at work or an argument with a friend. It usually disappears once the situation is resolved. Anxiety, on the other hand, is more of an internal response that persists even when there is no immediate threat. It can often be a prolonged feeling of unease or worry about future events."
       ]
     },
     {
@@ -946,6 +1104,50 @@
       ],
       "responses": [
         "Sadness is a normal reaction to a loss, disappointment, problems, or other difficult situations. Feeling sad from time to time is just another part of being human. In these cases, feelings of sadness go away quickly and you can go about your daily life. Other ways to talk about sadness might be feeling low, feeling down, or feeling blue.A person may say they are feeling depressed, but if it goes away on its own and doesn't impact life in a big way, it probably isn't the illness of depression. Depression is a mental illness that affects your mood, the way you understand yourself, and the way you understand and relate to things around you. It can also go by different names, such as clinical depression, major depressive disorder, or major depression. Depression can come up for no reason, and it lasts for a long time. It's much more than sadness or low mood. People who experience depression may feel worthless or hopeless. They may feel unreasonable guilty. Some people may experience depression as anger or irritability. It may be hard to concentrate or make decisions. Most people lose interest in things that they used to enjoy and may isolate themselves from others. There are also physical signs of depression, such as problems with sleep, appetite and energy and unexplainable aches or pains. Some may experience difficult thoughts about death or ending their life (suicide). Depression lasts longer than two weeks, doesn't usually go away on its own, and impacts your life. It's a real illness, and it is very treatable. It's important to seek help if you're concerned about depression."
+      ]
+    },
+    {
+      "tag": "fact-33",
+      "patterns": [
+        "What is Cognitive Behavioral Therapy (CBT)?",
+        "Explain Cognitive Behavioral Therapy.",
+        "How does CBT work?"
+      ],
+      "responses": [
+        "Cognitive Behavioral Therapy (CBT) is a type of psychotherapy that helps individuals identify and change negative thought patterns and behaviors that contribute to their mental health issues. It is often used to treat anxiety disorders, depression, and other mood disorders."
+      ]
+    },
+    {
+      "tag": "fact-34",
+      "patterns": [
+        "What are some self-help strategies for managing mental health?",
+        "How can I manage my mental health on my own?",
+        "What are effective self-help techniques for mental health?"
+      ],
+      "responses": [
+        "Some effective self-help strategies for managing mental health include practicing mindfulness and relaxation techniques, maintaining a healthy lifestyle with regular exercise and a balanced diet, setting realistic goals, seeking social support, and engaging in activities that bring you joy and relaxation."
+      ]
+    },
+    {
+      "tag": "fact-35",
+      "patterns": [
+        "What is a mental health crisis?",
+        "How can I recognize a mental health crisis?",
+        "What should I do in a mental health emergency?"
+      ],
+      "responses": [
+        "A mental health crisis is an intense episode of mental illness that requires immediate attention. It may include severe emotional distress, thoughts of self-harm or suicide, or the inability to function in daily life. If you or someone you know is in a mental health crisis, seek immediate help by contacting a mental health professional, crisis hotline, or emergency services."
+      ]
+    },
+    {
+      "tag": "fact-36",
+      "patterns": [
+        "What are some common misconceptions about mental illness?",
+        "What myths exist about mental health?",
+        "Tell me about mental health misconceptions."
+      ],
+      "responses": [
+        "Common misconceptions about mental illness include the belief that mental health conditions are a sign of weakness, that people with mental illnesses are dangerous or unpredictable, or that mental health issues are not real medical conditions. It's important to understand that mental illnesses are genuine health conditions that require treatment and support, just like physical illnesses."
       ]
     }
   ]
