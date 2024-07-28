@@ -48,7 +48,8 @@ jobs:
           flutter test test/customavatar_test.dart
           flutter test test/login_test.dart
           flutter test test/music_test.dart
-          flutter test test/integration_test/app_test.dart
+          cd test
+          flutter test integration_test/app_test.dart
         
       # Build the APK with verbose logs.
       - name: Build APK
