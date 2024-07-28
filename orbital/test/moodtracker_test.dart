@@ -45,7 +45,7 @@ void main() {
     await tester.tap(find.text('15')); // Select 15th of the month
     await tester.tap(find.text('OK'));
     await tester.pumpAndSettle();
-    expect(dateController.text, contains('15-'));
+    expect(dateController.text, contains('15 - 7 - 2024'));
 
     // Enter text into the TextField and verify the input
     await tester.enterText(find.byType(TextField), 'This is a test entry.');

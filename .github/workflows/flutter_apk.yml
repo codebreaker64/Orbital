@@ -42,7 +42,13 @@ jobs:
 
       # Run widget tests for the Flutter project.
       - name: Run widget tests
-        run: flutter test test/moodtracker_test.dart
+        run: |
+          flutter test test/moodtracker_test.dart
+          flutter test test/companion_test.dart
+          flutter test test/customavatar_test.dart
+          flutter test test/login_test.dart
+          flutter test test/music_test.dart
+          flutter test test/integration_test/app_test.dart
         
       # Build the APK with verbose logs.
       - name: Build APK

@@ -32,8 +32,8 @@ class BreathingHomePage3 extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    const Color.fromARGB(255, 126, 189, 240),
-                    const Color.fromARGB(255, 153, 208, 155)
+                  Color.fromARGB(255, 126, 189, 240),
+                  Color.fromARGB(255, 153, 208, 155)
                   ],
                 ),
               ),
